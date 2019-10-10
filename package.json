@@ -1,0 +1,29 @@
+{
+  "name": "1stnuxtweb",
+  "version": "1.0.0",
+  "description": "My neat Nuxt.js project",
+  "author": "Thet Min Khant",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@mdi/js": "^4.4.95",
+    "axios": "^0.19.0",
+    "file-saver": "^2.0.2",
+    "firebase": "^6.6.1",
+    "js-cookie": "^2.2.1",
+    "nuxt": "^2.0.0",
+    "qrcode.vue": "^1.6.3",
+    "vue-qrcode-reader": "^2.1.0",
+    "vue-scrollto": "^2.15.0",
+    "vuelidate": "^0.7.4",
+    "xlsx": "^0.15.1"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.0.0"
+  }
+}
