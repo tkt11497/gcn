@@ -59,7 +59,7 @@
 </template>
 <script>
 
-import XLSX from 'XLSX'
+import XLSX from 'xlsx'
 import { saveAs } from 'file-saver'
 export default {
       middleware:['checkauth','auth'],

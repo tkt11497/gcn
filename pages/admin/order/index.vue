@@ -19,7 +19,7 @@
 </template>
 <script>
 import axios from 'axios'
-import XLSX from 'XLSX'
+import XLSX from 'xlsx'
 export default {
         asyncData(context) {
     return axios.get("https://stecomlikepos.firebaseio.com/order.json")

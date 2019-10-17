@@ -61,7 +61,7 @@
   </div>
 </template>
 <script>
-import XLSX from 'XLSX'
+import XLSX from 'xlsx'
 import mapy from '~/components/map/mapy.vue'
 import { saveAs } from 'file-saver'
 export default {

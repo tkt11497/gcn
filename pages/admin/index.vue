@@ -19,7 +19,7 @@
 
 import productlist from '@/components/product/productlist';
 import axios from 'axios'
-import XLSX from 'XLSX'
+import XLSX from 'xlsx'
 import { saveAs } from 'file-saver' 
 export default {
     middleware:['checkauth','auth'],
