@@ -76,7 +76,7 @@ export default {
           let element = document.getElementById( 'gmap1' )
   let mapoptions = {
 	zoom: 17,
-		 center : {	lat: this.loadedorder.lat,	lng: this.loadedorder.long},
+		 center : {	lat: parseFloat(this.loadedorder.lat),	lng: parseFloat(this.loadedorder.long)},
 	disableDefaultUI: false, 
 	scrollWheel: true, 
     draggable: true, }
