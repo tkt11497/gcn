@@ -86,7 +86,7 @@ export default {
     })
    let searchBox = new google.maps.places.SearchBox( address )
 
-   google.maps.event.addListener( searchBox, 'places_changed', function () {
+   google.maps.event.addListener( searchBox, 'places_changed',  (event)=> {
 		var places = searchBox.getPlaces(),
 			bounds = new google.maps.LatLngBounds(),
 			i, place, lat, long, resultArray,
@@ -97,7 +97,10 @@ export default {
 			marker.setPosition( place.geometry.location );  // Set marker position new.
     }
     	map.fitBounds( bounds );  // Fit to the bound
-	map.setZoom( 15 );
+  map.setZoom( 15 );
+   this.order.long=  marker.getPosition().lng()
+    this.order.lat=marker.getPosition().lat()
+    this.order.address=`${places[0].name},${places[0].formatted_address}`
     })
    
     },

@@ -13,6 +13,7 @@
        <v-btn @click="$router.push('/admin/admincart')">Add Items with QR</v-btn>
      <productlist isadmin v-bind:product="loadedproduct" v-on:addingcitem="addingcitem"/>
     <qrcode-stream @decode="onDecode" ></qrcode-stream>
+ 
 </div>
 </template>
 <script>

@@ -99,7 +99,7 @@ const createstore = () => {
                         const productarray = []
                         for (const key in res.data) {
                             productarray.push({...res.data[key], id: key })
-                                //console.log(productarray)
+                            console.log(process.env.fbapikey)
                         }
                         vuexcontext.commit('setproduct', productarray)
                     })
