@@ -59,13 +59,14 @@
       
             <v-card :color="'#952175'" dark>
               <v-expand-transition>
-            <div
+           <nuxt-link v-bind:to="productlink">  <div
               v-if="hover"
               class="d-flex transition-fast-in-fast-out indigo darken-1 v-card--reveal display-2 white--text pl-1"
               style="height: 100%;"
             >
             In Stock {{stock}}
             </div>
+           </nuxt-link>
           </v-expand-transition>
               <div class="d-flex flex-no-wrap justify-space-between">
                 <div>
