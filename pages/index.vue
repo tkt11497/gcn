@@ -1,6 +1,9 @@
 <template>
 
 <v-container fluid class="pa-0">
+  <div class="fb-customerchat"
+ page_id="<PAGE_ID>">
+</div>
         <v-carousel>
       <v-carousel-item
         v-for="(item,i) in items"
