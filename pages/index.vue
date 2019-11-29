@@ -2,7 +2,7 @@
 
 <v-container fluid class="pa-0">
   <div class="fb-customerchat"
- page_id="<PAGE_ID>">
+ page_id="108481103963063">
 </div>
         <v-carousel>
       <v-carousel-item
