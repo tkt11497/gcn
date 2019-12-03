@@ -37,7 +37,10 @@ export default {
      ** Plugins to load before mounting the App
      */
     plugins: [
-        { src: '~/plugins/vue_qrcode_reader', mode: 'client' }
+        { src: '~/plugins/vue_qrcode_reader', mode: 'client' },
+      
+        { src: '~/plugins/fb-chat.js', ssr: false }
+         
     ],
     /*
      ** Nuxt.js dev-modules

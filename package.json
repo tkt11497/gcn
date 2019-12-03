@@ -21,6 +21,7 @@
         "js-cookie": "^2.2.1",
         "nuxt": "^2.0.0",
         "qrcode.vue": "^1.6.3",
+        "vue-fb-customer-chat": "^0.2.0",
         "vue-qrcode-reader": "^2.1.0",
         "vue-scrollto": "^2.15.0",
         "vuelidate": "^0.7.4",
