@@ -1,12 +1,12 @@
 <template>
   <v-app>
-   <!-- <div class="fb-customerchat"
+   <div class="fb-customerchat"
  page_id="108481103963063">
-</div> -->
-<h1> LLEEEE LARRR</h1>
+</div>
+
     <v-navigation-drawer
       v-model="drawer" 
-      v-if="!$vuetify.breakpoint.smAndDown" 
+      v-show="!$vuetify.breakpoint.smAndDown" 
       app
       fixed 
       expand-on-hover  
@@ -45,7 +45,7 @@
       <v-btn
         icon
         @click.stop=" drawer=!drawer" 
-         v-if="!$vuetify.breakpoint.smAndDown"
+         v-show="!$vuetify.breakpoint.smAndDown"
       >
         <v-icon>list</v-icon>
       </v-btn> 
@@ -104,7 +104,8 @@
       </v-list>
      
     </v-navigation-drawer> -->
-    <v-bottom-navigation
+    <v-bottom-navigation 
+    v-show="$vuetify.breakpoint.smAndDown"
     dark
     shift 
     background-color="#283E4A"

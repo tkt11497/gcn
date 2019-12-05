@@ -41,7 +41,8 @@ export default {
         { src: '~/plugins/vue_qrcode_reader', mode: 'client' },
       
         // { src: '~/plugins/fb-chat.js', ssr: false },
-        {src:'~/plugins/components.js'}
+        {src:'~/plugins/components.js'},
+        {src:'~/plugins/vuetify.js'}
          
     ],
     /*
@@ -54,9 +55,9 @@ export default {
         'vue-scrollto/nuxt',
     ],
     
-  buildModules: [
-    // Simple usage
-    '@nuxtjs/vuetify',
+buildModules: [
+   // Simple usage
+  '@nuxtjs/vuetify',
   ],
     /*
      ** vuetify module configuration
