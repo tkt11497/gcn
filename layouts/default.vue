@@ -109,7 +109,6 @@
     background-color="#283E4A"
     app 
     fixed 
-     v-if="$vuetify.breakpoint.smAndDown"
   >
       
         <v-btn
