@@ -40,7 +40,7 @@ export default {
     plugins: [
         { src: '~/plugins/vue_qrcode_reader', mode: 'client' },
       
-        { src: '~/plugins/fb-chat.js', ssr: false },
+        // { src: '~/plugins/fb-chat.js', ssr: false },
         {src:'~/plugins/components.js'}
          
     ],
