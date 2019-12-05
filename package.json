@@ -9,7 +9,7 @@
         "build": "nuxt build",
         "start": "nuxt start",
         "generate": "nuxt generate",
-        "heroku-postbuild": "npm run build"
+        "heroku-postbuild": "npm run dev"
     },
     "dependencies": {
         "@mdi/js": "^4.4.95",
@@ -24,7 +24,7 @@
         "vue-qrcode-reader": "^2.1.0",
         "vue-scrollto": "^2.15.0",
         "vuelidate": "^0.7.4",
-        "vuetify": "^2.1.12",
+        "@nuxtjs/vuetify": "^1.9.0",
         "vuex-search": "^2.2.5",
         "xlsx": "^0.15.1"
     },
