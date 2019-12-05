@@ -1,6 +1,7 @@
 import Vuex from 'vuex'
 import axios from 'axios'
 import Cookie from 'js-cookie'
+import searchPlugin from 'vuex-search';
 const createstore = () => {
     return new Vuex.Store({
 
@@ -14,6 +15,21 @@ const createstore = () => {
             currentloginname: ''
 
         },
+        plugins: [
+            searchPlugin({
+              resources: {
+                loadedproduct: {
+                  // what fields to index
+                  index: ['productdetail', 'productname','productprice'],
+                  // access the state to be watched by Vuex Search
+                  getter: state => state.loadedproduct,
+                  // how resource should be watched
+                  watch: { delay: 500 },
+                },
+                // otherResource: { index, getter, watch, searchApi },
+              },
+            }),
+          ],
         mutations: {
             setproduct(state, product) {
                 state.loadedproduct = product

@@ -16,7 +16,8 @@ export default {
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
             { rel: "stylesheet", href: "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css", integrity: "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T", crossorigin: "anonymous" },
-            { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Material+Icons" }
+            { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Material+Icons" },
+
         ],
         script: [
             { src: "https://code.jquery.com/jquery-3.3.1.slim.min.js", integrity: "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo", crossorigin: "anonymous" },
@@ -32,14 +33,15 @@ export default {
     /*
      ** Global CSS
      */
-    css: [],
+    css: ['@assets/styles/index.scss'],
     /*
      ** Plugins to load before mounting the App
      */
     plugins: [
         { src: '~/plugins/vue_qrcode_reader', mode: 'client' },
       
-        { src: '~/plugins/fb-chat.js', ssr: false }
+        { src: '~/plugins/fb-chat.js', ssr: false },
+        {src:'~/plugins/components.js'}
          
     ],
     /*

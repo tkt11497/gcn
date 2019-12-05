@@ -1,64 +1,40 @@
 <template>
-      <div class="text-primary">
-    <h1>Cart</h1>
-
-    <table class="table table-hover" id="table2">
-      <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col" class="text-primary">Item</th>
-          <th scope="col" class="text-center text-primary">Qty</th>
-          <th scope="col" class="text-right text-primary">Price</th>
-          <th scope="col" class="text-right text-primary">Sub-total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="text-primary" v-for="citem in cart" v-bind:key="citem.id">
-          <td class="text-center">
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <button v-on:click="$store.dispatch('addingcitem',citem)" class="btn btn-info">+</button>
-              <button @click="$store.dispatch('rmcitem',citem)" class="btn btn-outline-info">-</button>
-            </div>
-          </td>
-          <th scope="row">{{citem.productname}}</th>
-          <td class="text-center">{{citem.cquantity}}</td>
-          <td class="text-right">{{citem.productprice}}</td>
-          <td class="text-right">{{parseInt(citem.productprice)*citem.cquantity}}</td>
-        </tr>
-        <tr>  
-          <td colspan="5" class="text-right">
-
-        <b class="text-right h3 text-primary">Total:{{totalprice}}</b>
-  
-      </td>
-      </tr>
-              <tr>  
-          <td colspan="5" class="text-right">
-
-      
-  
-      </td>
-      </tr>
-      </tbody>
-    </table>
-    <!-- <router-link class="btn btn-sm btn-outline-info text-dark" to="/">Keep Shopping</router-link> -->
-    <v-btn @click="extdownload">Download Voucher as Sheet</v-btn>
-     <v-btn color="primary" dark @click.stop="dialog=true">
+      <v-container>
+    
+      <material-cardy color="#283E4A" ref="normal" :title="`Your Cart Total-price is ${totalprice}`">
+        <!-- <v-btn @click="extdownload" slot="buttons">Download Voucher as Sheet</v-btn> -->
+     <v-btn color="indigo" dark @click.stop="dialog=true" slot="buttons">
       Make Order
     </v-btn>
+     <v-data-table
+    :headers="headers"
+    :items="cart"
+    class="elevation-1" 
+    disable-sort
+  >
+    <template v-slot:item.action="{ item }" >
+      <v-btn v-on:click="$store.dispatch('addingcitem',item)" tile color="indigo" dark small>+</v-btn>
+              <v-btn @click="$store.dispatch('rmcitem',item)" tile outlined color="indigo" small>-</v-btn>
+    </template>
+     <template v-slot:item.Sub-total="{ item }">
+        {{Number(item.productprice)*item.cquantity}}
+        </template>
+  </v-data-table>
+      </material-cardy>
+   
     <v-row justify="center">
    
 
     <v-dialog
     v-model="dialog"
-      width="400"
+      width="330"
     >
-  <mapy v-on:confirm="makeorder"/>
+  <mapy v-on:confirm="makeorder" @cancel="dialog=!dialog"/>
 
     </v-dialog>
   </v-row>
  
-  </div>
+      </v-container>
 </template>
 <script>
 import XLSX from 'xlsx'
@@ -71,6 +47,19 @@ export default {
     data(){
       return{
         dialog:false,
+        headers:[
+           {
+            text: ' ',
+            align: 'center',
+            sortable: false,
+            value: 'action',
+          },
+          { text: 'Item', value: 'productname' },
+          { text: 'Qty', value: 'cquantity' },
+          { text: 'Price', value: 'productprice' },
+          { text: 'Sub-total', value: 'Sub-total' },
+          
+        ]
     
       }
     },

@@ -1,97 +1,42 @@
 <template>
-      <!-- <v-card
-    width="400" 
-    class="mx-auto" 
-  >
-    <v-row
-      class="py-4 pl-4"
-    >
-      <v-col class="shrink">
-          <nuxt-link v-bind:to="productlink">
-        <v-img
-          height="200"
-          width="200"
-          v-bind:src="img"
-        ></v-img>
-          </nuxt-link>
-      </v-col>
-      <v-col class="text-center">
-        <v-container class="pa-0">
-          <v-row>
-        <v-card-title class="headline">
-          {{productname}}
-        </v-card-title>
-          </v-row>
-
-        <v-row>
-        <v-card-text>
-          Price:{{productprice}}$
-        </v-card-text>
-          </v-row>
-
-        <v-row>
-        <v-card-text>
-          in Stock{{stock}}
-        </v-card-text>
-        </v-row>
-
-        <v-row>
-        <v-card-text>
-          Description{{productdetail}}
-        </v-card-text>
-        </v-row>
-        <v-row>
-         <v-card-actions>
-          <v-btn color="primary" v-on:click="$emit('addingitem')">
-            add item
-          </v-btn>
-        </v-card-actions>
-        </v-row>
-        </v-container>
-      </v-col>
-    </v-row>
-  </v-card>
- -->
-
-
+     
+      <v-col md="3" sm="12">
+         <!-- <nuxt-link v-bind:to="productlink"> -->
       <v-hover v-slot:default="{ hover }">
-        <v-flex xs12 sm8 md3 class="ma-2">
+  <v-card>
+    <v-img
+      class="indigo--text align-end"
+      height="200px"
+      :src="img"
+    >
       
-            <v-card :color="'#952175'" dark>
-              <v-expand-transition>
-           <nuxt-link v-bind:to="productlink">  <div
-              v-if="hover"
-              class="d-flex transition-fast-in-fast-out indigo darken-1 v-card--reveal display-2 white--text pl-1"
-              style="height: 100%;"
-            >
-            In Stock {{stock}}
-            </div>
-           </nuxt-link>
-          </v-expand-transition>
-              <div class="d-flex flex-no-wrap justify-space-between">
-                <div>
-                  <v-card-title class="headline" v-text="productname"></v-card-title>
-                  <v-card-subtitle v-text=" `Price:${productprice}Kyats`"></v-card-subtitle>
-                   <v-card-text>
-          Description {{productdetail}}
-        </v-card-text>
-                </div>
-  
-                <v-avatar class="ma-3" size="125" >
-                  <v-img :src="img"></v-img>
-                </v-avatar>
-              </div>
-              <v-card-actions>
-               <v-btn color="primary" v-on:click="$emit('addingitem')">
-            add item
-          </v-btn>
-              </v-card-actions>
-            </v-card>
-          
-    </v-flex>
-     </v-hover>
+    </v-img>
+    <v-card-title>{{productname}}</v-card-title>
+    <v-card-subtitle class="text--primary">Price: {{productprice}} Kyats</v-card-subtitle>
 
+    <v-card-text class="text--primary">
+      {{productdetail}}
+    </v-card-text>
+      <v-flex xs12>
+           
+       <v-card-actions>
+      <v-btn
+        color="indigo"
+        :text="!hover" 
+        block 
+        v-on:click="$emit('addingitem')"
+      >
+        ADD TO CART
+      </v-btn>
 
+    
+    </v-card-actions>
+          </v-flex>
+   
+  </v-card>
+      </v-hover>
+         <!-- </nuxt-link> -->
+      </v-col>
 
 
 </template>

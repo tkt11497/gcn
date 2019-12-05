@@ -1,6 +1,31 @@
 <template>
-    <div>
-    <table class="table table-hover table-borderless" id="table1">
+    <v-container>
+         <v-data-table
+    :headers="headers"
+    :items="[...loadedorder]"
+    class="elevation-1" 
+    disable-sort 
+    hide-default-footer
+  >
+  </v-data-table>
+  <v-divider/>
+     <v-data-table
+    :headers="headers1"
+    :items="loadedorder.cart"
+    class="elevation-1" 
+    disable-sort
+  >
+  
+     <template v-slot:item.Sub-total="{ item }">
+        {{Number(item.productprice)*item.cquantity}}
+        </template>
+  </v-data-table>
+  
+  <v-row>
+    <v-col md="6" sm="12"><h5 class="indigo--text">Total Items:{{loadedorder.totalitem}}</h5></v-col>
+      <v-col md="6" sm="12"><h5 class="indigo--text">Total Amount to Pay: {{loadedorder.totalprice}}</h5></v-col>
+  </v-row>
+    <table class="table table-hover table-borderless" id="table1" v-show="false">
       <thead>
         <tr>
           <th scope="col" class="text-primary">Name</th>
@@ -83,7 +108,7 @@
       </v-card>
     </v-dialog>
      
-    </div>
+    </v-container>
 </template>
 <script>
 import axios from 'axios'
@@ -92,7 +117,27 @@ import { saveAs } from 'file-saver'
 export default {
   data(){
     return{
-      dialog:true
+      dialog:true,
+          headers:[
+           {
+            text: 'Name',
+            sortable: false,
+            value: 'name',
+          },
+          { text: 'Address', value: 'address' },
+          { text: 'Phone Number', value: 'phno' },
+          { text: 'Email', value: 'email' },
+          {text:'Payment Method',value:'paymenttype'},
+          { text: 'Order Date', value: 'date' },
+          {text:"Processing Status",value:"deliverystatus"}
+          
+        ],
+        headers1:[
+          { text: 'Item', value: 'productname' },
+          { text: 'Qty', value: 'cquantity' },
+          { text: 'Price', value: 'productprice' },
+          { text: 'Sub-total', value: 'Sub-total' },
+        ]
     }
   },
     asyncData(context) {

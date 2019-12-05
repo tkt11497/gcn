@@ -1,10 +1,11 @@
 <template>
 
-<v-container fluid class="pa-0">
+<v-container fluid class="pa-0" v-on:keydown.13="doSearch">
   <div class="fb-customerchat"
  page_id="108481103963063">
 </div>
-        <v-carousel>
+
+        <!-- <v-carousel height="300">
       <v-carousel-item
         v-for="(item,i) in items"
         :key="i"
@@ -12,22 +13,25 @@
         reverse-transition="fade-transition"
         transition="fade-transition"
       ></v-carousel-item>
-    </v-carousel>
+    </v-carousel>  -->
+<v-row>
+  <v-col md="3" sm="12">
+     <v-text-field
+        append-icon="close"
+        class="mx-4"
+        flat
+        hide-details 
+        v-model="text"
+        label="Search"
+        prepend-inner-icon="search" 
+        @click:prepend-inner="doSearch" 
+        @click:append="cancelsearch"
+        
+        color="indigo"
+      ></v-text-field>
 
-     
-         <v-layout
-    column
-    justify-center
-    align-center
-  >
-    <v-flex
-      xs12
-      sm8
-      md6
-    >
-  
-     
-
+  </v-col>   
+</v-row>
       <productlist v-bind:product="loadedproduct" v-on:addingcitem="addingcitem"></productlist>
 
 
@@ -35,18 +39,20 @@
 
 
 
-    </v-flex>
-  </v-layout>
+  
  </v-container>
 
 
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
 import productlist from '~/components/product/productlist'
-
+import {
+  mapActions as mapSearchActions,
+  mapGetters as mapSearchGetters,
+  getterTypes,
+  actionTypes,
+} from 'vuex-search';
 
 export default {
   data(){
@@ -63,17 +69,25 @@ export default {
         },
       
       ],
+      text: ''
     }
   },
   components: {
     productlist
   },
   computed: {
+    ...mapSearchGetters('loadedproduct', {
+    resultIds: getterTypes.result,
+    isLoading: getterTypes.isSearching,
+  }),
     loadedproduct(){
-      return this.$store.getters.loadedproduct
+      return this.$store.getters.loadedproduct.filter((product)=>this.resultIds.includes(product.id))
     }
   },
   methods: {
+        ...mapSearchActions('loadedproduct', {
+    searchContacts: actionTypes.search,
+  }),
     addingcitem(item){
     this.$store.dispatch('addingcitem',item)
 
@@ -81,6 +95,14 @@ export default {
     // gotocheckout(){
     //   this.show=!this.show
     // }
+  
+  doSearch() {
+    this.searchContacts(this.text);
+  },
+  cancelsearch() {
+    this.text=""
+    this.searchContacts(this.text);
+  },
   },
   created(){
   }

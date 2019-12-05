@@ -48,14 +48,15 @@
                      v-model="order.paymenttype"
                   ></v-select>
                  
-                  Pin your exact destination(Zoom Map)
-                   <div id="gmap" style="width:340px;height:190px"></div>
-                  
+                  Pin your exact destination(Zoom-In Map)
+                   <div id="gmap" style="width:260px;height:190px"></div> 
+           
                 </v-form>
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary" @click="confirm">Confirm Order</v-btn>
+                <v-btn color="indigo" @click="confirm" dark>Confirm Order</v-btn>
+                <v-btn color="indigo" @click="cancel" dark>Cancel</v-btn>
               </v-card-actions>
             </v-card>
 </template>
@@ -125,6 +126,9 @@ export default {
             //save the post
             this.$emit('confirm',this.order)
         },
+        cancel(){
+          this.$emit('cancel')
+        }
     },
 }
 </script>
