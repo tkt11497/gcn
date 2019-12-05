@@ -1,9 +1,7 @@
 <template>
 
 <v-container fluid class="pa-0" v-on:keydown.13="doSearch">
-  <div class="fb-customerchat"
- page_id="108481103963063">
-</div>
+ 
 
         <!-- <v-carousel height="300">
       <v-carousel-item

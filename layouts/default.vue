@@ -1,6 +1,8 @@
 <template>
   <v-app>
-  
+   <div class="fb-customerchat"
+ page_id="108481103963063">
+</div>
     <v-navigation-drawer
       v-model="drawer" 
       v-if="!$vuetify.breakpoint.smAndDown" 

@@ -80,7 +80,7 @@
       </tr>
       </tbody>
     </table>
-    <v-btn @click="exceldownload">Download Voucher as Sheet</v-btn>
+    <v-btn @click="exceldownload">Download Invoice as Sheet</v-btn>
     <v-btn @click="printv">Print</v-btn>
     <v-dialog
     v-model="dialog"
