@@ -12,7 +12,7 @@
       
     </v-img>
     <v-card-title>{{productname}}</v-card-title>
-    <v-card-subtitle class="text--primary">Price: {{productprice}} Kyats</v-card-subtitle>
+    <v-card-subtitle class="text--primary">Price: {{productprice}} Kyats Stock: {{stock}}</v-card-subtitle>
 
     <v-card-text class="text--primary">
       {{productdetail}}
