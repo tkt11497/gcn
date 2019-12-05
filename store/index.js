@@ -12,7 +12,8 @@ const createstore = () => {
             cart: [],
             show: false,
             loadedorder: [],
-            currentloginname: ''
+            currentloginname: '',
+            errormsg:''
 
         },
         plugins: [
@@ -206,7 +207,9 @@ const createstore = () => {
                         Cookie.set('ctoken', result.data.idToken)
                         Cookie.set('cexpiretime', new Date().getTime() + Number.parseInt(result.data.expiresIn) * 1000)
                     })
-                    .catch((err) => { console.log(err.response.data.error.message) })
+                    .catch((err) => { 
+                        vuexcontext.state.errormsg=err.response.data.error.message
+                        console.log(vuexcontext.state.errormsg) })
 
             },
             reloadauth(vuexcontext, req) {
@@ -301,6 +304,9 @@ const createstore = () => {
             },
             cart(state) {
                 return state.cart
+            },
+            errormsg(state){
+                return state.errormsg
             },
             checkout(state, getters) {
 

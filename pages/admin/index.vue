@@ -1,20 +1,119 @@
 <template>
-<div>
+<v-container fluid>
+
+
+     <v-col md11 offset-md="1">
+      <v-layout row wrap class="ml-4">
+        <v-flex xs12 sm8 md3 class="ma-2">
+        
+          <material-stats-card
+            color="primary"
+            icon="mdi-layers"
+            :value="`${$store.getters.loadedproduct.length} Items`"
+            title="Total Items">
+            <v-btn @click="$router.push('/admin/items')" slot="button" small text color="indigo">Go to Items</v-btn>
+          </material-stats-card>
+        
+        </v-flex>
+        <v-flex xs12 sm8 md3 class="ma-2">
+         
+          <material-stats-card
+            color="orange"
+            icon="work"
+            :value="`${total_vouchers_count} Parcels`"
+            title="Total Parcels"
+            sub-icon="mdi-calendar"
+            :sub-text="total"
+          />
+          
+        </v-flex>
+        <v-flex xs12 sm8 md3 class="ma-2">
+         
+          <material-stats-card
+            color="teal"
+            icon="flight_takeoff"
+            :value="`${total_delivering_vouchers} Parcels`"
+            title="Delivering"
+            smallValue="Parcels"
+            sub-icon="mdi-calendar"
+            sub-text="total"
+          />
+        </v-flex>
+        <v-flex xs12 sm8 md3 class="ma-2">
+          <material-stats-card
+            color="green"
+            icon="mdi-airplane"
+            :value="`${total_delivered_vouchers} Parcels`"
+            title="Delivered" 
+            smallValue="Parcels"
+            sub-icon="mdi-calendar"
+            sub-text="total"
+          />
+        </v-flex>
+        <v-flex xs12 sm8 md3 class="ma-2">
+          <material-stats-card
+            color="purple"
+            icon="flight_land"
+            title="Can't Deliver"
+            smallValue="Parcels"
+            :value="`${total_not_delivered_vouchers} Parcels`"
+            sub-icon="mdi-calendar"
+            sub-text="total"
+          />
+        </v-flex>
+         <v-flex xs12 sm8 md3 class="ma-2">
+          <material-stats-card
+            color="red"
+            icon="mdi-undo"
+            title="Return"
+            smallValue="Parcels"
+            :value="`${total_returned_vouchers} Parcels Received / ${total_return_vouchers} Pending`"
+            sub-icon="mdi-calendar"
+            sub-text="total"
+          />
+        </v-flex>
+              <v-flex xs12 sm8 md3 class="ma-2">
+          <material-stats-card
+            color="#002C6D"
+            icon="screen_share"
+            title="Parcels Tobe Paid"
+            :value="`${total_merchant_sheetVouchers} Parcels `"
+            sub-icon="mdi-calendar"
+            sub-text="total"
+          />
+        </v-flex>
+              <v-flex xs12 sm8 md3 class="ma-2">
+          <material-stats-card
+            color="#002C6D"
+            icon="cloud_done"
+            title="Paid"
+            smallValue="Parcels"
+            :value="`${total_merchant_sheet_paid_vouchers} Parcels `"
+            sub-icon="mdi-calendar"
+            sub-text="total"
+          />
+        </v-flex>
+      </v-layout>
+    </v-col>
+
+
+
+
+
+
     <v-snackbar v-model="snackbar" :timeout="5000" top color="success">
       <span>Welcome {{$store.getters.currentloginname}} !!!</span>
       <v-btn color="white" text @click="snackbar = false">Close</v-btn>
     </v-snackbar>
-    <v-btn v-on:click="$router.push('/admin/new-post')">Add New Product</v-btn>
+   
     <v-btn v-on:click="logout">Logout</v-btn>
-      <v-btn @click="jtosheet">Get current balance</v-btn>
-     <v-file-input show-size label="Select Excel File" v-model="excel"  prepend-icon="mdi-folder-open"></v-file-input>
-      <v-btn v-on:click="handleFile(excel)">Import Multiple products with excelsheet</v-btn>
+    
        <v-btn v-on:click="$router.push('/admin/order')">Order list</v-btn>
        <v-btn @click="$router.push('/admin/admincart')">Add Items with QR</v-btn>
-     <productlist isadmin v-bind:product="loadedproduct" v-on:addingcitem="addingcitem"/>
+     
     <qrcode-stream @decode="onDecode" ></qrcode-stream>
  
-</div>
+</v-container>
 </template>
 <script>
 

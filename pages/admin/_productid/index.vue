@@ -1,6 +1,8 @@
 <template>
        <div>
+         <v-row justify="center">
          <qrcode-vue class="no-print" :value="loadedproduct.id"></qrcode-vue>
+         </v-row>
     <adminform class="no-print" v-bind:existingproduct="loadedproduct" @add="add" v-on:update="updater" v-on:delete="deleter"/>
       <div class="container on-print">
   <div class="row">

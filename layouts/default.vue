@@ -139,7 +139,7 @@
 
 
       <v-menu
-    :close-on-content-click="false"
+    :close-on-content-click="true"
     bottom
     left
     min-width="270"

@@ -1,49 +1,62 @@
 <template>
 <v-app>
-    <v-card width="550" class="mx-auto mt-5" >
-    <v-card-title>
-        Add Product
+    <v-card width="550" class="mx-auto mt-5">
+    <v-card-title v-if="!existingproduct">
+        Create Item
     </v-card-title>
-    <form class="ma-5">
+      <v-card-title v-else>
+        Edit Item
+    </v-card-title>
+    <v-form class="ma-5" v-model="valid">
       <v-text-field
         v-model="product.productname"
-        label="Product Name"
-        required
+        label="Product Name" 
+        color="indigo"
+        required 
+        :rules="requireRule"
       ></v-text-field>
       <v-text-field
         v-model.number="product.productprice"
-        label="Price"
-        required
+        label="Price" 
+        color="indigo"
+        required 
+        :rules="requireRule"
       ></v-text-field>
     <v-text-field
         v-model.number="product.stock"
-        label="Stock"
-        required
+        label="Stock" 
+        color="indigo"
+        required 
+        :rules="requireRule"
       ></v-text-field>
     <v-text-field
         v-model="product.productdetail"
         label="Product Detail"
-        required
+        required 
+        :rules="requireRule"
+        color="indigo"
       ></v-text-field>
       <v-text-field
         v-model="product.img"
         label="Image Url"
         placeholder="You can type Url or By Uploading Image, it will give u a Url"
-        required
+        required 
+        :rules="requireRule"
+        color="indigo"
       ></v-text-field>
-       <v-file-input show-size label="Select Image" v-model="img" accept="image/*" @change="filepicked(img)"></v-file-input>
-      <v-btn v-on:click="uploadimg(img)">Upload Image</v-btn>
+       <v-file-input show-size label="Select Image" v-model="img" accept="image/*" @change="filepicked(img)" 
+       append-icon="cloud_upload" 
+       @click:append="uploadimg(img)"></v-file-input>
+      <v-row justify="center">
     <img :src="image" widht="200" height="200"/>
-      <v-select
-        :items="items"
-        label="Item"
-        required
-      ></v-select>
-      <v-btn class="mr-4" @click="add">add</v-btn>
-      <v-btn class="mr-4" @click="update">update</v-btn>
-      <v-btn class="mr-4" @click="deleteitem">delete</v-btn>
-      <v-btn @click="cancel">cancel</v-btn>
-    </form>
+      </v-row>
+      <v-card-actions>
+      <v-btn class="mr-4" @click="add" v-if="!existingproduct" dark color="indigo">Save</v-btn>
+      <v-btn class="mr-4" @click="update" v-if="existingproduct" dark color="indigo">Save</v-btn>
+      <v-btn class="mr-4" @click="deleteitem" dark color="indigo">delete</v-btn>
+      <v-btn @click="cancel" dark color="indigo">cancel</v-btn>
+      </v-card-actions>
+    </v-form>
     </v-card>
 </v-app>
 </template>
@@ -68,7 +81,10 @@ data(){
             },
             items:['item1','item2','item3'],
             image:'',
-            img:null
+            img:null,
+            valid:false,
+            requireRule: [
+      v => !!v || 'This field is required'],
         }
     },
 

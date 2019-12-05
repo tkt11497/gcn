@@ -1,7 +1,7 @@
 <template>
      
       <v-col md="3" sm="12">
-         <!-- <nuxt-link v-bind:to="productlink"> -->
+         
       <v-hover v-slot:default="{ hover }">
   <v-card>
     <v-img
@@ -19,7 +19,7 @@
     </v-card-text>
       <v-flex xs12>
            
-       <v-card-actions>
+       <v-card-actions v-if="!isadmin">
       <v-btn
         color="indigo"
         :text="!hover" 
@@ -28,14 +28,18 @@
       >
         ADD TO CART
       </v-btn>
+      
 
     
+    </v-card-actions>
+    <v-card-actions>
+    <v-btn v-if="isadmin" @click="$router.push(productlink)" color="indigo" block dark><v-icon>edit</v-icon></v-btn>
     </v-card-actions>
           </v-flex>
    
   </v-card>
       </v-hover>
-         <!-- </nuxt-link> -->
+         
       </v-col>
 
 
@@ -48,6 +52,9 @@ justify-content: right;
 opacity: .5;
 position: absolute;
 width: 100%;
+}
+li a {
+    text-decoration: none;
 }
 </style>
 <script>

@@ -3,9 +3,8 @@
     
       <material-cardy color="#283E4A" ref="normal" :title="`Your Cart Total-price is ${totalprice}`">
         <!-- <v-btn @click="extdownload" slot="buttons">Download Voucher as Sheet</v-btn> -->
-     <v-btn color="indigo" dark @click.stop="dialog=true" slot="buttons">
-      Make Order
-    </v-btn>
+     
+   
      <v-data-table
     :headers="headers"
     :items="cart"
@@ -19,6 +18,9 @@
      <template v-slot:item.Sub-total="{ item }">
         {{Number(item.productprice)*item.cquantity}}
         </template>
+        <v-btn color="indigo" dark @click.stop="dialog=true" slot="footer" block class="pa-1 ma-1">   Make Order
+    </v-btn>
+         
   </v-data-table>
       </material-cardy>
    

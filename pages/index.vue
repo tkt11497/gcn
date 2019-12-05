@@ -15,15 +15,15 @@
 <v-row>
   <v-col md="3" sm="12">
      <v-text-field
-        append-icon="close"
+        append-icon="search"
         class="mx-4"
         flat
         hide-details 
         v-model="text"
         label="Search"
-        prepend-inner-icon="search" 
-        @click:prepend-inner="doSearch" 
-        @click:append="cancelsearch"
+        prepend-inner-icon="close" 
+        @click:prepend-inner="cancelsearch" 
+        @click:append="doSearch"
         
         color="indigo"
       ></v-text-field>
