@@ -9,7 +9,7 @@
         "build": "nuxt build",
         "start": "nuxt start",
         "generate": "nuxt generate",
-        "heroku-postbuild": "npm run start"
+        "heroku-postbuild": "npm run build"
     },
     "dependencies": {
         "@mdi/js": "^4.4.95",
