@@ -1,11 +1,23 @@
 <template>
-<div>
+<v-container fluid>
+  <v-row>
+    <v-col md="3" sm="12">
+   <v-text-field
+          v-model="search"
+          append-icon="search"
+          label="Search"
+          single-line
+          hide-details
+        ></v-text-field>
+    </v-col>
+  </v-row>
  <v-data-table
     :headers="headers"
     :items="loadedorder"
     :sort-by="['deliverystatus']"
     :sort-desc="[false, true]"
-    multi-sort
+    multi-sort 
+    :search="search"
     class="elevation-1" :loading="isloading" loading-text="Loading... Please wait" 
     id="table2"
   >
@@ -15,7 +27,7 @@
     {{loadedorder}}
   </v-data-table>
   <v-btn @click="jtosheet1">Get Orderlist as Excel Sheet</v-btn>
-  </div>
+</v-container>
 </template>
 <script>
 import axios from 'axios'
@@ -60,7 +72,8 @@ export default {
           { text: 'Payment Type', value: 'paymenttype' },
           { text: '',value:'action'},
         ],
-        isloading:false
+        isloading:false,
+        search:''
         
       }
     },

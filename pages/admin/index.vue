@@ -29,69 +29,14 @@
         <v-flex xs12 sm8 md3 class="ma-2">
          
           <material-stats-card
-            color="orange"
-            icon="flight_takeoff"
-            :value="`${total_delivering_vouchers} Parcels`"
-            title="Delivering"
-            smallValue="Parcels"
-            sub-icon="mdi-calendar"
-            sub-text="total"
-          />
-        </v-flex>
-        <v-flex xs12 sm8 md3 class="ma-2">
-          <material-stats-card
-            color="green"
-            icon="mdi-airplane"
-            :value="`${total_delivered_vouchers} Parcels`"
-            title="Delivered" 
-            smallValue="Parcels"
-            sub-icon="mdi-calendar"
-            sub-text="total"
-          />
-        </v-flex>
-        <v-flex xs12 sm8 md3 class="ma-2">
-          <material-stats-card
-            color="purple"
-            icon="flight_land"
-            title="Can't Deliver"
-            smallValue="Parcels"
-            :value="`${total_not_delivered_vouchers} Parcels`"
-            sub-icon="mdi-calendar"
-            sub-text="total"
-          />
-        </v-flex>
-         <v-flex xs12 sm8 md3 class="ma-2">
-          <material-stats-card
-            color="red"
-            icon="mdi-undo"
-            title="Return"
-            smallValue="Parcels"
-            :value="`${total_returned_vouchers} Parcels Received / ${total_return_vouchers} Pending`"
-            sub-icon="mdi-calendar"
-            sub-text="total"
-          />
-        </v-flex>
-              <v-flex xs12 sm8 md3 class="ma-2">
-          <material-stats-card
             color="#002C6D"
-            icon="screen_share"
-            title="Parcels Tobe Paid"
-            :value="`${total_merchant_sheetVouchers} Parcels `"
-            sub-icon="mdi-calendar"
-            sub-text="total"
-          />
+            icon="shopping_basket"
+            :value="`POS`"
+            title="Sales">
+            <v-btn @click="$router.push('/admin/admincart')" slot="button" small text color="indigo">Go to Sales(POS)</v-btn>
+          </material-stats-card>
         </v-flex>
-              <v-flex xs12 sm8 md3 class="ma-2">
-          <material-stats-card
-            color="#002C6D"
-            icon="cloud_done"
-            title="Paid"
-            smallValue="Parcels"
-            :value="`${total_merchant_sheet_paid_vouchers} Parcels `"
-            sub-icon="mdi-calendar"
-            sub-text="total"
-          />
-        </v-flex>
+  
       </v-layout>
     </v-col>
 
@@ -107,8 +52,7 @@
    
     <v-btn v-on:click="logout">Logout</v-btn>
     
-       <v-btn v-on:click="$router.push('/admin/order')">Order list</v-btn>
-       <v-btn @click="$router.push('/admin/admincart')">Add Items with QR</v-btn>
+      
      
     <qrcode-stream @decode="onDecode" ></qrcode-stream>
  

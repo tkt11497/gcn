@@ -1,46 +1,127 @@
 <template>
-      <div class="text-primary">
+      <v-container>
     <h1>Admin Cart</h1>
+<v-row>
+  <v-flex>
+      <v-card class="mx-auto"
+    max-width="344" 
+    min-width="344"
+    outlined>
+    <v-expansion-panels>
+     <v-expansion-panel>
+      <v-expansion-panel-header>
+        <v-btn 
+        color="indigo" 
+       class="pa-1 ma-1" 
+       dark>
+      Charge
+      </v-btn>
+      </v-expansion-panel-header>
+      <v-expansion-panel-content>
+       <v-row class="ma-0 pa-0">
+         <v-col cols="4" class="text-left pa-0"></v-col>
+         <v-col cols="6" class="text-left pa-0" >Item</v-col>
+         <v-col cols="2" class="text-left pa-0">Price</v-col>
+         <v-divider/>
+       </v-row>
+          <v-row v-for="item in cart" :key="item.id">
+         <v-col cols="4" class="text-left pa-0"> 
+           <v-btn v-on:click="$store.dispatch('addingcitem',item)" tile color="indigo" dark x-small>+</v-btn>
+          <v-btn @click="$store.dispatch('rmcitem',item)" tile outlined color="indigo" x-small>-</v-btn>
+         </v-col>
+         <v-col cols="6" class="text-left pa-0">{{item.productname}} x{{item.cquantity}}</v-col>
+         <v-col cols="2" class="text-left pa-0">{{Number(item.productprice)*item.cquantity}}</v-col>
+       </v-row>
+       <v-row>
+         <v-col cols="6">
+           Total-price : {{totalprice}}
+         </v-col>
+         <v-col cols="6">
+           Total-Items : {{totalitem}}
+         </v-col>
+       </v-row>
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+    </v-expansion-panels>
+    </v-card>
 
-    <table class="table table-hover" id="table2">
-      <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col" class="text-primary">Item</th>
-          <th scope="col" class="text-center text-primary">Qty</th>
-          <th scope="col" class="text-right text-primary">Price</th>
-          <th scope="col" class="text-right text-primary">Sub-total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="text-primary" v-for="citem in cart" v-bind:key="citem.id">
-          <td class="text-center">
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <button v-on:click="$store.dispatch('addingcitem',citem)" class="btn btn-info">+</button>
-              <button @click="$store.dispatch('rmcitem',citem)" class="btn btn-outline-info">-</button>
-            </div>
-          </td>
-          <th scope="row">{{citem.productname}}</th>
-          <td class="text-center">{{citem.cquantity}}</td>
-          <td class="text-right">{{citem.productprice}}</td>
-          <td class="text-right">{{parseInt(citem.productprice)*citem.cquantity}}</td>
-        </tr>
-        <tr>  
-          <td colspan="5" class="text-right">
 
-        <b class="text-right h3 text-primary">Total:{{totalprice}}</b>
-  
-      </td>
-      </tr>
-              <tr>  
-          <td colspan="5" class="text-right">
+    <v-card class="mx-auto"
+    max-width="344" 
+    min-width="344"
+    outlined>
+    <v-expansion-panels>
+     <v-expansion-panel>
+      <v-expansion-panel-header>
+     <h4 class="text-center indigo--text">QR Scanner</h4>
+      </v-expansion-panel-header>
+      <v-expansion-panel-content>
+      <qrcode-stream @decode="onDecode" ></qrcode-stream> 
+      </v-expansion-panel-content>
+    </v-expansion-panel>
+    </v-expansion-panels>
+    </v-card>
+  </v-flex>
+  <v-flex>
 
-      
-  
-      </td>
-      </tr>
-      </tbody>
-    </table>
+     <v-data-table :headers="headers" :items="loadedproduct" :search="searcher">
+       
+       <v-text-field
+          v-model="searcher"
+          append-icon="search"
+          label="Search"
+          single-line
+          hide-details 
+          slot="header.action"
+        ></v-text-field>
+       
+        <template v-slot:body="{items}">
+          <tbody>
+            <tr v-show="items.length == 0">
+              <td colspan="11" class="font-weight-bold">
+                <p class="text-center">---Empty---</p>
+              </td>
+            </tr>
+            <tr
+              v-for="(item) in items"
+              :key="item.id">
+              <td>
+                {{item.productname}}
+              </td>
+              <td>
+                {{item.productprice}}
+              </td>
+               <td>
+                {{item.stock}}
+              </td>
+              <td justify="center" class="text-center">
+                  <v-btn v-on:click="$store.dispatch('addingcitem',item)" tile color="indigo" dark>
+                    Add
+                  </v-btn>
+              </td>
+            </tr>
+          </tbody>
+        </template>
+     </v-data-table>
+
+
+
+  </v-flex>
+
+</v-row>
+   
+    <v-row justify="center">
+   
+
+    <v-dialog
+    v-model="dialog"
+      width="330"
+    >
+  <mapy v-on:confirm="makeorder" @cancel="dialog=!dialog"/>
+
+    </v-dialog>
+  </v-row>
+ 
     <!-- <router-link class="btn btn-sm btn-outline-info text-dark" to="/">Keep Shopping</router-link> -->
     <v-btn @click="extdownload">Download Voucher as Sheet</v-btn>
      <v-btn color="primary" dark @click="printv">
@@ -49,13 +130,15 @@
     <v-btn color="primary" dark @click="checkout">
       Checkout
     </v-btn>
-    <v-row justify="center">
+   
+    <!-- <v-row justify="center">
    <qrcode-stream @decode="onDecode" ></qrcode-stream> 
 
   
   </v-row>
+   -->
  
-  </div>
+      </v-container>
 </template>
 <script>
 
@@ -68,7 +151,21 @@ export default {
   },
     data(){
       return{
-        
+        searcher:'',
+             dialog:false,
+        headers:[
+            { text: 'Item', value: 'productname' },
+          { text: 'Price', value: 'productprice' },
+          { text: 'Stock', value: 'stock' },
+           {
+            text: ' ',
+            align: 'center',
+            sortable: false,
+            value: 'action',
+          },
+         
+          
+        ]
     
       }
     },
