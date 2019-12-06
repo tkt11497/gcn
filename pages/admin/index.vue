@@ -36,6 +36,17 @@
             <v-btn @click="$router.push('/admin/admincart')" slot="button" small text color="indigo">Go to Sales(POS)</v-btn>
           </material-stats-card>
         </v-flex>
+
+        <v-flex xs12 sm8 md3 class="ma-2">
+         
+          <material-stats-card
+            color="#002C6D"
+            icon="receipt"
+            :value="`Receipt`"
+            title="Sales">
+            <v-btn @click="$router.push('/admin/receipt')" slot="button" small text color="indigo">Go to Receipt</v-btn>
+          </material-stats-card>
+        </v-flex>
   
       </v-layout>
     </v-col>
@@ -54,8 +65,7 @@
     
       
      
-    <qrcode-stream @decode="onDecode" ></qrcode-stream>
- 
+   
 </v-container>
 </template>
 <script>
@@ -68,15 +78,12 @@ export default {
     middleware:['checkauth','auth'],
     data(){
       return{
-        excel:null,
+       
         snackbar:true
       }
     },
     components:{
-        productlist,
       
-      // QrcodeDropZone,
-      // QrcodeCapture
     },
      computed:{
     loadedproduct(){
@@ -87,52 +94,7 @@ export default {
       this.$store.dispatch('logout')
       this.$router.push('/admin/auth')
     },  
-     handleFile(e) {
-       if(e==null){return}
-        let f = e;
-        let reader = new FileReader();
-        let stream=null
-        reader.addEventListener('load',(e)=>{
-           let data = new Uint8Array(e.target.result);
-          let workbook = XLSX.read(data, {type: 'array'});
-          console.log(workbook)
-         workbook.SheetNames.forEach((sheetname)=>{
-           stream = XLSX.utils.sheet_to_json(workbook.Sheets[sheetname], {raw:true})
-         })
-         console.log(stream)
-
   
-
-         for(let i in stream){
-         this.$store.dispatch('addproduct',stream[i])
-         }
-          })
-
-          reader.readAsArrayBuffer(f);
-          
-        },
-
-        addingcitem(item){
-       this.$store.dispatch('addingcitem',item)
-
-       },
-         jtosheet(){
-      const fileName = 'test.xlsx';
-
-    		const ws= XLSX.utils.json_to_sheet(this.loadedproduct);
-     		const wb = XLSX.utils.book_new();
-    		XLSX.utils.book_append_sheet(wb, ws, 'test');
-
-    		XLSX.writeFile(wb, fileName);
-    
-    },
-      onDecode (decodedString) {
-    console.log(decodedString)
-      console.log(this.loadedproduct)
-     let indexz = this.loadedproduct.findIndex((i) => decodedString == i.id)
-     console.log(this.loadedproduct[indexz])
-     this.$store.dispatch('addingcitem',this.loadedproduct[indexz])
-  }
 }
 }
 </script>
