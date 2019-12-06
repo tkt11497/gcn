@@ -1,6 +1,8 @@
 <template>
        <div>
          <v-row justify="center">
+           <v-btn small @click="printf">Print</v-btn>
+           
          <qrcode-vue class="no-print" :value="loadedproduct.id"></qrcode-vue>
          </v-row>
     <adminform class="no-print" v-bind:existingproduct="loadedproduct" @add="add" v-on:update="updater" v-on:delete="deleter"/>
@@ -46,6 +48,9 @@ asyncData(context) {
 
   },
   methods: {
+    printf(){
+      window.print()
+    },
     add(){
       this.$router.push('/admin')
     },

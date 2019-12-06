@@ -10,7 +10,7 @@
             color="primary"
             icon="mdi-layers"
             :value="`${$store.getters.loadedproduct.length} Items`"
-            title="Total Items">
+            title="Items">
             <v-btn @click="$router.push('/admin/items')" slot="button" small text color="indigo">Go to Items</v-btn>
           </material-stats-card>
         
@@ -18,19 +18,18 @@
         <v-flex xs12 sm8 md3 class="ma-2">
          
           <material-stats-card
-            color="orange"
-            icon="work"
-            :value="`${total_vouchers_count} Parcels`"
-            title="Total Parcels"
-            sub-icon="mdi-calendar"
-            :sub-text="total"
-          />
+            color="teal"
+            icon="ring_volume"
+            :value="`Orders`"
+            title="Orders">
+            <v-btn @click="$router.push('/admin/order')" slot="button" small text color="indigo">Go to Order List</v-btn>
+          </material-stats-card>
           
         </v-flex>
         <v-flex xs12 sm8 md3 class="ma-2">
          
           <material-stats-card
-            color="teal"
+            color="orange"
             icon="flight_takeoff"
             :value="`${total_delivering_vouchers} Parcels`"
             title="Delivering"

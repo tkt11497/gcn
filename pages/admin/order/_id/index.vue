@@ -1,6 +1,82 @@
 <template>
-    <div>
-    <table class="table table-hover table-bordered" id="table1">
+    <v-container>
+
+             <v-data-table
+    :headers="headers"
+    :items="[...loadedorder]"
+    class="elevation-1" 
+    disable-sort 
+    hide-default-footer
+  >
+   <template v-slot:item.deliverystatus="{ item }">
+       <v-select :items="items" v-model="loadedorder.deliverystatus"/>
+        </template>
+  </v-data-table>
+  <v-divider/>
+     <v-data-table
+    :headers="headers1"
+    :items="loadedorder.cart"
+    class="elevation-1" 
+    disable-sort
+  >
+  
+     <template v-slot:item.Sub-total="{ item }">
+        {{Number(item.productprice)*item.cquantity}}
+        </template>
+        
+     <v-btn @click="save" color="indigo" dark class="pa-1 ma-1" block slot="footer"><v-icon>done</v-icon></v-btn>
+    <v-btn @click="deleteorder" color="indigo" dark class="pa-1 ma-1" block slot="footer"><v-icon>delete</v-icon></v-btn>
+  </v-data-table>
+  
+  <v-row>
+    <v-col md="6" sm="12"><h5 class="indigo--text">Total Items:{{loadedorder.totalitem}}</h5></v-col>
+      <v-col md="6" sm="12"><h5 class="indigo--text">Total Amount to Pay: {{loadedorder.totalprice}}</h5></v-col>
+  </v-row>
+   <v-tooltip left color="blue" dark>
+         <template v-slot:activator="{ on }">
+  <v-btn
+      class="elevation-2 caption"
+      color="green"
+      dark
+      fab 
+      right
+      fixed
+      style="top: 290px;"
+      top 
+      v-on="on"
+      v-on:click="printf"
+    ><v-icon>local_printshop</v-icon></v-btn>
+    </template>
+    <span class="white--text">Print voucher</span>
+     </v-tooltip>
+     <v-tooltip left color="blue" dark>
+         <template v-slot:activator="{ on }">
+    <v-btn     
+    class="elevation-2 caption"
+    color="blue"
+    dark
+    fab 
+    right
+    fixed 
+    v-on="on"
+    style="top: 347px;"
+    top 
+    title="leelar"
+    @click="exceldownload"><v-icon>cloud_download</v-icon></v-btn>
+    </template>
+    <span class="white--text">Download Voucher as Sheet</span>
+     </v-tooltip>
+ 
+   
+ 
+
+
+
+
+
+
+
+    <table class="table table-hover table-bordered" id="table1" v-show="false">
       <thead>
         <tr>
           <th scope="col" class="text-primary">Name</th>
@@ -55,17 +131,14 @@
       </tr>
       </tbody>
     </table>
-    <v-btn @click="exceldownload">Download Voucher as Sheet</v-btn>
-    <v-btn @click="save">Save</v-btn>
-    <v-btn @click="deleteorder">Delete</v-btn>
-     <v-btn @click="printf">Print</v-btn>
+   
      <v-row justify="center">
         <h5 class="text-primary">Location: To Deliver</h5>
      </v-row>
     <v-row justify="center">
-    <div id="gmap1" style="width:400px;height:400px"></div>
+    <div id="gmap1" style="width:300px;height:300px"></div>
     </v-row>
-    </div>
+    </v-container>
 </template>
 <script>
 import axios from 'axios'
@@ -92,6 +165,26 @@ export default {
   data(){
     return{
      items:['To be Confirmed','Confirmed(On Going)','Delivered'],
+      headers:[
+           {
+            text: 'Name',
+            sortable: false,
+            value: 'name',
+          },
+          { text: 'Address', value: 'address' },
+          { text: 'Phone Number', value: 'phno' },
+          { text: 'Email', value: 'email' },
+          {text:'Payment Method',value:'paymenttype'},
+          { text: 'Order Date', value: 'date' },
+          {text:"Processing Status",value:"deliverystatus"}
+          
+        ],
+        headers1:[
+          { text: 'Item', value: 'productname' },
+          { text: 'Qty', value: 'cquantity' },
+          { text: 'Price', value: 'productprice' },
+          { text: 'Sub-total', value: 'Sub-total' },
+        ]
     }
   },
     asyncData(context) {

@@ -10,13 +10,15 @@
                 <v-spacer></v-spacer>
               </v-toolbar>
               <v-card-text>
-                <v-form>
+                <v-form v-model="valid">
                   <v-text-field
                     label="name"
                     name="name"
                     prepend-icon="mdi-account-circle"
                     type="text"
-                    v-model="order.name"
+                    v-model="order.name" 
+                    :rules="rules"
+                    required
                   ></v-text-field>
 
                   <v-text-field
@@ -24,7 +26,9 @@
                     name="phonenumber"
                     prepend-icon="mdi-phone"
                     type="text"
-                    v-model="order.phno"
+                    v-model="order.phno" 
+                    :rules="rules"
+                    required
                   ></v-text-field>
                   <v-text-field
                     label="Address"
@@ -32,20 +36,26 @@
                     prepend-icon="mdi-home-circle"
                     type="text"
                     id="address"
-                    v-model="order.address"
+                    v-model="order.address" 
+                    :rules="rules"
+                    required
                   ></v-text-field>
                       <v-text-field
                     label="Email"
                     name="email"
                     prepend-icon="mdi-email"
                     type="text"
-                    v-model="order.email"
+                    v-model="order.email" 
+                    :rules="emailRules"
+                    required
                   ></v-text-field>
                   <v-select
                     :items="items"
                     prepend-icon="mdi-truck"
                      label="Payment Type"
-                     v-model="order.paymenttype"
+                     v-model="order.paymenttype" 
+                     :rules="rules"
+                    required
                   ></v-select>
                  
                   Pin your exact destination(Zoom-In Map)
@@ -117,8 +127,18 @@ export default {
           lat:'',
           long:'',
           deliverystatus:'To be Confirmed',
-          date: new Date()
-        }
+          date: new Date().toISOString().substr(0, 10), 
+          
+        },
+        valid:false,
+            emailRules: [
+      v => !!v || 'E-mail is required',
+      v => /.+@.+/.test(v) || 'E-mail must be valid',
+    ],
+    rules: [
+      v => !!v || 'This field is required',
+     
+    ],
         }
     },
     methods: {
