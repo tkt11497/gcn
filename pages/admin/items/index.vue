@@ -63,7 +63,6 @@
     v-on="on"
     style="top: 347px;"
     top 
-    title="leelar"
     @click="jtosheet"><v-icon>cloud_download</v-icon></v-btn>
     </template>
     <span class="white--text">Current Stock</span>
@@ -95,6 +94,20 @@ import {
 
 export default {
     middleware:['checkauth','auth'],
+      asyncData(context) {
+
+                return axios.get("https://stecomlikepos.firebaseio.com/"+context.store.state.currentloginname+"/product.json")
+                    .then((res) => {
+                        const productarray = []
+                        for (const key in res.data) {
+                            productarray.push({...res.data[key], id: key })
+                            console.log(process.env.fbapikey)
+                        }
+                        context.store.commit('settitle', 'Items')
+                        context.store.commit('setproduct', productarray)
+                    })
+                    .catch((e) => { context.error(e) })
+            },
   data(){
     return{
       text: '',

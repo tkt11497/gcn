@@ -142,6 +142,9 @@ import { saveAs } from 'file-saver'
 import receipts from '~/components/Receipts/receipts.vue'
 export default {
       middleware:['checkauth','auth'],
+      created(){
+        this.$store.commit('settitle', 'Sales')
+      },
   components:{
      receipts
   },

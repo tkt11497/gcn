@@ -33,24 +33,27 @@
 import axios from 'axios'
 import XLSX from 'xlsx'
 export default {
-        asyncData(context) {
-    return axios.get("https://stecomlikepos.firebaseio.com/order.json")
+    middleware:['checkauth','auth'],
+         asyncData(context) {
+    return axios.get("https://stecomlikepos.firebaseio.com/"+context.store.state.currentloginname+"/order.json")
                     .then((res) => {
-                        let orderarray = []
+                        const loadedorderarray = []
                         for (const key in res.data) {
-                            orderarray.push({...res.data[key], id: key })
-                                //console.log(productarray)
+                             loadedorderarray.push({...res.data[key], id: key })
+                              
                         }
-                        //return {loadedorder}
                         
-                        context.store.commit('setorder', orderarray)
+                        
+                        context.store.commit('setorder', loadedorderarray)
+                        context.store.commit('settitle', 'Orders')
+                      
                     })
                     .catch((e) => { console.log(context.error(e)) })
         
     },
     computed: {
-        loadedorder(){
-            return this.$store.getters.loadedorder
+         loadedorder(){
+           return this.$store.getters.loadedorder
             
         }
     },

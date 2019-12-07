@@ -75,7 +75,7 @@ methods:{
     newsale(){
         console.log(this.totalitem)
         if(this.totalitem==0){return}
-        axios.post('https://stecomlikepos.firebaseio.com/receipts.json', 
+        axios.post('https://stecomlikepos.firebaseio.com/'+this.$store.state.currentloginname+'/receipts.json', 
         {date:this.date,paid:this.paid,change:this.change,cart:this.cart,totalprice:this.totalprice,totalitem:this.totalitem})
         .then(
                     (result) => {

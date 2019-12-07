@@ -7,7 +7,7 @@
       <v-card-title v-else>
         Edit Item
     </v-card-title>
-    <v-form class="ma-5" v-model="valid">
+    <v-form class="ma-5" v-model="valid" ref="form">
       <v-text-field
         v-model="product.productname"
         label="Product Name" 
@@ -20,7 +20,7 @@
         label="Price" 
         color="indigo"
         required 
-        :rules="requireRule"
+        :rules="numrules"
       ></v-text-field>
     <v-text-field
         v-model.number="product.stock"
@@ -85,6 +85,10 @@ data(){
             valid:false,
             requireRule: [
       v => !!v || 'This field is required'],
+            numrules: [
+            v => !!v || 'This field is required',
+            v => typeof v =="number" || 'Price must be number',
+          ],
         }
     },
 
@@ -94,13 +98,17 @@ data(){
     methods: {
         add:function (){
             //save the post
+            if (this.$refs.form.validate()) {
             this.$emit('add',this.product)
+            }
         },
         deleteitem(){
             this.$emit('delete',this.product)
         },
         update(){
+          if (this.$refs.form.validate()) {
           this.$emit('update', this.product)
+          }
         },
         cancel(){
             //cancel the post

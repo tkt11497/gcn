@@ -13,7 +13,8 @@ const createstore = () => {
             show: false,
             loadedorder: [],
             currentloginname: '',
-            errormsg:''
+            errormsg:null,
+            title:''
 
         },
         plugins: [
@@ -32,6 +33,9 @@ const createstore = () => {
             }),
           ],
         mutations: {
+            settitle(state, title) {
+                state.title = title
+            },
             setproduct(state, product) {
                 state.loadedproduct = product
             },
@@ -106,22 +110,28 @@ const createstore = () => {
             },
             currentloginname(state, clname) {
                 state.currentloginname = clname
+            },
+            seterrormsg(state,errormsg){
+                state.errormsg=errormsg
             }
         },
         actions: {
-            nuxtServerInit(vuexcontext, context) {
+        //     nuxtServerInit(vuexcontext, context) {
+        //         if(!vuexcontext.state.currentloginname){
+        //             return
+        //         }
 
-                return axios.get("https://stecomlikepos.firebaseio.com/product.json")
-                    .then((res) => {
-                        const productarray = []
-                        for (const key in res.data) {
-                            productarray.push({...res.data[key], id: key })
-                            console.log(process.env.fbapikey)
-                        }
-                        vuexcontext.commit('setproduct', productarray)
-                    })
-                    .catch((e) => { context.error(e) })
-            },
+        //    return axios.get("https://stecomlikepos.firebaseio.com/"+vuexcontext.state.currentloginname+"/product.json")
+        //          .then((res) => {
+        //               const productarray = []
+        //               for (const key in res.data) {
+        //                   productarray.push({...res.data[key], id: key })
+        //                  console.log(process.env.fbapikey)
+        //               }
+        //               vuexcontext.commit('setproduct', productarray)
+        //            })
+        //            .catch((e) => { context.error(e) })
+        //     },
             addingcitem(vuexcontext, item) {
                 if (item.stock <= 0) {
                     alert("out of stock!!!")
@@ -141,7 +151,7 @@ const createstore = () => {
                 vuexcontext.commit('setorder', order)
             },
             addproduct(vuexcontext, product) {
-                return axios.post('https://stecomlikepos.firebaseio.com/product.json?auth=' + vuexcontext.state.token, product).then(
+                return axios.post('https://stecomlikepos.firebaseio.com/'+vuexcontext.state.currentloginname+'/product.json?auth=' + vuexcontext.state.token, product).then(
                     (result) => {
                         vuexcontext.commit('addproduct', {...product, id: result.data.name })
                         console.log(vuexcontext)
@@ -150,7 +160,7 @@ const createstore = () => {
                 ).catch((err) => console.log(err))
             },
             addorder(vuexcontext, order) {
-                return axios.post('https://stecomlikepos.firebaseio.com/order.json', order).then(
+                return axios.post('https://stecomlikepos.firebaseio.com/'+vuexcontext.state.currentloginname+'/order.json', order).then(
                     (result) => {
                         vuexcontext.commit('addorder', {...order, id: result.data.name })
                         this.$router.push('/voucher/' + result.data.name)
@@ -159,7 +169,7 @@ const createstore = () => {
                 ).catch((err) => console.log(err))
             },
             updateproduct(vuexcontext, product) {
-                return axios.put('https://stecomlikepos.firebaseio.com/product/' + product.id + '.json', product) //?auth=' + vuexcontext.state.token, product)
+                return axios.put('https://stecomlikepos.firebaseio.com/'+vuexcontext.state.currentloginname+'/product/' + product.id + '.json', product) //?auth=' + vuexcontext.state.token, product)
                     .then(
                         (result) => { vuexcontext.commit('updateproduct', product) }
                     )
@@ -167,7 +177,7 @@ const createstore = () => {
 
             },
             updateorder(vuexcontext, order) {
-                return axios.put('https://stecomlikepos.firebaseio.com/order/' + order.id + '.json', order) //?auth=' + vuexcontext.state.token, product)
+                return axios.put('https://stecomlikepos.firebaseio.com/'+vuexcontext.state.currentloginname+'/order/' + order.id + '.json', order) //?auth=' + vuexcontext.state.token, product)
                     .then(
                         (result) => { vuexcontext.commit('updateorder', order) }
                     )
@@ -175,18 +185,18 @@ const createstore = () => {
 
             },
             deleteproduct(vuexcontext, product) {
-                return axios.delete('https://stecomlikepos.firebaseio.com/product/' + product.id + '.json?auth=' + vuexcontext.state.token)
+                return axios.delete('https://stecomlikepos.firebaseio.com/'+vuexcontext.state.currentloginname+'/product/' + product.id + '.json?auth=' + vuexcontext.state.token)
                     .then(
                         (result) => { vuexcontext.commit('deleteproduct', product) }
                     )
             },
             deleteorder(vuexcontext, order) {
-                return axios.delete('https://stecomlikepos.firebaseio.com/order/' + order.id + '.json?auth=' + vuexcontext.state.token)
+                return axios.delete('https://stecomlikepos.firebaseio.com/'+vuexcontext.state.currentloginname+'/order/' + order.id + '.json?auth=' + vuexcontext.state.token)
                     .then(
                         (result) => { vuexcontext.commit('deleteorder', order) }
                     )
             },
-            authmethod(vuexcontext, authdata) {
+           async authmethod(vuexcontext, authdata) {
                 let authurl = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key="
                 if (!authdata.isLogin) {
                     authurl = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key="
@@ -196,25 +206,33 @@ const createstore = () => {
                         password: authdata.password,
                         returnSecureToken: true
                     }).then((result) => {
-                        vuexcontext.commit('currentloginname', result.data.email)
+                        let c=result.data.email.split("@")[0]
+                        vuexcontext.commit('currentloginname', c)
                         vuexcontext.commit('settoken', result.data.idToken)
 
                         if (process.client) {
                             localStorage.setItem('token', result.data.idToken)
+                            localStorage.setItem('currentloginname', c)
                             localStorage.setItem('expiretime', new Date().getTime() + Number.parseInt(result.data.expiresIn) * 1000)
                         }
 
                         Cookie.set('ctoken', result.data.idToken)
+                        Cookie.set('currentloginname', c)
                         Cookie.set('cexpiretime', new Date().getTime() + Number.parseInt(result.data.expiresIn) * 1000)
+                        vuexcontext.commit('seterrormsg',null)
+                        this.$router.push('/admin/')
                     })
                     .catch((err) => { 
-                        vuexcontext.state.errormsg=err.response.data.error.message
-                        console.log(vuexcontext.state.errormsg) })
+                        //console.log( err.response.data.error.message)
+                         vuexcontext.commit('seterrormsg',err.response.data.error.message)
+                        console.log(vuexcontext.state.errormsg) 
+                    })
 
             },
             reloadauth(vuexcontext, req) {
                 let token;
                 let timer;
+                let currentloginname;
                 if (req) {
                     console.log('runing server')
                     if (!req.headers.cookie) {
@@ -223,16 +241,24 @@ const createstore = () => {
                     let jscookie = req.headers.cookie.split(";") //it works here
                         .find((c) => { return c.trim().startsWith("ctoken=") });
                     console.log(jscookie)
+                     currentloginname = req.headers.cookie.split(";") //it works here
+                    .find((c) => { return c.trim().startsWith("currentloginname=") })
                     if (!jscookie) {
                         return
                     }
+                    if (!currentloginname) {
+                        return
+                    }
                     token = jscookie.split('=')[1];
+                    currentloginname=currentloginname.split('=')[1];
+                    console.log(currentloginname)
                     timer = req.headers.cookie.split(";")
                         .find(c => c.trim().startsWith("cexpiretime="))
                         .split("=")[1];
                 } else {
                     console.log("running local")
                     token = localStorage.getItem('token')
+                    currentloginname = localStorage.getItem('currentloginname')
                     timer = localStorage.getItem('expiretime')
 
                 }
@@ -245,6 +271,8 @@ const createstore = () => {
 
                 console.log("running reloadauth")
                 vuexcontext.commit('settoken', token)
+                vuexcontext.commit('currentloginname', currentloginname)
+                console.log(vuexcontext.state.currentloginname)
 
             },
             logout(vuexcontext) {
@@ -307,6 +335,9 @@ const createstore = () => {
             },
             errormsg(state){
                 return state.errormsg
+            },
+            title(state){
+                return state.title
             },
             checkout(state, getters) {
 

@@ -145,6 +145,7 @@ import axios from 'axios'
 import XLSX from 'xlsx'
 import { saveAs } from 'file-saver'
 export default {
+    middleware:['checkauth','auth'],
       mounted() {
           let element = document.getElementById( 'gmap1' )
   let mapoptions = {
@@ -188,9 +189,10 @@ export default {
     }
   },
     asyncData(context) {
-    return axios.get('https://stecomlikepos.firebaseio.com/order/'+context.route.params.id+'.json')
+    return axios.get('https://stecomlikepos.firebaseio.com/'+context.store.state.currentloginname+'/order/'+context.route.params.id+'.json')
     .then((res)=>{
       console.log(res.data)
+      context.store.commit('settitle', 'Order Detail')
       return {loadedorder:res.data}
     
     }).catch((e)=>{context.error(e);

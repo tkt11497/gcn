@@ -36,6 +36,11 @@
       >
         {{ subIcon }}
       </v-icon>
+       <span
+        :class="subTextColor"
+        class="font-weight-medium pa-0 ma-0"
+        v-text="subText"
+      />
       <slot name="button"></slot>
     </template>
   </material-card>

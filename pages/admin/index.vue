@@ -46,6 +46,29 @@
             title="Sales">
             <v-btn @click="$router.push('/admin/receipt')" slot="button" small text color="indigo">Go to Receipt</v-btn>
           </material-stats-card>
+          </v-flex>
+          <v-flex xs12 sm8 md3 class="ma-2">
+          <material-stats-card
+            color="green"
+            icon="store"
+            :value="`Online-Store Link`"
+            title="Store" 
+            >
+          <v-row slot="button" dense>
+            <v-col cols=8>
+              <v-text-field readonly v-model="message" dense height="19" class="text-truncate"></v-text-field>
+            </v-col>
+            <v-col cols=4>
+                <v-btn 
+                x-small 
+                color="indigo" 
+                dark
+                v-clipboard:copy="message"
+                v-clipboard:success="onCopy">Copy!
+                </v-btn>
+            </v-col>
+          </v-row>
+          </material-stats-card>
         </v-flex>
   
       </v-layout>
@@ -53,15 +76,31 @@
 
 
 
-
+  <v-tooltip left color="blue" dark>
+         <template v-slot:activator="{ on }">
+  <v-btn
+      class="elevation-2 caption"
+      color="green"
+      dark
+      fab 
+      right
+      fixed
+      style="top: 290px;"
+      top 
+      v-on="on"
+      v-on:click="gotostore"
+    ><v-icon>store</v-icon></v-btn>
+    </template>
+    <span class="white--text">Go to Store</span>
+     </v-tooltip>
 
 
     <v-snackbar v-model="snackbar" :timeout="5000" top color="success">
       <span>Welcome {{$store.getters.currentloginname}} !!!</span>
       <v-btn color="white" text @click="snackbar = false">Close</v-btn>
     </v-snackbar>
-   
-    <v-btn v-on:click="logout">Logout</v-btn>
+  
+  
     
       
      
@@ -76,9 +115,23 @@ import XLSX from 'xlsx'
 import { saveAs } from 'file-saver' 
 export default {
     middleware:['checkauth','auth'],
+      asyncData(context) {
+
+                return axios.get("https://stecomlikepos.firebaseio.com/"+context.store.state.currentloginname+"/product.json")
+                    .then((res) => {
+                        const productarray = []
+                        for (const key in res.data) {
+                            productarray.push({...res.data[key], id: key })
+                            console.log(process.env.fbapikey)
+                        }
+                        context.store.commit('setproduct', productarray)
+                        context.store.commit('settitle', 'Dashboard')
+                    })
+                    .catch((e) => { context.error(e) })
+            },
     data(){
       return{
-       
+      
         snackbar:true
       }
     },
@@ -88,12 +141,22 @@ export default {
      computed:{
     loadedproduct(){
       return this.$store.getters.loadedproduct
-    }},
+    },
+    message(){
+      return `https://nuxtweb.herokuapp.com/public/${this.$store.state.currentloginname}`
+    }
+    },
      methods: {
+        gotostore () {   
+          window.open(this.message);    
+      },
     logout(){
       this.$store.dispatch('logout')
       this.$router.push('/admin/auth')
     },  
+    onCopy (e) {
+      alert('You just copied: ' + e.text)
+    },
   
 }
 }

@@ -43,6 +43,10 @@ import XLSX from 'xlsx'
 import mapy from '~/components/map/mapy.vue'
 import { saveAs } from 'file-saver'
 export default {
+  layout:"store",
+  created(){
+    this.$store.commit('settitle', 'Cart')
+  },
   components:{
     mapy
   },

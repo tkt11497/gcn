@@ -10,7 +10,7 @@
                 <v-spacer></v-spacer>
               </v-toolbar>
               <v-card-text>
-                <v-form v-model="valid">
+                <v-form v-model="valid" ref="form"> 
                   <v-text-field
                     label="name"
                     name="name"
@@ -143,8 +143,10 @@ export default {
     },
     methods: {
       confirm(){
+         if (this.$refs.form.validate()) {
             //save the post
             this.$emit('confirm',this.order)
+         }
         },
         cancel(){
           this.$emit('cancel')

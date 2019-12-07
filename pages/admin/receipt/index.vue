@@ -33,11 +33,12 @@ import XLSX from 'xlsx'
 export default {
   middleware:['checkauth','auth'],
         asyncData(context) {
-           return  axios.get("https://stecomlikepos.firebaseio.com/receipts.json")
+           return  axios.get("https://stecomlikepos.firebaseio.com/"+context.store.state.currentloginname+"/receipts.json")
                     .then((res) =>{ 
                         let loadedreceipts=[] 
                           for (const key in res.data) {
                           loadedreceipts.push({...res.data[key], id: key })   }
+                          context.store.commit('settitle', 'Receipt')
                     return{
                         loadedreceipts
                     }

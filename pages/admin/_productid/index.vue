@@ -38,8 +38,9 @@ export default {
         QrcodeVue
     },
 asyncData(context) {
-    return axios.get('https://stecomlikepos.firebaseio.com/product/'+context.route.params.productid+'.json')
+    return axios.get('https://stecomlikepos.firebaseio.com/'+context.store.state.currentloginname+'/product/'+context.route.params.productid+'.json')
     .then((res)=>{
+      context.store.commit('settitle', 'Edit Item')
       return {loadedproduct:{...res.data,id:context.route.params.productid}}
     
     })

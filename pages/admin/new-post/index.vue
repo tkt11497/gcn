@@ -7,6 +7,9 @@
 import adminform from '@/components/admin/adminform';
 import axios from 'axios'
 export default {
+  created(){
+    this.$store.commit('settitle', 'Add Item')
+  },
     middleware:['checkauth','auth'],
     components:{
         adminform

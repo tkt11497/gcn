@@ -22,8 +22,8 @@
   </v-data-table>
   
   <v-row>
-    <v-col md="6" sm="12"><h5 class="indigo--text">Total Items:{{loadedorder.totalitem}}</h5></v-col>
-      <v-col md="6" sm="12"><h5 class="indigo--text">Total Amount to Pay: {{loadedorder.totalprice}}</h5></v-col>
+    <v-col md="6" sm="12"><h4 class="indigo--text">Total Items:{{loadedorder.totalitem}}</h4></v-col>
+      <v-col md="6" sm="12"><h4 class="indigo--text">Total Amount to Pay: {{loadedorder.totalprice}}</h4></v-col>
   </v-row>
     <table class="table table-hover table-borderless" id="table1" v-show="false">
       <thead>
@@ -69,12 +69,12 @@
         <tr>  
         <td colspan="3" class="text-right">
 
-        <b class="text-right h3 text-primary">Total Items:{{loadedorder.totalitem}}</b>
+        <h2 class="text-right">Total Items:{{loadedorder.totalitem}}</h2>
   
       </td>
         <td colspan="4" class="text-right">
 
-        <b class="text-right h3 text-primary">Total Amount to Pay:${{loadedorder.totalprice}}</b>
+        <h2 class="text-right">Total Amount to Pay:${{loadedorder.totalprice}}</h2>
   
       </td>
       </tr>
@@ -115,6 +115,7 @@ import axios from 'axios'
 import XLSX from 'xlsx'
 import { saveAs } from 'file-saver'
 export default {
+  layout:"store",
   data(){
     return{
       dialog:true,
@@ -141,9 +142,10 @@ export default {
     }
   },
     asyncData(context) {
-    return axios.get('https://stecomlikepos.firebaseio.com/order/'+context.route.params.id+'.json')
+    return axios.get('https://stecomlikepos.firebaseio.com/'+context.store.state.currentloginname+'/order/'+context.route.params.id+'.json')
     .then((res)=>{
       console.log(res.data)
+      context.store.commit('settitle', 'Invoice')
       return {loadedorder:res.data}
     
     }).catch((e)=>{context.error(e);

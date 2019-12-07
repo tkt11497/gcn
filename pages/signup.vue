@@ -20,15 +20,15 @@
                 <v-toolbar-title>Login</v-toolbar-title>
                 <v-spacer></v-spacer>
               </v-toolbar> -->
-              <v-form v-model="valid" @submit.prevent="onsubmit" ref="form">
+              <v-form v-model="valid" @submit.prevent="onsignup" ref="form">
               <v-card-text>
                 
                   <v-text-field
-                    label="Login With Email"
+                    label="Sign up With Email"
                     name="login"
                     prepend-icon="mdi-account-circle"
                     type="text"
-                    v-model="email" 
+                    v-model="email1" 
                     :rules="emailRules"
                     required
                   ></v-text-field>
@@ -41,7 +41,7 @@
                     v-bind:append-icon="showpassword ? 'mdi-eye':'mdi-eye-off'"
                     v-bind:type="showpassword ? 'text':'password'"
                     v-on:click:append="showpassword=!showpassword"
-                    v-model="password" 
+                    v-model="password1" 
                     :rules="passwordRules" 
                     required
                   ></v-text-field>
@@ -49,7 +49,7 @@
               </v-card-text>
               <v-card-actions>
                 <!-- <v-spacer></v-spacer> -->
-                <v-btn color="indigo" type="submit" id="btn1" dark block>Login</v-btn>
+                <v-btn color="indigo" type="submit" id="btn1" dark block>Register</v-btn>
                
               </v-card-actions>
                </v-form>
@@ -73,7 +73,8 @@
 export default {
    layout:'public',
    created(){
-        this.$store.commit('settitle','Login')
+        this.$store.commit('settitle','Register')
+        console.log(this.$router.back)
     },
   mounted() {
     //window.addEventListener("keydown",this.enterkeypress,false)
@@ -92,8 +93,6 @@ export default {
     ],
            snackbar:false,
             isLogin: true,
-            email:'',
-            password:'',
             email1:'',
             password1:'',
            
@@ -105,24 +104,16 @@ export default {
     
     },
     methods: {
-        onsubmit(){
-            if (this.$refs.form.validate()) {
-       
-      console.log('submitting')
-      this.$store.dispatch('authmethod',{
-        isLogin:this.isLogin,
-        email:this.email,
-        password:this.password
-      }).then(()=>{this.snackbar=true})
-            }else{console.log('eererere;')}
-    },
+     
       onsignup(){
+         if (this.$refs.form.validate()) {
       console.log('submitting')
       this.$store.dispatch('authmethod',{
         isLogin:!this.isLogin,
         email:this.email1,
         password:this.password1
       }).then(()=>{this.snackbar=true})
+         }
      
     },
     
