@@ -155,7 +155,7 @@ const createstore = () => {
                     (result) => {
                         vuexcontext.commit('addproduct', {...product, id: result.data.name })
                         console.log(vuexcontext)
-                        this.$router.push('/admin/')
+                        this.$router.push('/admin/items')
                     }
                 ).catch((err) => console.log(err))
             },

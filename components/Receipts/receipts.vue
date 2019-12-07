@@ -2,13 +2,21 @@
      <v-card 
      class="elevation-12" max-width="304" 
      >
-    
+        <v-form v-model="valid" ref="form">
        <v-card-subtitle>
            <v-row>
-           <v-col cols="6" class="pa-0">Total Paid<v-text-field v-model.number="paid" dense></v-text-field></v-col>
+           <v-col cols="6" class="pa-0">Total Paid
+            <v-text-field 
+           v-model.number="paid" 
+           dense 
+           :rules="requirerule"
+            required>
+            </v-text-field>
+            </v-col>
            <v-col cols="6" class="pa-0">Change<v-text-field v-model="change" disabled dense></v-text-field></v-col>
            </v-row>
        </v-card-subtitle>
+        </v-form>
       <v-card-text>
             <v-row>
          <v-col cols="6">
@@ -51,6 +59,9 @@ export default {
         return{
             paid:0,
              date: new Date().toISOString().substr(0, 10),
+             valid:false,
+              requirerule: [
+              v => !!v || 'This is required' ],
             
         }
     },
@@ -73,7 +84,7 @@ export default {
 },
 methods:{
     newsale(){
-        console.log(this.totalitem)
+       if (this.$refs.form.validate()) {
         if(this.totalitem==0){return}
         axios.post('https://stecomlikepos.firebaseio.com/'+this.$store.state.currentloginname+'/receipts.json', 
         {date:this.date,paid:this.paid,change:this.change,cart:this.cart,totalprice:this.totalprice,totalitem:this.totalitem})
@@ -86,7 +97,7 @@ methods:{
                     }
                 ).catch((err) => console.log(err))
        
-        
+       }
       },
     	printv() 
 		{

@@ -53,16 +53,16 @@ asyncData(context) {
       window.print()
     },
     add(){
-      this.$router.push('/admin')
+      this.$router.push('/admin/items')
     },
       updater(data){
         this.$store.dispatch('updateproduct',data).then(
-         (res)=>{this.$router.push('/admin')}
+         (res)=>{this.$router.push('/admin/items')}
          )
       },
       deleter(data){
          this.$store.dispatch('deleteproduct',data).then(
-          (res)=>{this.$router.push('/admin')
+          (res)=>{this.$router.push('/admin/items')
                  alert('successfully deleted')
                 
                }

@@ -1,6 +1,6 @@
 <template>
 
-<v-container fluid class="pa-0" v-on:keydown.13="doSearch">
+<v-container fluid class="pa-1 ma-1" v-on:keydown.13="doSearch">
 
 <v-row>
   <v-col md="3" sm="12">
@@ -67,7 +67,7 @@
     </template>
     <span class="white--text">Current Stock</span>
      </v-tooltip>
-      <productlist isadmin v-bind:product="loadedproduct" v-on:addingcitem="addingcitem"></productlist>
+      <productlist isadmin v-bind:product="loadedproduct" v-on:addingcitem="addingcitem" @deleter="deleter"></productlist>
 
 
 
@@ -134,6 +134,19 @@ export default {
     this.$store.dispatch('addingcitem',item)
 
     },
+       deleter(data){
+         let c = confirm("Do you want to delete this item?");
+            if (c == true) {
+         this.$store.dispatch('deleteproduct',data).then(
+          (res)=>{this.$router.push('/admin/items')
+                
+                 alert('successfully deleted')
+                
+               }
+         )}else{
+           return
+         }
+      },
     // gotocheckout(){
     //   this.show=!this.show
     // }

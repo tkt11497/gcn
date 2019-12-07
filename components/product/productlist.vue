@@ -32,7 +32,7 @@
 
             <productpreview v-for="item in product" v-bind:key="item.id" v-bind:isadmin="isadmin" :id="item.id" :img="item.img"
       :productname="item.productname" :productdetail="item.productdetail" :productprice="item.productprice" :stock="item.stock" 
-      v-on:addingitem="$emit('addingcitem',item)">
+      v-on:addingitem="$emit('addingcitem',item)" @deleter="$emit('deleter',item)">
               </productpreview>   
             
        <!-- v-if="item.productprice<=$store.state.maximum"> -->

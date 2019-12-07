@@ -36,24 +36,31 @@
         :rules="requireRule"
         color="indigo"
       ></v-text-field>
-      <v-text-field
+
+     
+
+
+
+
+       <v-file-input show-size label="Select Image" v-model="img" accept="image/*" @change="filepicked(img)" 
+       append-icon="cloud_upload" 
+       @click:append="uploadimg(img)"></v-file-input>
+        <v-text-field
         v-model="product.img"
         label="Image Url"
-        placeholder="You can type Url or By Uploading Image, it will give u a Url"
+        placeholder="Uploading Image will give u a Url or you can paste it"
         required 
         :rules="requireRule"
         color="indigo"
       ></v-text-field>
-       <v-file-input show-size label="Select Image" v-model="img" accept="image/*" @change="filepicked(img)" 
-       append-icon="cloud_upload" 
-       @click:append="uploadimg(img)"></v-file-input>
+
       <v-row justify="center">
     <img :src="image" widht="200" height="200"/>
       </v-row>
       <v-card-actions>
       <v-btn class="mr-4" @click="add" v-if="!existingproduct" dark color="indigo">Save</v-btn>
       <v-btn class="mr-4" @click="update" v-if="existingproduct" dark color="indigo">Save</v-btn>
-      <v-btn class="mr-4" @click="deleteitem" dark color="indigo">delete</v-btn>
+      <!-- <v-btn class="mr-4" @click="deleteitem" dark color="indigo">delete</v-btn> -->
       <v-btn @click="cancel" dark color="indigo">cancel</v-btn>
       </v-card-actions>
     </v-form>
@@ -63,7 +70,12 @@
 <script>
 import axios from 'axios'
 import {firebase} from '~/plugins/firebase.js'
+
+
   export default {
+    components:{
+      
+    },
      props:{
         existingproduct:{
             type:Object,
@@ -77,7 +89,8 @@ data(){
                 productprice:'',
                 img:null,
                 stock:0,
-                productdetail:''
+                productdetail:'',
+                barcode:''
             },
             items:['item1','item2','item3'],
             image:'',
@@ -89,6 +102,12 @@ data(){
             v => !!v || 'This field is required',
             v => typeof v =="number" || 'Price must be number',
           ],
+
+
+          readerSize: {
+        width: "10px",
+        height: "10px"
+      },
         }
     },
 
@@ -102,6 +121,9 @@ data(){
             this.$emit('add',this.product)
             }
         },
+        onDecode(result){
+          this.product.barcode=result
+        },
         deleteitem(){
             this.$emit('delete',this.product)
         },
@@ -112,7 +134,7 @@ data(){
         },
         cancel(){
             //cancel the post
-            this.$router.push('/admin');
+            this.$router.push('/admin/items');
         },
         filepicked(img){
           const filereader= new FileReader()

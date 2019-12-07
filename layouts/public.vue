@@ -10,7 +10,7 @@
       dark
     >
         
-        <v-btn icon class="hidden-xs-only" @click="$router.go(-1)">
+        <v-btn icon  @click="$router.go(-1)">
               <v-icon>mdi-arrow-left</v-icon>
             </v-btn>
       <v-toolbar-title>{{$store.getters.title}}</v-toolbar-title>

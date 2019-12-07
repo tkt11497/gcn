@@ -1,8 +1,6 @@
 <template>
   <v-app>
-   <div class="fb-customerchat"
- page_id="108481103963063">
-</div>
+  
 
     <v-navigation-drawer
       v-model="drawer" 
@@ -113,6 +111,7 @@
     background-color="#283E4A"
     app 
     fixed 
+    class="no-print"
   >
       
         <v-btn
@@ -122,7 +121,7 @@
           active-class="blue"
           router
           exact 
-          small
+          
         >
          
             <v-icon color="white">{{ item.icon }}</v-icon>

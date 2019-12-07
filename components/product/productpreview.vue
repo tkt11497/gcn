@@ -33,7 +33,14 @@
     
     </v-card-actions>
     <v-card-actions>
-    <v-btn v-if="isadmin" @click="$router.push(productlink)" color="indigo" block dark><v-icon>edit</v-icon></v-btn>
+      <v-row>
+        <v-col cols="6">
+    <v-btn v-if="isadmin" @click="$router.push(productlink)" color="indigo"  block dark><v-icon>edit</v-icon></v-btn>
+        </v-col>
+        <v-col cols="6">
+    <v-btn v-if="isadmin" @click="$emit('deleter')" color="red"  block dark><v-icon>delete</v-icon></v-btn>
+        </v-col>
+      </v-row>
     </v-card-actions>
           </v-flex>
    
