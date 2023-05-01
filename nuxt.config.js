@@ -53,8 +53,6 @@ export default {
     modules: [
         'vue-scrollto/nuxt',
         
-            '@nuxtjs/pwa',
-        
     ],
     
 buildModules: [
