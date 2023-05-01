@@ -2,6 +2,10 @@
     "name": "1stnuxtweb",
     "version": "1.0.0",
     "description": "My neat Nuxt.js project",
+    "engines": {
+        "node": "12.13.1",
+        "npm":"7.10.0"
+      },
     "author": "Thet Min Khant",
     "private": true,
     "scripts": {
