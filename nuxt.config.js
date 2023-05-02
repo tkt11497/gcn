@@ -5,6 +5,18 @@ export default {
     /*
      ** Headers of the page
      */
+     serverMiddleware: [
+        // Will register redirect-ssl npm package
+        //'redirect-ssl',
+    
+        // Will register file from project server-middleware directory to handle /server-middleware/* requires
+        { path: '/server-middleware', handler: '~/server-middleware/index.js' },
+        { path: '/test-api', handler: '~/server-middleware/test-api.js' },
+        { path: '/draft', handler: '~/server-middleware/draft.js' },
+    
+        // We can create custom instances too
+        //{ path: '/static2', handler: serveStatic(__dirname + '/static2') }
+      ],
     head: {
         titleTemplate: '%s - ' + process.env.npm_package_name,
         title: process.env.npm_package_name || '',
@@ -20,7 +32,7 @@ export default {
         ],
         script: [
            
-            { src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBZj09EooVd3EVzULdsI2-E1VS2R2OXKz4&libraries=places' }
+           
         ],
     },
     /*
@@ -35,12 +47,6 @@ export default {
      ** Plugins to load before mounting the App
      */
     plugins: [
-        { src: '~/plugins/vue_qrcode_reader', mode: 'client' },
-       
-        { src: '~/plugins/vue-clipboard2', mode: 'client' },
-      
-        { src: '~/plugins/fb-chat.js', ssr: false },
-        {src:'~/plugins/components.js'},
         {src:'~/plugins/vuetify.js'}
          
     ],
@@ -51,8 +57,7 @@ export default {
      ** Nuxt.js modules
      */
     modules: [
-        'vue-scrollto/nuxt',
-        
+
     ],
     
 buildModules: [
@@ -72,7 +77,4 @@ buildModules: [
          */
         extend(config, ctx) {}
     },
-    env: {
-        fbapikey: "AIzaSyAr66KOA3tpzPjVAUDd8hlwjF8wYgzI26Q",
-    }
 }

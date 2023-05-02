@@ -1,37 +1,12 @@
 <template>
   <v-app>
 
-    <v-app-bar
-      clipped-left
-      fixed
-      app 
-      class="no-print" 
-      color='#283E4A' 
-      dark
-    >
-        
-        <v-btn icon  @click="$router.go(-1)">
-              <v-icon>mdi-arrow-left</v-icon>
-            </v-btn>
-      <v-toolbar-title>{{$store.getters.title}}</v-toolbar-title>
 
-      <v-spacer />
-    
-    </v-app-bar>
       
                           <v-content>
                         <nuxt />
                           </v-content>
 
-
-
-    <!-- <v-footer
-      :fixed="fixed"
-      app 
-      class="no-print"
-    >
-      <span>&copy; 2019</span>
-    </v-footer> -->
 
 
 

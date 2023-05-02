@@ -4,8 +4,8 @@
     "description": "My neat Nuxt.js project",
     "engines": {
         "node": "12.13.1",
-        "npm":"7.10.0"
-      },
+        "npm": "7.10.0"
+    },
     "author": "Thet Min Khant",
     "private": true,
     "scripts": {
