@@ -2,7 +2,7 @@
 
       <v-container
         fluid
-        v-on:keydown.13="onsubmit" 
+        
         id="bg" 
        >
       <v-row justify="center">
