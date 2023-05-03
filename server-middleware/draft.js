@@ -119,8 +119,9 @@ export default async function (req, res, next) {
 //response[isarray> if array loop >array[0]]
 
 
-    responseData.message = 'leelr'
-    const jsonContent = JSON.stringify(responseData);
+    responseData.message = 'leelr33'
+    let e={'data':[responseData,'lee']}
+    const jsonContent = JSON.stringify(e);
     res.end(jsonContent);
   
     // res is the Node.js http response object
