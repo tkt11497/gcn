@@ -36,8 +36,23 @@
                                     </v-text-field>
                                    
                                 
-                                    <v-text-field  label="Hero Png" type="text" prepend-icon="mdi-account-circle"
+                                    <v-text-field  label="Pick Hero Png" type="text" prepend-icon="mdi-account-circle"
                                     v-model="draft_hero_path" placeholder="C://mypc" id="phone" required>
+                                    </v-text-field>
+                                     <v-text-field  label="Ban Hero Png" type="text" prepend-icon="mdi-account-circle"
+                                    v-model="draft_hero_path_ban" placeholder="C://mypc" id="phone" required>
+                                    </v-text-field>
+                                    <v-text-field  label="Picking true Url" type="text" prepend-icon="mdi-account-circle"
+                                    v-model="pick_true_url" placeholder="C://mypc" id="phone" required>
+                                    </v-text-field>
+                                    <v-text-field  label="Picking false Url" type="text" prepend-icon="mdi-account-circle"
+                                    v-model="pick_false_url" placeholder="C://mypc" id="phone" required>
+                                    </v-text-field>
+                                    <v-text-field  label="Ban true Url" type="text" prepend-icon="mdi-account-circle"
+                                    v-model="ban_true_url" placeholder="C://mypc" id="phone" required>
+                                    </v-text-field>
+                                    <v-text-field  label="Ban false Url" type="text" prepend-icon="mdi-account-circle"
+                                    v-model="ban_false_url" placeholder="C://mypc" id="phone" required>
                                     </v-text-field>
                                   
                                   
@@ -72,7 +87,7 @@
       // `this` points to the component instance
       if(process.client){
         console.log(window.location)
-        return `${window.location.origin}/draft?main_url=${this.draft_main_url}&draft_logo_path=${this.draft_logo_path}&draft_player_path=${this.draft_player_path}&draft_hero_path=${this.draft_hero_path}&authkey=${this.auth_key}&battleid=${this.battle_id}`
+        return `${window.location.origin}/draft?main_url=${this.draft_main_url}&draft_logo_path=${this.draft_logo_path}&draft_player_path=${this.draft_player_path}&draft_hero_path=${this.draft_hero_path}&authkey=${this.auth_key}&battleid=${this.battle_id}&draft_hero_path_ban=${this.draft_hero_path_ban}&pick_true_url=${this.pick_true_url}&pick_false_url=${this.pick_false_url}&ban_true_url=${this.ban_true_url}&ban_false_url=${this.ban_false_url}`
 
       }
       
@@ -90,6 +105,11 @@
               draft_logo_path:'',
               draft_player_path:'',
               draft_hero_path:'',
+              draft_hero_path_ban:'',
+              pick_true_url:'',
+              pick_false_url:'',
+              ban_true_url:'',
+              ban_false_url:'',
 
                 activeName: 'first',
                 job_list:[],
