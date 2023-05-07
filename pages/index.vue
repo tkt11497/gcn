@@ -11,7 +11,7 @@
             md10 
             offset-md="6"
           >
-            <v-card tile shaped style="padding:20px">
+            <v-card tile shaped style="padding:20px;margin-bottom:40px">
                     <v-text-field prepend-icon="mdi-account-circle"
                     type="text" label="Auth Key" v-model="auth_key"  placeholder="Auth Key" id="authkey" required>
                     </v-text-field>
@@ -20,8 +20,9 @@
                     <v-text-field prepend-icon="mdi-account-circle"
                     type="text" label="Battle ID" v-model="battle_id"  placeholder="Battle ID" id="name" required>
                     </v-text-field>
+            </v-card>
 
-
+      <v-card tile shaped style="padding:20px;margin-bottom:40px">
                     <h3 style="margin-bottom:15px"> Draft</h3>
 
                                     <v-text-field label="Team Logo Png" prepend-icon="mdi-account-circle" type="text" 
@@ -43,16 +44,16 @@
                                     v-model="draft_hero_path_ban" placeholder="C://mypc" id="phone" required>
                                     </v-text-field>
                                     <v-text-field  label="Picking true Url" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="pick_true_url" placeholder="C://mypc" id="phone" required>
+                                    v-model="pick_true_url" placeholder="C://mypc//fullpath" id="phone" required>
                                     </v-text-field>
                                     <v-text-field  label="Picking false Url" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="pick_false_url" placeholder="C://mypc" id="phone" required>
+                                    v-model="pick_false_url" placeholder="C://mypc//fullpath" id="phone" required>
                                     </v-text-field>
                                     <v-text-field  label="Ban true Url" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="ban_true_url" placeholder="C://mypc" id="phone" required>
+                                    v-model="ban_true_url" placeholder="C://mypc//fullpath" id="phone" required>
                                     </v-text-field>
                                     <v-text-field  label="Ban false Url" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="ban_false_url" placeholder="C://mypc" id="phone" required>
+                                    v-model="ban_false_url" placeholder="C://mypc//fullpath" id="phone" required>
                                     </v-text-field>
                                   
                                   
@@ -61,6 +62,47 @@
                                                   :value="draft_hit_link" />
                           <v-card-actions>
                         <v-btn color="indigo" dark block @click="copyTestingCode('draft_hit_link')">Copy Url</v-btn>
+                          </v-card-actions>
+
+            </v-card>
+
+             <v-card tile shaped style="padding:20px;margin-bottom:40px">
+                <h3 style="margin-bottom:15px"> HUD</h3>
+                    <v-text-field prepend-icon="mdi-account-circle"
+                    type="text" label="Team Logo Path for Hud" v-model="hud_team_logo_path"  placeholder="Team Logo path HUD" id="authkey" required>
+                    </v-text-field>
+                    <p>{{hud_hit_link}}</p>
+                                 <input type="hidden" readonly id="hud_hit_link"
+                                                  :value="hud_hit_link" />
+                          <v-card-actions>
+                        <v-btn color="indigo" dark block @click="copyTestingCode('hud_hit_link')">Copy Url</v-btn>
+                          </v-card-actions>
+            </v-card>
+            <v-card tile shaped style="padding:20px;margin-bottom:40px">
+                    <h3 style="margin-bottom:15px">Item Build</h3>
+
+                                    <v-text-field label="Hero Png" prepend-icon="mdi-account-circle" type="text" 
+                                    v-model="hero_png_path" 
+                                    placeholder="C://mypc" id="name" required>
+                                    </v-text-field>
+                                    
+                         
+                          
+                                    <v-text-field  label="Item Png Path" type="text" prepend-icon="mdi-account-circle"
+                                    placeholder="C://mypc" v-model="item_png_path" id="email" required>
+                                    </v-text-field>
+                                   
+                                
+                                    <v-text-field  label="Gold Difference Png" type="text" prepend-icon="mdi-account-circle"
+                                    v-model="gold_diff_path" placeholder="C://mypc" id="phone" required>
+                                    </v-text-field>
+                                     
+                                  
+                                 <p>{{item_hit_link}}</p>
+                                 <input type="hidden" readonly id="item_hit_link"
+                                                  :value="item_hit_link" />
+                          <v-card-actions>
+                        <v-btn color="indigo" dark block @click="copyTestingCode('item_hit_link')">Copy Url</v-btn>
                           </v-card-actions>
 
             </v-card>
@@ -92,6 +134,24 @@
       }
       
     },
+    hud_hit_link() {
+      // `this` points to the component instance
+      if(process.client){
+        console.log(window.location)
+        return `${window.location.origin}/hud?main_url=battledata&hud_team_logo_path=${this.hud_team_logo_path}&authkey=${this.auth_key}&battleid=${this.battle_id}`
+
+      }
+      
+    },
+     item_hit_link() {
+      // `this` points to the component instance
+      if(process.client){
+        console.log(window.location)
+        return `${window.location.origin}/itembuild?main_url=battledata&hero_png_path=${this.hero_png_path}&item_png_path=${this.item_png_path}&gold_diff_path=${this.gold_diff_path}&authkey=${this.auth_key}&battleid=${this.battle_id}`
+
+      }
+      
+    },
     draft_main_url() {
       // `this` points to the component instance
       return `battledata`
@@ -110,6 +170,12 @@
               pick_false_url:'',
               ban_true_url:'',
               ban_false_url:'',
+
+              hud_team_logo_path:'',
+
+              gold_diff_path:'',
+              item_png_path:'',
+              hero_png_path:'',
 
                 activeName: 'first',
                 job_list:[],
