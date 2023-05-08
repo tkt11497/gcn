@@ -106,6 +106,40 @@
                           </v-card-actions>
 
             </v-card>
+            <v-card tile shaped style="padding:20px;margin-bottom:40px">
+                    <h3 style="margin-bottom:15px">MVP</h3>
+                                  <v-text-field  label="Player Png Path" type="text" prepend-icon="mdi-account-circle"
+                                    placeholder="C://mypc" v-model="mvp_player_png_path" id="email" required>
+                                    </v-text-field>
+
+                                    <v-text-field label="Hero Png" prepend-icon="mdi-account-circle" type="text" 
+                                    v-model="mvp_hero_png_path" 
+                                    placeholder="C://mypc" id="name" required>
+                                    </v-text-field>
+                                    
+                         
+                          
+                                    <v-text-field  label="Item Png Path" type="text" prepend-icon="mdi-account-circle"
+                                    placeholder="C://mypc" v-model="mvp_item_png_path" id="email" required>
+                                    </v-text-field>
+                                   
+                                
+                                    <v-text-field  label="Team Logo Png" type="text" prepend-icon="mdi-account-circle"
+                                    v-model="mvp_team_logo_path" placeholder="C://mypc" id="phone" required>
+                                    </v-text-field>
+                                    <v-text-field  label="Battle Spell Png" type="text" prepend-icon="mdi-account-circle"
+                                    v-model="mvp_battle_spell_path" placeholder="C://mypc" id="phone" required>
+                                    </v-text-field>
+                                     
+                                  
+                                 <p>{{mvp_hit_link}}</p>
+                                 <input type="hidden" readonly id="mvp_hit_link"
+                                                  :value="mvp_hit_link" />
+                          <v-card-actions>
+                        <v-btn color="indigo" dark block @click="copyTestingCode('mvp_hit_link')">Copy Url</v-btn>
+                          </v-card-actions>
+
+            </v-card>
           </v-flex>
       </v-row>
 
@@ -152,6 +186,15 @@
       }
       
     },
+    mvp_hit_link() {
+      // `this` points to the component instance
+      if(process.client){
+        console.log(window.location)
+        return `${window.location.origin}/mvp?main_url=postdata&mvp_player_png_path=${this.mvp_player_png_path}&mvp_item_png_path=${this.mvp_item_png_path}&mvp_hero_png_path=${this.mvp_hero_png_path}&mvp_team_logo_path=${this.mvp_team_logo_path}&mvp_battle_spell_path=${this.mvp_battle_spell_path}&authkey=${this.auth_key}&battleid=${this.battle_id}`
+
+      }
+      
+    },
     draft_main_url() {
       // `this` points to the component instance
       return `battledata`
@@ -176,6 +219,12 @@
               gold_diff_path:'',
               item_png_path:'',
               hero_png_path:'',
+
+              mvp_player_png_path:'',
+              mvp_hero_png_path:'',
+              mvp_item_png_path:'',
+              mvp_team_logo_path:'',
+              mvp_battle_spell_path:'',
 
                 activeName: 'first',
                 job_list:[],
