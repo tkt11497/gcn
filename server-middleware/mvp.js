@@ -56,7 +56,7 @@ export default async function (req, res, next) {
         responseData.winner_team_short_name= b.camp_list[win_camp-1].team_simple_name
        //mvpplayer
        responseData.mvp_player_name=mvp_player.name
-       responseData.mvp_player_photo= a['mvp_player_png_path']+mvp_player.name+'.png'
+       responseData.mvp_player_photo= a['mvp_player_png_path']+mvp_player.roleid+'.png'
        responseData.mvp_player_kda=`${mvp_player.kill_num}/${mvp_player.dead_num}/${mvp_player.assist_num}`
        responseData.mvp_player_gpm=mvp_player.min_money
        responseData.mvp_player_kill_percentage=(mvp_player.kda/win_camp_total_kda)*100

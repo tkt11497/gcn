@@ -1,4 +1,5 @@
 import axios from 'axios'
+import helper from './helper.js';
 export default async function (req, res, next) {
 
    
@@ -17,6 +18,10 @@ export default async function (req, res, next) {
     await axios.get(hit_url).then((response)=>{
         //console.log(response.data.data)
         let b=response.data.data
+        //sort roles here pass player list get sorted player list back
+        b.camp_list[0].player_list=helper.role_sorter(b.camp_list[0].player_list)
+        //b.camp_list[1].player_list=await helper.role_sorter(b.camp_list[1].player_list)
+        console.log(b.camp_list[0].player_list,'leee pae')
 
 
         responseData.team_1_player_1_hero_png=a['hero_png_path']+b.camp_list[0].player_list[0].heroid+'.png'

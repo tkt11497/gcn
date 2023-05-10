@@ -43,11 +43,11 @@ export default async function (req, res, next) {
         responseData.team_1_player_4_name=b.camp_list[0].player_list[3].name
         responseData.team_1_player_5_name=b.camp_list[0].player_list[4].name
 
-        responseData.team_1_player_1_png=a['draft_player_path']+b.camp_list[0].player_list[0].name+'.png'
-        responseData.team_1_player_2_png=a['draft_player_path']+b.camp_list[0].player_list[1].name+'.png'
-        responseData.team_1_player_3_png=a['draft_player_path']+b.camp_list[0].player_list[2].name+'.png'
-        responseData.team_1_player_4_png=a['draft_player_path']+b.camp_list[0].player_list[3].name+'.png'
-        responseData.team_1_player_5_png=a['draft_player_path']+b.camp_list[0].player_list[4].name+'.png'
+        responseData.team_1_player_1_png=a['draft_player_path']+b.camp_list[0].player_list[0].roleid+'.png'
+        responseData.team_1_player_2_png=a['draft_player_path']+b.camp_list[0].player_list[1].roleid+'.png'
+        responseData.team_1_player_3_png=a['draft_player_path']+b.camp_list[0].player_list[2].roleid+'.png'
+        responseData.team_1_player_4_png=a['draft_player_path']+b.camp_list[0].player_list[3].roleid+'.png'
+        responseData.team_1_player_5_png=a['draft_player_path']+b.camp_list[0].player_list[4].roleid+'.png'
 
         responseData.team_1_player_1_pick_hero_name=hero_list[b.camp_list[0].player_list[0].heroid]
         responseData.team_1_player_2_pick_hero_name=hero_list[b.camp_list[0].player_list[1].heroid]
@@ -85,11 +85,11 @@ export default async function (req, res, next) {
         responseData.team_2_player_4_name=b.camp_list[1].player_list[3].name
         responseData.team_2_player_5_name=b.camp_list[1].player_list[4].name
 
-        responseData.team_2_player_1_png=a['draft_player_path']+b.camp_list[1].player_list[0].name+'.png'
-        responseData.team_2_player_2_png=a['draft_player_path']+b.camp_list[1].player_list[1].name+'.png'
-        responseData.team_2_player_3_png=a['draft_player_path']+b.camp_list[1].player_list[2].name+'.png'
-        responseData.team_2_player_4_png=a['draft_player_path']+b.camp_list[1].player_list[3].name+'.png'
-        responseData.team_2_player_5_png=a['draft_player_path']+b.camp_list[1].player_list[4].name+'.png'
+        responseData.team_2_player_1_png=a['draft_player_path']+b.camp_list[1].player_list[0].roleid+'.png'
+        responseData.team_2_player_2_png=a['draft_player_path']+b.camp_list[1].player_list[1].roleid+'.png'
+        responseData.team_2_player_3_png=a['draft_player_path']+b.camp_list[1].player_list[2].roleid+'.png'
+        responseData.team_2_player_4_png=a['draft_player_path']+b.camp_list[1].player_list[3].roleid+'.png'
+        responseData.team_2_player_5_png=a['draft_player_path']+b.camp_list[1].player_list[4].roleid+'.png'
             //b.camp_list[1].player_list[0].picking==true?pickingurl:pciking==false&&heroid!=null?heropng:pickfasleurl
         responseData.team_2_player_1_pick_hero_name=hero_list[b.camp_list[1].player_list[0].heroid]
         responseData.team_2_player_2_pick_hero_name=hero_list[b.camp_list[1].player_list[1].heroid]

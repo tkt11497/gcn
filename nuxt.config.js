@@ -16,6 +16,7 @@ export default {
         { path: '/hud', handler: '~/server-middleware/hud.js' },
         { path: '/itembuild', handler: '~/server-middleware/itembuild.js' },
         { path: '/mvp', handler: '~/server-middleware/mvp.js' },
+        { path: '/player_list', handler: '~/server-middleware/player_list.js' },
     
         // We can create custom instances too
         //{ path: '/static2', handler: serveStatic(__dirname + '/static2') }

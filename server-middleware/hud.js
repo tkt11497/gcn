@@ -1,7 +1,7 @@
 import axios from 'axios'
+const store = require('data-store')('abc', { cwd: 'server-middleware/datastore' });
 export default async function (req, res, next) {
     // req is the Node.js http request object
-    console.log(req.url)
     function thousands_separators(num){
         var num_parts = num.toString().split(".");
         num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -55,12 +55,28 @@ export default async function (req, res, next) {
         responseData.team_2_lord_kill=b.camp_list[1].kill_lord
         responseData.team_2_tower_kill=b.camp_list[1].kill_tower
         responseData.team_2_total_kill=b.camp_list[1].score
-        responseData.team_2_total_gold=b.camp_list[1].total_money>9999?'10K':thousands_separators(b.camp_list[0].total_money)
+        responseData.team_2_total_gold=b.camp_list[1].total_money>9999?'10K':thousands_separators(b.camp_list[1].total_money)
 
 
-        responseData.gold_difference_2_team=Math.abs(b.camp_list[0].total_money-b.camp_list[1].total_money)>9999?'10K':
+        let gold_difference_2_team=Math.abs(b.camp_list[0].total_money-b.camp_list[1].total_money)>9999?'10K':
         thousands_separators(Math.abs(b.camp_list[0].total_money-b.camp_list[1].total_money))
+        console.log(gold_difference_2_team)
+        //if team 1 gold > team 2 gold==res.team 1 gold = gold diff,team2 gold = empty string png path is 1 and 0
+        if(b.camp_list[0].total_money>b.camp_list[1].total_money){
+            responseData.team_1_gold_diff=gold_difference_2_team
+            responseData.team_1_gold_diff_png=a['hud_gold_diff_path']+'1.png'
 
+
+            responseData.team_2_gold_diff=''
+            responseData.team_2_gold_diff_png=a['hud_gold_diff_path']+'0.png'
+        }else{
+            responseData.team_1_gold_diff=''
+            responseData.team_1_gold_diff_png=a['hud_gold_diff_path']+'0.png'
+
+
+            responseData.team_2_gold_diff=gold_difference_2_team
+            responseData.team_2_gold_diff_png=a['hud_gold_diff_path']+'1.png'
+        }
        
     });
 //.get(mainurl)

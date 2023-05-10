@@ -5,6 +5,28 @@
         
         id="bg" 
        >
+       <v-tooltip 
+       :value="true"
+        right color="success">
+      <template v-slot:activator="{ on, attrs }">
+        
+        <v-btn
+          class="mx-2"
+          fab
+          dark
+          color="teal"
+           v-bind="attrs"
+           @click="$router.push('/playerList')"
+         
+        >
+          <v-icon dark>
+            mdi-format-list-bulleted-square
+          </v-icon>
+        </v-btn>
+      </template>
+      <span>Edit Player List</span>
+    </v-tooltip>
+
       <v-row justify="center">
           <v-flex
             sm12
@@ -70,6 +92,9 @@
                 <h3 style="margin-bottom:15px"> HUD</h3>
                     <v-text-field prepend-icon="mdi-account-circle"
                     type="text" label="Team Logo Path for Hud" v-model="hud_team_logo_path"  placeholder="Team Logo path HUD" id="authkey" required>
+                    </v-text-field>
+                    <v-text-field prepend-icon="mdi-account-circle"
+                    type="text" label="Gold Diff Path for Hud" v-model="hud_gold_diff_path"  placeholder="Gold Diff path HUD" id="authkey" required>
                     </v-text-field>
                     <p>{{hud_hit_link}}</p>
                                  <input type="hidden" readonly id="hud_hit_link"
@@ -172,7 +197,7 @@
       // `this` points to the component instance
       if(process.client){
         console.log(window.location)
-        return `${window.location.origin}/hud?main_url=battledata&hud_team_logo_path=${this.hud_team_logo_path}&authkey=${this.auth_key}&battleid=${this.battle_id}`
+        return `${window.location.origin}/hud?main_url=battledata&hud_team_logo_path=${this.hud_team_logo_path}&hud_gold_diff_path=${this.hud_gold_diff_path}&authkey=${this.auth_key}&battleid=${this.battle_id}`
 
       }
       
@@ -204,7 +229,7 @@
             return {
 
               auth_key:'ee3af4c1a0963e7f052754e66bcb7b6f',
-              battle_id:"664507587847258091",
+              battle_id:"233058331757515037",
               draft_logo_path:'',
               draft_player_path:'',
               draft_hero_path:'',
@@ -215,6 +240,7 @@
               ban_false_url:'',
 
               hud_team_logo_path:'',
+              hud_gold_diff_path:'',
 
               gold_diff_path:'',
               item_png_path:'',
