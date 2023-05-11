@@ -8,7 +8,7 @@
        <v-tooltip 
        :value="true"
         right color="success">
-      <template v-slot:activator="{ on, attrs }">
+      <template v-slot:activator="{attrs }">
         
         <v-btn
           class="mx-2"
@@ -229,7 +229,7 @@
             return {
 
               auth_key:'ee3af4c1a0963e7f052754e66bcb7b6f',
-              battle_id:"233058331757515037",
+              battle_id:"664507587847258091",
               draft_logo_path:'',
               draft_player_path:'',
               draft_hero_path:'',

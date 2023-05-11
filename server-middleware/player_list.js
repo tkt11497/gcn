@@ -17,7 +17,8 @@ export default async function (req, res, next) {
             return
         }
         if(a['data']=='clear'){
-            store.clear();
+            store.set('player_list', {}); 
+            //store.clear();
         }
         else{
             var c= JSON.parse(a['data'])

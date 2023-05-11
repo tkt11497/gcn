@@ -8,7 +8,7 @@
          <v-tooltip 
        :value="true"
         right color="success">
-      <template v-slot:activator="{ on, attrs }">
+      <template v-slot:activator="{  attrs }">
         
         <v-btn
           class="mx-2"
@@ -193,6 +193,7 @@ import axios from 'axios'
                             console.log(res)
                             this.saved_data_onserver=res.data.data[1]
                             this.disabled=false
+                            window.location.reload()
                         })
             }else{
                 this.disabled=false
@@ -205,6 +206,7 @@ import axios from 'axios'
                 console.log(res)
                  this.saved_data_onserver=res.data.data[1]
                  this.disabled=false
+                  window.location.reload()
             })
           },
         }

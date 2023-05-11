@@ -1,5 +1,12 @@
 const store = require('data-store')('abc', { cwd: 'server-middleware/datastore' });
 export default {
+  name_finder(roleid){
+    if(store.data.player_list[roleid]){
+      return store.data.player_list[roleid].name
+    }else{
+      return null
+    }
+  },
   roles_letter(letter){
     let a={
       'exp':1,
@@ -32,18 +39,44 @@ export default {
     role_sorter(array){
       // console.log(store.data.data[333])
       //console.log(store.data.player_list)
-      
+      console.log('hehrehredasssssssssssssssssssssssssssss')
        if(store.data.player_list[array[0].roleid])//find player data in stored player list if true
        {
-        array[0].c_role=store.data.player_list[array[0].roleid].role
+        array[0].c_role=this.roles_letter(store.data.player_list[array[0].roleid].role)
        }else{
-        array[0].c_role='undifined'
+        array[0].c_role='undefined'
+       }
+
+       if(store.data.player_list[array[1].roleid])//find player data in stored player list if true
+       {
+        array[1].c_role=this.roles_letter(store.data.player_list[array[1].roleid].role)
+       }else{
+        array[1].c_role='undefined'
        }
        
+       if(store.data.player_list[array[2].roleid])//find player data in stored player list if true
+       {
+        array[2].c_role=this.roles_letter(store.data.player_list[array[2].roleid].role)
+       }else{
+        array[2].c_role='undefined'
+       }
+       if(store.data.player_list[array[3].roleid])//find player data in stored player list if true
+       {
+        array[3].c_role=this.roles_letter(store.data.player_list[array[3].roleid].role)
+       }else{
+        array[3].c_role='undefined'
+       }
+       if(store.data.player_list[array[4].roleid])//find player data in stored player list if true
+       {
+        array[4].c_role=this.roles_letter(store.data.player_list[array[4].roleid].role)
+       }else{
+        array[4].c_role='undefined'
+       }
+
       
-      console.log(array,'beforesorting')
-      array.sort(function(a, b){return a - b});
-      console.log(array,'aftersorting')
+      //console.log(array,'beforesorting')
+      array.sort(function(a, b){return a.c_role - b.c_role});
+      //console.log(array,'aftersorting')
       return array
       
     },

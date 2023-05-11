@@ -1,7 +1,7 @@
 import axios from 'axios'
+import helper from './helper.js';
 export default async function (req, res, next) {
-    // req is the Node.js http request object
-    console.log(req.url)
+
     let hero_list={1: "MIYA", 2: "BALMOND", 
     3: "SABER", 4: "ALICE", 5: "NANA", 6: "TIGREAL", 7: "ALUCARD", 
     8: "KARINA", 9: "AKAI", 10: "FRANCO", 11: "BANE", 12: "BRUNO", 13: "CLINT", 
@@ -37,11 +37,11 @@ export default async function (req, res, next) {
         responseData.team_1_short_name=b.camp_list[0].team_simple_name
         responseData.team_1_logo=a['draft_logo_path']+b.camp_list[0].team_name+'.png'
 
-        responseData.team_1_player_1_name=b.camp_list[0].player_list[0].name
-        responseData.team_1_player_2_name=b.camp_list[0].player_list[1].name
-        responseData.team_1_player_3_name=b.camp_list[0].player_list[2].name
-        responseData.team_1_player_4_name=b.camp_list[0].player_list[3].name
-        responseData.team_1_player_5_name=b.camp_list[0].player_list[4].name
+        responseData.team_1_player_1_name=helper.name_finder(b.camp_list[0].player_list[0].roleid)||b.camp_list[0].player_list[0].name
+        responseData.team_1_player_2_name=helper.name_finder(b.camp_list[0].player_list[1].roleid)||b.camp_list[0].player_list[1].name
+        responseData.team_1_player_3_name=helper.name_finder(b.camp_list[0].player_list[2].roleid)||b.camp_list[0].player_list[2].name
+        responseData.team_1_player_4_name=helper.name_finder(b.camp_list[0].player_list[3].roleid)||b.camp_list[0].player_list[3].name
+        responseData.team_1_player_5_name=helper.name_finder(b.camp_list[0].player_list[4].roleid)||b.camp_list[0].player_list[4].name
 
         responseData.team_1_player_1_png=a['draft_player_path']+b.camp_list[0].player_list[0].roleid+'.png'
         responseData.team_1_player_2_png=a['draft_player_path']+b.camp_list[0].player_list[1].roleid+'.png'
@@ -79,11 +79,11 @@ export default async function (req, res, next) {
         responseData.team_2_short_name=b.camp_list[1].team_simple_name
         responseData.team_2_logo=a['draft_logo_path']+b.camp_list[1].team_name+'.png'
 
-        responseData.team_2_player_1_name=b.camp_list[1].player_list[0].name
-        responseData.team_2_player_2_name=b.camp_list[1].player_list[1].name
-        responseData.team_2_player_3_name=b.camp_list[1].player_list[2].name
-        responseData.team_2_player_4_name=b.camp_list[1].player_list[3].name
-        responseData.team_2_player_5_name=b.camp_list[1].player_list[4].name
+        responseData.team_2_player_1_name=helper.name_finder(b.camp_list[1].player_list[0].roleid)||b.camp_list[1].player_list[0].name
+        responseData.team_2_player_2_name=helper.name_finder(b.camp_list[1].player_list[1].roleid)||b.camp_list[1].player_list[1].name
+        responseData.team_2_player_3_name=helper.name_finder(b.camp_list[1].player_list[2].roleid)||b.camp_list[1].player_list[2].name
+        responseData.team_2_player_4_name=helper.name_finder(b.camp_list[1].player_list[3].roleid)||b.camp_list[1].player_list[3].name
+        responseData.team_2_player_5_name=helper.name_finder(b.camp_list[1].player_list[4].roleid)||b.camp_list[1].player_list[4].name
 
         responseData.team_2_player_1_png=a['draft_player_path']+b.camp_list[1].player_list[0].roleid+'.png'
         responseData.team_2_player_2_png=a['draft_player_path']+b.camp_list[1].player_list[1].roleid+'.png'

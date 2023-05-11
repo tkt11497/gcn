@@ -20,8 +20,15 @@ export default async function (req, res, next) {
         let b=response.data.data
         //sort roles here pass player list get sorted player list back
         b.camp_list[0].player_list=helper.role_sorter(b.camp_list[0].player_list)
-        //b.camp_list[1].player_list=await helper.role_sorter(b.camp_list[1].player_list)
+        b.camp_list[1].player_list=helper.role_sorter(b.camp_list[1].player_list)
         console.log(b.camp_list[0].player_list,'leee pae')
+        console.log(b.camp_list[1].player_list,'leee pae')
+
+        responseData.team_1_player_1_name=helper.name_finder(b.camp_list[0].player_list[0].roleid)||b.camp_list[0].player_list[0].name
+        responseData.team_1_player_2_name=helper.name_finder(b.camp_list[0].player_list[1].roleid)||b.camp_list[0].player_list[1].name
+        responseData.team_1_player_3_name=helper.name_finder(b.camp_list[0].player_list[2].roleid)||b.camp_list[0].player_list[2].name
+        responseData.team_1_player_4_name=helper.name_finder(b.camp_list[0].player_list[3].roleid)||b.camp_list[0].player_list[3].name
+        responseData.team_1_player_5_name=helper.name_finder(b.camp_list[0].player_list[4].roleid)||b.camp_list[0].player_list[4].name
 
 
         responseData.team_1_player_1_hero_png=a['hero_png_path']+b.camp_list[0].player_list[0].heroid+'.png'
@@ -75,7 +82,11 @@ export default async function (req, res, next) {
 
 //team2
 
-       
+        responseData.team_2_player_1_name=helper.name_finder(b.camp_list[1].player_list[0].roleid)||b.camp_list[1].player_list[0].name
+        responseData.team_2_player_2_name=helper.name_finder(b.camp_list[1].player_list[1].roleid)||b.camp_list[1].player_list[1].name
+        responseData.team_2_player_3_name=helper.name_finder(b.camp_list[1].player_list[2].roleid)||b.camp_list[1].player_list[2].name
+        responseData.team_2_player_4_name=helper.name_finder(b.camp_list[1].player_list[3].roleid)||b.camp_list[1].player_list[3].name
+        responseData.team_2_player_5_name=helper.name_finder(b.camp_list[1].player_list[4].roleid)||b.camp_list[1].player_list[4].name
 
         responseData.team_2_player_1_hero_png=a['hero_png_path']+b.camp_list[1].player_list[0].heroid+'.png'
         responseData.team_2_player_2_hero_png=a['hero_png_path']+b.camp_list[1].player_list[1].heroid+'.png'

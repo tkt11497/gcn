@@ -1,7 +1,7 @@
 import axios from 'axios'
+import helper from './helper.js';
 export default async function (req, res, next) {
-    // req is the Node.js http request object
-    console.log(req.url)
+   
     function thousands_separators(num){
         var num_parts = num.toString().split(".");
         num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -33,7 +33,6 @@ export default async function (req, res, next) {
     let a= JSON.parse('{"' + decodeURI(paramString)
         .replace(/"/g, '\\"').replace(/&/g, '","')
         .replace(/=/g, '":"') + '"}');
-    console.log(a,'sadsad')
     let hit_url=`http://esportsdata.mobilelegends.com:30260/postdata?authkey=${a['authkey']}&battleid=${a['battleid']}&dataid=1`
     await axios.get(hit_url).then((response)=>{
         //console.log(response.data.data)
@@ -55,7 +54,7 @@ export default async function (req, res, next) {
         responseData.winner_team_logo= a['mvp_team_logo_path']+b.camp_list[win_camp-1].team_name+'.png'
         responseData.winner_team_short_name= b.camp_list[win_camp-1].team_simple_name
        //mvpplayer
-       responseData.mvp_player_name=mvp_player.name
+       responseData.mvp_player_name=helper.name_finder(mvp_player.roleid)||mvp_player.name
        responseData.mvp_player_photo= a['mvp_player_png_path']+mvp_player.roleid+'.png'
        responseData.mvp_player_kda=`${mvp_player.kill_num}/${mvp_player.dead_num}/${mvp_player.assist_num}`
        responseData.mvp_player_gpm=mvp_player.min_money
@@ -79,6 +78,7 @@ export default async function (req, res, next) {
     responseData.message = 'leelr33'
     let e={'data':[responseData,'lee']}
     const jsonContent = JSON.stringify(e);
+    res.setHeader('Cache-Control','No-Store')
     res.end(jsonContent);
   
     // res is the Node.js http response object
