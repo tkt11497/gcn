@@ -150,8 +150,8 @@ import axios from 'axios'
             if(process.client){
              axios.post(`${window.location.origin}/player_list?data=get`).then((res)=>{
                 console.log(res)
-                 let object=res.data.data[1].player_list||null
-                 if(object){
+                 let object=res.data.data[1].player_list
+                 if(Object.keys(object).length>0){
                        for (const key in object) {
                         this.id_list.push(key)
                         this.name_list.push(object[key].name)

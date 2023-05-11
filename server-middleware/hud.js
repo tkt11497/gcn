@@ -1,5 +1,4 @@
 import axios from 'axios'
-const store = require('data-store')('abc', { cwd: 'server-middleware/datastore' });
 export default async function (req, res, next) {
     // req is the Node.js http request object
     function thousands_separators(num){

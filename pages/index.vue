@@ -184,11 +184,16 @@
 //playerinfolist (isarray or object) if array loop change all, if object go filter >uid,>picurl,teamid
   computed: {
     // a computed getter
+    hoster(){
+        if(process.client){
+                return window.location.origin
+                }
+    },
     draft_hit_link() {
       // `this` points to the component instance
       if(process.client){
         console.log(window.location)
-        return `${window.location.origin}/draft?main_url=${this.draft_main_url}&draft_logo_path=${this.draft_logo_path}&draft_player_path=${this.draft_player_path}&draft_hero_path=${this.draft_hero_path}&authkey=${this.auth_key}&battleid=${this.battle_id}&draft_hero_path_ban=${this.draft_hero_path_ban}&pick_true_url=${this.pick_true_url}&pick_false_url=${this.pick_false_url}&ban_true_url=${this.ban_true_url}&ban_false_url=${this.ban_false_url}`
+        return `${window.location.origin}/draft?main_url=battledata&hoster=${this.hoster}&draft_logo_path=${this.draft_logo_path}&draft_player_path=${this.draft_player_path}&draft_hero_path=${this.draft_hero_path}&authkey=${this.auth_key}&battleid=${this.battle_id}&draft_hero_path_ban=${this.draft_hero_path_ban}&pick_true_url=${this.pick_true_url}&pick_false_url=${this.pick_false_url}&ban_true_url=${this.ban_true_url}&ban_false_url=${this.ban_false_url}`
 
       }
       
@@ -197,7 +202,7 @@
       // `this` points to the component instance
       if(process.client){
         console.log(window.location)
-        return `${window.location.origin}/hud?main_url=battledata&hud_team_logo_path=${this.hud_team_logo_path}&hud_gold_diff_path=${this.hud_gold_diff_path}&authkey=${this.auth_key}&battleid=${this.battle_id}`
+        return `${window.location.origin}/hud?main_url=battledata&hoster=${this.hoster}&hud_team_logo_path=${this.hud_team_logo_path}&hud_gold_diff_path=${this.hud_gold_diff_path}&authkey=${this.auth_key}&battleid=${this.battle_id}`
 
       }
       
@@ -206,7 +211,7 @@
       // `this` points to the component instance
       if(process.client){
         console.log(window.location)
-        return `${window.location.origin}/itembuild?main_url=battledata&hero_png_path=${this.hero_png_path}&item_png_path=${this.item_png_path}&gold_diff_path=${this.gold_diff_path}&authkey=${this.auth_key}&battleid=${this.battle_id}`
+        return `${window.location.origin}/itembuild?main_url=battledata&hoster=${this.hoster}&hero_png_path=${this.hero_png_path}&item_png_path=${this.item_png_path}&gold_diff_path=${this.gold_diff_path}&authkey=${this.auth_key}&battleid=${this.battle_id}`
 
       }
       
@@ -215,7 +220,7 @@
       // `this` points to the component instance
       if(process.client){
         console.log(window.location)
-        return `${window.location.origin}/mvp?main_url=postdata&mvp_player_png_path=${this.mvp_player_png_path}&mvp_item_png_path=${this.mvp_item_png_path}&mvp_hero_png_path=${this.mvp_hero_png_path}&mvp_team_logo_path=${this.mvp_team_logo_path}&mvp_battle_spell_path=${this.mvp_battle_spell_path}&authkey=${this.auth_key}&battleid=${this.battle_id}`
+        return `${window.location.origin}/mvp?main_url=postdata&hoster=${this.hoster}&mvp_player_png_path=${this.mvp_player_png_path}&mvp_item_png_path=${this.mvp_item_png_path}&mvp_hero_png_path=${this.mvp_hero_png_path}&mvp_team_logo_path=${this.mvp_team_logo_path}&mvp_battle_spell_path=${this.mvp_battle_spell_path}&authkey=${this.auth_key}&battleid=${this.battle_id}`
 
       }
       

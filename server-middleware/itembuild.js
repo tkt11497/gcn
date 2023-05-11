@@ -9,26 +9,27 @@ export default async function (req, res, next) {
         .replace(/"/g, '\\"').replace(/&/g, '","')
         .replace(/=/g, '":"') + '"}');
     console.log(a,'sadsad')
+    let hoster=a['hoster']
     function thousands_separators(num){
         var num_parts = num.toString().split(".");
         num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         return num_parts.join(".");
     }
     let hit_url=`http://esportsdata.mobilelegends.com:30260/battledata?authkey=${a['authkey']}&battleid=${a['battleid']}&dataid=1`
-    await axios.get(hit_url).then((response)=>{
+    await axios.get(hit_url).then(async (response)=>{
         //console.log(response.data.data)
         let b=response.data.data
         //sort roles here pass player list get sorted player list back
-        b.camp_list[0].player_list=helper.role_sorter(b.camp_list[0].player_list)
-        b.camp_list[1].player_list=helper.role_sorter(b.camp_list[1].player_list)
+        b.camp_list[0].player_list=await helper.role_sorter(b.camp_list[0].player_list,hoster)
+        b.camp_list[1].player_list=await helper.role_sorter(b.camp_list[1].player_list,hoster)
         console.log(b.camp_list[0].player_list,'leee pae')
         console.log(b.camp_list[1].player_list,'leee pae')
 
-        responseData.team_1_player_1_name=helper.name_finder(b.camp_list[0].player_list[0].roleid)||b.camp_list[0].player_list[0].name
-        responseData.team_1_player_2_name=helper.name_finder(b.camp_list[0].player_list[1].roleid)||b.camp_list[0].player_list[1].name
-        responseData.team_1_player_3_name=helper.name_finder(b.camp_list[0].player_list[2].roleid)||b.camp_list[0].player_list[2].name
-        responseData.team_1_player_4_name=helper.name_finder(b.camp_list[0].player_list[3].roleid)||b.camp_list[0].player_list[3].name
-        responseData.team_1_player_5_name=helper.name_finder(b.camp_list[0].player_list[4].roleid)||b.camp_list[0].player_list[4].name
+        responseData.team_1_player_1_name=await helper.name_finder(b.camp_list[0].player_list[0].roleid,hoster)||b.camp_list[0].player_list[0].name
+        responseData.team_1_player_2_name=await helper.name_finder(b.camp_list[0].player_list[1].roleid,hoster)||b.camp_list[0].player_list[1].name
+        responseData.team_1_player_3_name=await helper.name_finder(b.camp_list[0].player_list[2].roleid,hoster)||b.camp_list[0].player_list[2].name
+        responseData.team_1_player_4_name=await helper.name_finder(b.camp_list[0].player_list[3].roleid,hoster)||b.camp_list[0].player_list[3].name
+        responseData.team_1_player_5_name=await helper.name_finder(b.camp_list[0].player_list[4].roleid,hoster)||b.camp_list[0].player_list[4].name
 
 
         responseData.team_1_player_1_hero_png=a['hero_png_path']+b.camp_list[0].player_list[0].heroid+'.png'
@@ -82,11 +83,11 @@ export default async function (req, res, next) {
 
 //team2
 
-        responseData.team_2_player_1_name=helper.name_finder(b.camp_list[1].player_list[0].roleid)||b.camp_list[1].player_list[0].name
-        responseData.team_2_player_2_name=helper.name_finder(b.camp_list[1].player_list[1].roleid)||b.camp_list[1].player_list[1].name
-        responseData.team_2_player_3_name=helper.name_finder(b.camp_list[1].player_list[2].roleid)||b.camp_list[1].player_list[2].name
-        responseData.team_2_player_4_name=helper.name_finder(b.camp_list[1].player_list[3].roleid)||b.camp_list[1].player_list[3].name
-        responseData.team_2_player_5_name=helper.name_finder(b.camp_list[1].player_list[4].roleid)||b.camp_list[1].player_list[4].name
+        responseData.team_2_player_1_name=await helper.name_finder(b.camp_list[1].player_list[0].roleid,hoster)||b.camp_list[1].player_list[0].name
+        responseData.team_2_player_2_name=await helper.name_finder(b.camp_list[1].player_list[1].roleid,hoster)||b.camp_list[1].player_list[1].name
+        responseData.team_2_player_3_name=await helper.name_finder(b.camp_list[1].player_list[2].roleid,hoster)||b.camp_list[1].player_list[2].name
+        responseData.team_2_player_4_name=await helper.name_finder(b.camp_list[1].player_list[3].roleid,hoster)||b.camp_list[1].player_list[3].name
+        responseData.team_2_player_5_name=await helper.name_finder(b.camp_list[1].player_list[4].roleid,hoster)||b.camp_list[1].player_list[4].name
 
         responseData.team_2_player_1_hero_png=a['hero_png_path']+b.camp_list[1].player_list[0].heroid+'.png'
         responseData.team_2_player_2_hero_png=a['hero_png_path']+b.camp_list[1].player_list[1].heroid+'.png'

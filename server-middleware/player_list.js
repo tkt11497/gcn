@@ -1,6 +1,6 @@
 import axios from 'axios'
 import helper from './helper.js';
-const store = require('data-store')('abc', { cwd: 'server-middleware/datastore' });
+const store = require('data-store')({ path: process.cwd() + '/static/foo.json' });
 export default async function (req, res, next) {
 
     // req is the Node.js http request object

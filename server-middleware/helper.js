@@ -1,8 +1,14 @@
-const store = require('data-store')('abc', { cwd: 'server-middleware/datastore' });
+//const store = require('data-store')({ path: process.cwd() + '/static/foo.json' });;
+import axios from 'axios'
 export default {
-  name_finder(roleid){
-    if(store.data.player_list[roleid]){
-      return store.data.player_list[roleid].name
+  async name_finder(roleid,host){
+    let player_list;
+   await axios.post(`${host}/player_list?data=get`).then((res)=>{
+    player_list=res.data.data[1].player_list||null
+       
+  })
+    if(player_list[roleid]){
+      return player_list[roleid].name
     }else{
       return null
     }
@@ -36,39 +42,42 @@ export default {
       return 'not defined'
     }
   },
-    role_sorter(array){
-      // console.log(store.data.data[333])
-      //console.log(store.data.player_list)
-      console.log('hehrehredasssssssssssssssssssssssssssss')
-       if(store.data.player_list[array[0].roleid])//find player data in stored player list if true
+  async role_sorter(array,host){
+      let player_list;
+      await axios.post(`${host}/player_list?data=get`).then((res)=>{
+       player_list=res.data.data[1].player_list||null
+          
+     })
+
+       if(player_list[array[0].roleid])//find player data in stored player list if true
        {
-        array[0].c_role=this.roles_letter(store.data.player_list[array[0].roleid].role)
+        array[0].c_role=this.roles_letter(player_list[array[0].roleid].role)
        }else{
         array[0].c_role='undefined'
        }
 
-       if(store.data.player_list[array[1].roleid])//find player data in stored player list if true
+       if(player_list[array[1].roleid])//find player data in stored player list if true
        {
-        array[1].c_role=this.roles_letter(store.data.player_list[array[1].roleid].role)
+        array[1].c_role=this.roles_letter(player_list[array[1].roleid].role)
        }else{
         array[1].c_role='undefined'
        }
        
-       if(store.data.player_list[array[2].roleid])//find player data in stored player list if true
+       if(player_list[array[2].roleid])//find player data in stored player list if true
        {
-        array[2].c_role=this.roles_letter(store.data.player_list[array[2].roleid].role)
+        array[2].c_role=this.roles_letter(player_list[array[2].roleid].role)
        }else{
         array[2].c_role='undefined'
        }
-       if(store.data.player_list[array[3].roleid])//find player data in stored player list if true
+       if(player_list[array[3].roleid])//find player data in stored player list if true
        {
-        array[3].c_role=this.roles_letter(store.data.player_list[array[3].roleid].role)
+        array[3].c_role=this.roles_letter(player_list[array[3].roleid].role)
        }else{
         array[3].c_role='undefined'
        }
-       if(store.data.player_list[array[4].roleid])//find player data in stored player list if true
+       if(player_list[array[4].roleid])//find player data in stored player list if true
        {
-        array[4].c_role=this.roles_letter(store.data.player_list[array[4].roleid].role)
+        array[4].c_role=this.roles_letter(player_list[array[4].roleid].role)
        }else{
         array[4].c_role='undefined'
        }
