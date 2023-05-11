@@ -50,29 +50,63 @@ export default async function (req, res, next) {
         responseData.team_1_player_4_png=a['draft_player_path']+b.camp_list[0].player_list[3].roleid+'.png'
         responseData.team_1_player_5_png=a['draft_player_path']+b.camp_list[0].player_list[4].roleid+'.png'
 
-        responseData.team_1_player_1_pick_hero_name=hero_list[b.camp_list[0].player_list[0].heroid]
-        responseData.team_1_player_2_pick_hero_name=hero_list[b.camp_list[0].player_list[1].heroid]
-        responseData.team_1_player_3_pick_hero_name=hero_list[b.camp_list[0].player_list[2].heroid]
-        responseData.team_1_player_4_pick_hero_name=hero_list[b.camp_list[0].player_list[3].heroid]
-        responseData.team_1_player_5_pick_hero_name=hero_list[b.camp_list[0].player_list[4].heroid]
+        responseData.team_1_player_1_pick_hero_name=hero_list[b.camp_list[0].player_list[0].heroid]||''
+        responseData.team_1_player_2_pick_hero_name=hero_list[b.camp_list[0].player_list[1].heroid]||''
+        responseData.team_1_player_3_pick_hero_name=hero_list[b.camp_list[0].player_list[2].heroid]||''
+        responseData.team_1_player_4_pick_hero_name=hero_list[b.camp_list[0].player_list[3].heroid]||''
+        responseData.team_1_player_5_pick_hero_name=hero_list[b.camp_list[0].player_list[4].heroid]||''
 
-        responseData.team_1_player_1_pick_hero_png=a['draft_hero_path']+b.camp_list[0].player_list[0].heroid+'.png'
-        responseData.team_1_player_2_pick_hero_png=a['draft_hero_path']+b.camp_list[0].player_list[1].heroid+'.png'
-        responseData.team_1_player_3_pick_hero_png=a['draft_hero_path']+b.camp_list[0].player_list[2].heroid+'.png'
-        responseData.team_1_player_4_pick_hero_png=a['draft_hero_path']+b.camp_list[0].player_list[3].heroid+'.png'
-        responseData.team_1_player_5_pick_hero_png=a['draft_hero_path']+b.camp_list[0].player_list[4].heroid+'.png'
+        //b.camp_list[0].player_list[0].picking==true?a['pick_trues_url']:a['pick_false_url']
+        //b.camp_list[1].player_list[0].picking==true?pickingurl:pciking==false&&heroid!=null?heropng:pickfasleurl
+        responseData.team_1_player_1_pick_hero_png=b.camp_list[0].player_list[0].picking==true?
+        a['pick_true_url']:b.camp_list[0].player_list[0].picking==false&&b.camp_list[0].player_list[0].heroid?
+        a['draft_hero_path']+b.camp_list[0].player_list[0].heroid+'.png':a['pick_false_url']
 
-        responseData.team_1_player_1_ban_hero_name=hero_list[b.camp_list[0].player_list[0].ban_heroid]
-        responseData.team_1_player_2_ban_hero_name=hero_list[b.camp_list[0].player_list[1].ban_heroid]
-        responseData.team_1_player_3_ban_hero_name=hero_list[b.camp_list[0].player_list[2].ban_heroid]
-        responseData.team_1_player_4_ban_hero_name=hero_list[b.camp_list[0].player_list[3].ban_heroid]
-        responseData.team_1_player_5_ban_hero_name=hero_list[b.camp_list[0].player_list[4].ban_heroid]
+        //----
+        responseData.team_1_player_2_pick_hero_png=b.camp_list[0].player_list[1].picking==true?
+        a['pick_true_url']:b.camp_list[0].player_list[1].picking==false&&b.camp_list[0].player_list[1].heroid?
+        a['draft_hero_path']+b.camp_list[0].player_list[1].heroid+'.png':a['pick_false_url']
+        //---
+        responseData.team_1_player_3_pick_hero_png=b.camp_list[0].player_list[2].picking==true?
+        a['pick_true_url']:b.camp_list[0].player_list[2].picking==false&&b.camp_list[0].player_list[2].heroid?
+        a['draft_hero_path']+b.camp_list[0].player_list[2].heroid+'.png':a['pick_false_url']
+        //--
+        responseData.team_1_player_4_pick_hero_png=b.camp_list[0].player_list[3].picking==true?
+        a['pick_true_url']:b.camp_list[0].player_list[3].picking==false&&b.camp_list[0].player_list[3].heroid?
+        a['draft_hero_path']+b.camp_list[0].player_list[3].heroid+'.png':a['pick_false_url']
+        //---
+        responseData.team_1_player_5_pick_hero_png=b.camp_list[0].player_list[4].picking==true?
+        a['pick_true_url']:b.camp_list[0].player_list[4].picking==false&&b.camp_list[0].player_list[4].heroid?
+        a['draft_hero_path']+b.camp_list[0].player_list[4].heroid+'.png':a['pick_false_url']
 
-        responseData.team_1_player_1_ban_hero_png=a['draft_hero_path_ban']+b.camp_list[0].player_list[0].ban_heroid+'.png'
-        responseData.team_1_player_2_ban_hero_png=a['draft_hero_path_ban']+b.camp_list[0].player_list[1].ban_heroid+'.png'
-        responseData.team_1_player_3_ban_hero_png=a['draft_hero_path_ban']+b.camp_list[0].player_list[2].ban_heroid+'.png'
-        responseData.team_1_player_4_ban_hero_png=a['draft_hero_path_ban']+b.camp_list[0].player_list[3].ban_heroid+'.png'
-        responseData.team_1_player_5_ban_hero_png=a['draft_hero_path_ban']+b.camp_list[0].player_list[4].ban_heroid+'.png'
+        responseData.team_1_player_1_ban_hero_name=hero_list[b.camp_list[0].player_list[0].ban_heroid]||''
+        responseData.team_1_player_2_ban_hero_name=hero_list[b.camp_list[0].player_list[1].ban_heroid]||''
+        responseData.team_1_player_3_ban_hero_name=hero_list[b.camp_list[0].player_list[2].ban_heroid]||''
+        responseData.team_1_player_4_ban_hero_name=hero_list[b.camp_list[0].player_list[3].ban_heroid]||''
+        responseData.team_1_player_5_ban_hero_name=hero_list[b.camp_list[0].player_list[4].ban_heroid]||''
+        //ban
+
+        responseData.team_1_player_1_ban_hero_png=b.camp_list[0].player_list[0].banning==true?
+        a['ban_true_url']:b.camp_list[0].player_list[0].banning==false&&b.camp_list[0].player_list[0].heroid?
+        a['draft_hero_path_ban']+b.camp_list[0].player_list[0].ban_heroid+'.png':a['ban_false_url']
+        //----
+        responseData.team_1_player_2_ban_hero_png=b.camp_list[0].player_list[1].banning==true?
+        a['ban_true_url']:b.camp_list[0].player_list[1].banning==false&&b.camp_list[0].player_list[1].heroid?
+        a['draft_hero_path_ban']+b.camp_list[0].player_list[1].ban_heroid+'.png':a['ban_false_url']
+        //----
+        responseData.team_1_player_3_ban_hero_png=b.camp_list[0].player_list[2].banning==true?
+        a['ban_true_url']:b.camp_list[0].player_list[2].banning==false&&b.camp_list[0].player_list[2].heroid?
+        a['draft_hero_path_ban']+b.camp_list[0].player_list[2].ban_heroid+'.png':a['ban_false_url']
+        //----
+        responseData.team_1_player_4_ban_hero_png=b.camp_list[0].player_list[3].banning==true?
+        a['ban_true_url']:b.camp_list[0].player_list[3].banning==false&&b.camp_list[0].player_list[3].heroid?
+        a['draft_hero_path_ban']+b.camp_list[0].player_list[3].ban_heroid+'.png':a['ban_false_url']
+        //----
+        responseData.team_1_player_5_ban_hero_png=b.camp_list[0].player_list[4].banning==true?
+        a['ban_true_url']:b.camp_list[0].player_list[4].banning==false&&b.camp_list[0].player_list[4].heroid?
+        a['draft_hero_path_ban']+b.camp_list[0].player_list[4].ban_heroid+'.png':a['ban_false_url']
+
+
 
 
 
@@ -92,29 +126,63 @@ export default async function (req, res, next) {
         responseData.team_2_player_4_png=a['draft_player_path']+b.camp_list[1].player_list[3].roleid+'.png'
         responseData.team_2_player_5_png=a['draft_player_path']+b.camp_list[1].player_list[4].roleid+'.png'
             //b.camp_list[1].player_list[0].picking==true?pickingurl:pciking==false&&heroid!=null?heropng:pickfasleurl
-        responseData.team_2_player_1_pick_hero_name=hero_list[b.camp_list[1].player_list[0].heroid]
-        responseData.team_2_player_2_pick_hero_name=hero_list[b.camp_list[1].player_list[1].heroid]
-        responseData.team_2_player_3_pick_hero_name=hero_list[b.camp_list[1].player_list[2].heroid]
-        responseData.team_2_player_4_pick_hero_name=hero_list[b.camp_list[1].player_list[3].heroid]
-        responseData.team_2_player_5_pick_hero_name=hero_list[b.camp_list[1].player_list[4].heroid]
+        responseData.team_2_player_1_pick_hero_name=hero_list[b.camp_list[1].player_list[0].heroid]||''
+        responseData.team_2_player_2_pick_hero_name=hero_list[b.camp_list[1].player_list[1].heroid]||''
+        responseData.team_2_player_3_pick_hero_name=hero_list[b.camp_list[1].player_list[2].heroid]||''
+        responseData.team_2_player_4_pick_hero_name=hero_list[b.camp_list[1].player_list[3].heroid]||''
+        responseData.team_2_player_5_pick_hero_name=hero_list[b.camp_list[1].player_list[4].heroid]||''
 
-        responseData.team_2_player_1_pick_hero_png=a['draft_hero_path']+b.camp_list[1].player_list[0].heroid+'.png'
-        responseData.team_2_player_2_pick_hero_png=a['draft_hero_path']+b.camp_list[1].player_list[1].heroid+'.png'
-        responseData.team_2_player_3_pick_hero_png=a['draft_hero_path']+b.camp_list[1].player_list[2].heroid+'.png'
-        responseData.team_2_player_4_pick_hero_png=a['draft_hero_path']+b.camp_list[1].player_list[3].heroid+'.png'
-        responseData.team_2_player_5_pick_hero_png=a['draft_hero_path']+b.camp_list[1].player_list[4].heroid+'.png'
+        responseData.team_2_player_1_pick_hero_png=b.camp_list[1].player_list[0].picking==true?
+        a['pick_true_url']:b.camp_list[1].player_list[0].picking==false&&b.camp_list[1].player_list[0].heroid?
+        a['draft_hero_path']+b.camp_list[1].player_list[0].heroid+'.png':a['pick_false_url']
 
-        responseData.team_2_player_1_ban_hero_name=hero_list[b.camp_list[1].player_list[0].ban_heroid]
-        responseData.team_2_player_2_ban_hero_name=hero_list[b.camp_list[1].player_list[1].ban_heroid]
-        responseData.team_2_player_3_ban_hero_name=hero_list[b.camp_list[1].player_list[2].ban_heroid]
-        responseData.team_2_player_4_ban_hero_name=hero_list[b.camp_list[1].player_list[3].ban_heroid]
-        responseData.team_2_player_5_ban_hero_name=hero_list[b.camp_list[1].player_list[4].ban_heroid]
+        //----
+        responseData.team_2_player_2_pick_hero_png=b.camp_list[1].player_list[1].picking==true?
+        a['pick_true_url']:b.camp_list[1].player_list[1].picking==false&&b.camp_list[1].player_list[1].heroid?
+        a['draft_hero_path']+b.camp_list[1].player_list[1].heroid+'.png':a['pick_false_url']
+        //---
+        responseData.team_2_player_3_pick_hero_png=b.camp_list[1].player_list[2].picking==true?
+        a['pick_true_url']:b.camp_list[1].player_list[2].picking==false&&b.camp_list[1].player_list[2].heroid?
+        a['draft_hero_path']+b.camp_list[1].player_list[2].heroid+'.png':a['pick_false_url']
+        //--
+        responseData.team_2_player_4_pick_hero_png=b.camp_list[1].player_list[3].picking==true?
+        a['pick_true_url']:b.camp_list[1].player_list[3].picking==false&&b.camp_list[1].player_list[3].heroid?
+        a['draft_hero_path']+b.camp_list[1].player_list[3].heroid+'.png':a['pick_false_url']
+        //---
+        responseData.team_2_player_5_pick_hero_png=b.camp_list[1].player_list[4].picking==true?
+        a['pick_true_url']:b.camp_list[1].player_list[4].picking==false&&b.camp_list[1].player_list[4].heroid?
+        a['draft_hero_path']+b.camp_list[1].player_list[4].heroid+'.png':a['pick_false_url']
 
-        responseData.team_2_player_1_ban_hero_png=a['draft_hero_path_ban']+b.camp_list[1].player_list[0].ban_heroid+'.png'
-        responseData.team_2_player_2_ban_hero_png=a['draft_hero_path_ban']+b.camp_list[1].player_list[1].ban_heroid+'.png'
-        responseData.team_2_player_3_ban_hero_png=a['draft_hero_path_ban']+b.camp_list[1].player_list[2].ban_heroid+'.png'
-        responseData.team_2_player_4_ban_hero_png=a['draft_hero_path_ban']+b.camp_list[1].player_list[3].ban_heroid+'.png'
-        responseData.team_2_player_5_ban_hero_png=a['draft_hero_path_ban']+b.camp_list[1].player_list[4].ban_heroid+'.png'
+
+        responseData.team_2_player_1_ban_hero_name=hero_list[b.camp_list[1].player_list[0].ban_heroid]||''
+        responseData.team_2_player_2_ban_hero_name=hero_list[b.camp_list[1].player_list[1].ban_heroid]||''
+        responseData.team_2_player_3_ban_hero_name=hero_list[b.camp_list[1].player_list[2].ban_heroid]||''
+        responseData.team_2_player_4_ban_hero_name=hero_list[b.camp_list[1].player_list[3].ban_heroid]||''
+        responseData.team_2_player_5_ban_hero_name=hero_list[b.camp_list[1].player_list[4].ban_heroid]||''
+
+       //ban
+
+        responseData.team_2_player_1_ban_hero_png=b.camp_list[1].player_list[0].banning==true?
+        a['ban_true_url']:b.camp_list[1].player_list[0].banning==false&&b.camp_list[1].player_list[0].heroid?
+        a['draft_hero_path_ban']+b.camp_list[1].player_list[0].ban_heroid+'.png':a['ban_false_url']
+        //----
+        responseData.team_2_player_2_ban_hero_png=b.camp_list[1].player_list[1].banning==true?
+        a['ban_true_url']:b.camp_list[1].player_list[1].banning==false&&b.camp_list[1].player_list[1].heroid?
+        a['draft_hero_path_ban']+b.camp_list[1].player_list[1].ban_heroid+'.png':a['ban_false_url']
+        //----
+        responseData.team_2_player_3_ban_hero_png=b.camp_list[1].player_list[2].banning==true?
+        a['ban_true_url']:b.camp_list[1].player_list[2].banning==false&&b.camp_list[1].player_list[2].heroid?
+        a['draft_hero_path_ban']+b.camp_list[1].player_list[2].ban_heroid+'.png':a['ban_false_url']
+        //----
+        responseData.team_2_player_4_ban_hero_png=b.camp_list[1].player_list[3].banning==true?
+        a['ban_true_url']:b.camp_list[1].player_list[3].banning==false&&b.camp_list[1].player_list[3].heroid?
+        a['draft_hero_path_ban']+b.camp_list[1].player_list[3].ban_heroid+'.png':a['ban_false_url']
+        //----
+        responseData.team_2_player_5_ban_hero_png=b.camp_list[1].player_list[4].banning==true?
+        a['ban_true_url']:b.camp_list[1].player_list[4].banning==false&&b.camp_list[1].player_list[4].heroid?
+        a['draft_hero_path_ban']+b.camp_list[1].player_list[4].ban_heroid+'.png':a['ban_false_url']
+
+
         ///new
 
         responseData.team_1_player_1_picking_url=b.camp_list[0].player_list[0].picking==true?a['pick_true_url']:a['pick_false_url']

@@ -1,8 +1,48 @@
 {
   "player_list": {
+    "582064": {
+      "role": "gold",
+      "name": "Naomi"
+    },
+    "26605124": {
+      "role": "jg",
+      "name": "Niko"
+    },
     "41976927": {
       "role": "exp",
       "name": "bosker"
+    },
+    "44760189": {
+      "role": "exp",
+      "name": "Justin"
+    },
+    "45769687": {
+      "role": "jg",
+      "name": "RubyDD"
+    },
+    "79304218": {
+      "role": "roam",
+      "name": "Super Zip"
+    },
+    "141047206": {
+      "role": "mid",
+      "name": "Blink"
+    },
+    "178699002": {
+      "role": "mid",
+      "name": "Kenn"
+    },
+    "205954747": {
+      "role": "exp",
+      "name": "stich"
+    },
+    "261601853": {
+      "role": "roam",
+      "name": "SHADOW"
+    },
+    "433489985": {
+      "role": "gold",
+      "name": "YoYoe"
     }
   },
   "counter": 6

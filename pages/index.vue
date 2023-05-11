@@ -234,7 +234,7 @@
             return {
 
               auth_key:'ee3af4c1a0963e7f052754e66bcb7b6f',
-              battle_id:"664507587847258091",
+              battle_id:"616494629484529841",
               draft_logo_path:'',
               draft_player_path:'',
               draft_hero_path:'',
