@@ -37,28 +37,41 @@ export default async function (req, res, next) {
     await axios.get(hit_url).then((response)=>{
         //console.log(response.data.data)
         let b=response.data.data
-        responseData.team_1_name=b.camp_list[0].team_name
-        responseData.team_1_short_name=b.camp_list[0].team_simple_name
-        responseData.team_1_logo=a['hud_team_logo_path']+b.camp_list[0].team_name+'.png'
+        responseData.team_1_name=a['team_1_name']||b.camp_list[0].team_name
+        responseData.team_1_short_name=a['team_1_short_name']||b.camp_list[0].team_simple_name
+        responseData.team_1_logo=a['hud_team_logo_path']+(a['team_1_name']||b.camp_list[0].team_name)+'.png'
+
+        // responseData.team_1_name=b.camp_list[0].team_name
+        // responseData.team_1_short_name=b.camp_list[0].team_simple_name
+        // responseData.team_1_logo=a['hud_team_logo_path']+b.camp_list[0].team_name+'.png'
+
         responseData.team_1_turtle_kill=b.camp_list[0].kill_tortoise
         responseData.team_1_lord_kill=b.camp_list[0].kill_lord
         responseData.team_1_tower_kill=b.camp_list[0].kill_tower
         responseData.team_1_total_kill=b.camp_list[0].score
-        responseData.team_1_total_gold=b.camp_list[0].total_money>9999?'10K':thousands_separators(b.camp_list[0].total_money)
+        responseData.team_1_total_gold=b.camp_list[0].total_money>9999?
+        `${thousands_separators(b.camp_list[0].total_money).split(',')[0]}.${thousands_separators(b.camp_list[0].total_money).split(',')[1][0]}K`
+        :thousands_separators(b.camp_list[0].total_money)
 
+        responseData.team_2_name=a['team_2_name']||b.camp_list[1].team_name
+        responseData.team_2_short_name=a['team_2_short_name']||b.camp_list[1].team_simple_name
+        responseData.team_2_logo=a['hud_team_logo_path']+(a['team_2_name']||b.camp_list[1].team_name)+'.png'
+        // responseData.team_2_name=b.camp_list[1].team_name
+        // responseData.team_2_short_name=b.camp_list[1].team_simple_name
+        // responseData.team_2_logo=a['hud_team_logo_path']+b.camp_list[1].team_name+'.png'
 
-        responseData.team_2_name=b.camp_list[1].team_name
-        responseData.team_2_short_name=b.camp_list[1].team_simple_name
-        responseData.team_2_logo=a['hud_team_logo_path']+b.camp_list[1].team_name+'.png'
         responseData.team_2_turtle_kill=b.camp_list[1].kill_tortoise
         responseData.team_2_lord_kill=b.camp_list[1].kill_lord
         responseData.team_2_tower_kill=b.camp_list[1].kill_tower
         responseData.team_2_total_kill=b.camp_list[1].score
-        responseData.team_2_total_gold=b.camp_list[1].total_money>9999?'10K':thousands_separators(b.camp_list[1].total_money)
+        responseData.team_2_total_gold=b.camp_list[1].total_money>9999?
+        `${thousands_separators(b.camp_list[1].total_money).split(',')[0]}.${thousands_separators(b.camp_list[1].total_money).split(',')[1][0]}K`
+        :thousands_separators(b.camp_list[1].total_money)
 
 
-        let gold_difference_2_team=Math.abs(b.camp_list[0].total_money-b.camp_list[1].total_money)>9999?'10K':
-        thousands_separators(Math.abs(b.camp_list[0].total_money-b.camp_list[1].total_money))
+        let gold_difference_2_team=Math.abs(b.camp_list[0].total_money-b.camp_list[1].total_money)>9999?
+        `+${thousands_separators(Math.abs(b.camp_list[0].total_money-b.camp_list[1].total_money)).split(',')[0]}.${thousands_separators(Math.abs(b.camp_list[0].total_money-b.camp_list[1].total_money)).split(',')[1][0]}K`
+        :`+${thousands_separators(Math.abs(b.camp_list[0].total_money-b.camp_list[1].total_money))}`
         console.log(gold_difference_2_team)
         //if team 1 gold > team 2 gold==res.team 1 gold = gold diff,team2 gold = empty string png path is 1 and 0
         if(b.camp_list[0].total_money>b.camp_list[1].total_money){

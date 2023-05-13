@@ -34,9 +34,9 @@ export default async function (req, res, next) {
     await axios.get(hit_url).then(async (response)=>{
         //console.log(response.data.data)
         let b=response.data.data
-        responseData.team_1_name=b.camp_list[0].team_name
-        responseData.team_1_short_name=b.camp_list[0].team_simple_name
-        responseData.team_1_logo=a['draft_logo_path']+b.camp_list[0].team_name+'.png'
+        responseData.team_1_name=a['team_1_name']||b.camp_list[0].team_name
+        responseData.team_1_short_name=a['team_1_short_name']||b.camp_list[0].team_simple_name
+        responseData.team_1_logo=a['draft_logo_path']+(a['team_1_name']||b.camp_list[0].team_name)+'.png'
 
         responseData.team_1_player_1_name=await helper.name_finder(b.camp_list[0].player_list[0].roleid,hoster)||b.camp_list[0].player_list[0].name
         responseData.team_1_player_2_name=await helper.name_finder(b.camp_list[0].player_list[1].roleid,hoster)||b.camp_list[0].player_list[1].name
@@ -110,9 +110,9 @@ export default async function (req, res, next) {
 
 
 
-        responseData.team_2_name=b.camp_list[1].team_name
-        responseData.team_2_short_name=b.camp_list[1].team_simple_name
-        responseData.team_2_logo=a['draft_logo_path']+b.camp_list[1].team_name+'.png'
+        responseData.team_2_name=a['team_2_name']||b.camp_list[1].team_name
+        responseData.team_2_short_name=a['team_2_short_name']||b.camp_list[1].team_simple_name
+        responseData.team_2_logo=a['draft_logo_path']+(a['team_2_name']||b.camp_list[1].team_name)+'.png'
 
         responseData.team_2_player_1_name=await helper.name_finder(b.camp_list[1].player_list[0].roleid,hoster)||b.camp_list[1].player_list[0].name
         responseData.team_2_player_2_name=await helper.name_finder(b.camp_list[1].player_list[1].roleid,hoster)||b.camp_list[1].player_list[1].name

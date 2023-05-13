@@ -50,9 +50,9 @@ export default async function (req, res, next) {
         })
         console.log(win_camp_total_kda)
 
-        responseData.winner_team_name= b.camp_list[win_camp-1].team_name
-        responseData.winner_team_logo= a['mvp_team_logo_path']+b.camp_list[win_camp-1].team_name+'.png'
-        responseData.winner_team_short_name= b.camp_list[win_camp-1].team_simple_name
+        responseData.winner_team_name=(win_camp==1?a['team_1_name']:a['team_2_name'])|| b.camp_list[win_camp-1].team_name
+        responseData.winner_team_logo= a['mvp_team_logo_path']+((win_camp==1?a['team_1_name']:a['team_2_name'])|| b.camp_list[win_camp-1].team_name)+'.png'
+        responseData.winner_team_short_name=(win_camp==1?a['team_1_short_name']:a['team_2_short_name'])|| b.camp_list[win_camp-1].team_simple_name
        //mvpplayer
        responseData.mvp_player_name=await helper.name_finder(mvp_player.roleid,hoster)||mvp_player.name
        responseData.mvp_player_photo= a['mvp_player_png_path']+mvp_player.roleid+'.png'

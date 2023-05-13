@@ -37,6 +37,13 @@ export default async function (req, res, next) {
         responseData.team_1_player_3_hero_png=a['hero_png_path']+b.camp_list[0].player_list[2].heroid+'.png'
         responseData.team_1_player_4_hero_png=a['hero_png_path']+b.camp_list[0].player_list[3].heroid+'.png'
         responseData.team_1_player_5_hero_png=a['hero_png_path']+b.camp_list[0].player_list[4].heroid+'.png'
+        //newer
+        responseData.team_1_player_1_hero_png_for_goldDiff=a['hero_png_path_for_gold_diff']+b.camp_list[0].player_list[0].heroid+'.png'
+        responseData.team_1_player_2_hero_png_for_goldDiff=a['hero_png_path_for_gold_diff']+b.camp_list[0].player_list[1].heroid+'.png'
+        responseData.team_1_player_3_hero_png_for_goldDiff=a['hero_png_path_for_gold_diff']+b.camp_list[0].player_list[2].heroid+'.png'
+        responseData.team_1_player_4_hero_png_for_goldDiff=a['hero_png_path_for_gold_diff']+b.camp_list[0].player_list[3].heroid+'.png'
+        responseData.team_1_player_5_hero_png_for_goldDiff=a['hero_png_path_for_gold_diff']+b.camp_list[0].player_list[4].heroid+'.png'
+        //
 
         responseData.team_1_player_1_gold=thousands_separators(b.camp_list[0].player_list[0].gold)
         responseData.team_1_player_2_gold=thousands_separators(b.camp_list[0].player_list[1].gold)
@@ -94,7 +101,13 @@ export default async function (req, res, next) {
         responseData.team_2_player_3_hero_png=a['hero_png_path']+b.camp_list[1].player_list[2].heroid+'.png'
         responseData.team_2_player_4_hero_png=a['hero_png_path']+b.camp_list[1].player_list[3].heroid+'.png'
         responseData.team_2_player_5_hero_png=a['hero_png_path']+b.camp_list[1].player_list[4].heroid+'.png'
-
+        //new
+        responseData.team_2_player_1_hero_png_for_goldDiff=a['hero_png_path_for_gold_diff']+b.camp_list[1].player_list[0].heroid+'.png'
+        responseData.team_2_player_2_hero_png_for_goldDiff=a['hero_png_path_for_gold_diff']+b.camp_list[1].player_list[1].heroid+'.png'
+        responseData.team_2_player_3_hero_png_for_goldDiff=a['hero_png_path_for_gold_diff']+b.camp_list[1].player_list[2].heroid+'.png'
+        responseData.team_2_player_4_hero_png_for_goldDiff=a['hero_png_path_for_gold_diff']+b.camp_list[1].player_list[3].heroid+'.png'
+        responseData.team_2_player_5_hero_png_for_goldDiff=a['hero_png_path_for_gold_diff']+b.camp_list[1].player_list[4].heroid+'.png'
+        //a
         
         responseData.team_2_player_1_gold=thousands_separators(b.camp_list[1].player_list[0].gold)
         responseData.team_2_player_2_gold=thousands_separators(b.camp_list[1].player_list[1].gold)
