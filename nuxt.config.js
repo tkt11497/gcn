@@ -17,6 +17,7 @@ export default {
         { path: '/itembuild', handler: '~/server-middleware/itembuild.js' },
         { path: '/mvp', handler: '~/server-middleware/mvp.js' },
         { path: '/player_list', handler: '~/server-middleware/player_list.js' },
+        { path: '/match_result_1', handler: '~/server-middleware/match_result_1.js' },
     
         // We can create custom instances too
         //{ path: '/static2', handler: serveStatic(__dirname + '/static2') }

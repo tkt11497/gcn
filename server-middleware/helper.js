@@ -39,7 +39,7 @@ export default {
     if(a[id]){
       return a[id]
     }else{
-      return 'not defined'
+      return 'add this player role id to player list'
     }
   },
   async role_sorter(array,host){

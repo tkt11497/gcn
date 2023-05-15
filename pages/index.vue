@@ -184,6 +184,46 @@
                           </v-card-actions>
 
             </v-card>
+            <v-card tile shaped style="padding:20px;margin-bottom:40px">
+                    <h3 style="margin-bottom:15px">Match Result 1</h3>
+                                  <v-text-field  label="Player Png Path" type="text" prepend-icon="mdi-account-circle"
+                                    placeholder="C://mypc" v-model="player_png_path_1" id="email" required>
+                                    </v-text-field>
+
+                                    <v-text-field label="Hero Png" prepend-icon="mdi-account-circle" type="text" 
+                                    v-model="hero_png_path_1" 
+                                    placeholder="C://mypc" id="name" required>
+                                    </v-text-field>
+                                    
+                         
+                          
+                                    <v-text-field  label="Item Png Path" type="text" prepend-icon="mdi-account-circle"
+                                    placeholder="C://mypc" v-model="item_png_path_1" id="email" required>
+                                    </v-text-field>
+                                   
+                                
+                                    <v-text-field  label="Team Logo Png" type="text" prepend-icon="mdi-account-circle"
+                                    v-model="team_logo_path_1" placeholder="C://mypc" id="phone" required>
+                                    </v-text-field>
+                                    <v-text-field  label="Battle Spell Png" type="text" prepend-icon="mdi-account-circle"
+                                    v-model="battle_spell_path_1" placeholder="C://mypc" id="phone" required>
+                                    </v-text-field>
+                                     <v-text-field  label="Rune Png path" type="text" prepend-icon="mdi-account-circle"
+                                    v-model="rune_path_1" placeholder="C://mypc" id="phone" required>
+                                    </v-text-field>
+                                     <v-text-field  label="Role Png path" type="text" prepend-icon="mdi-account-circle"
+                                    v-model="role_path_1" placeholder="C://mypc" id="phone" required>
+                                    </v-text-field>
+                                     
+                                  
+                                 <p>{{match_result_1_hit_link}}</p>
+                                 <input type="hidden" readonly id="match_result_1_hit_link"
+                                                  :value="match_result_1_hit_link" />
+                          <v-card-actions>
+                        <v-btn color="indigo" dark block @click="copyTestingCode('match_result_1_hit_link')">Copy Url</v-btn>
+                          </v-card-actions>
+
+            </v-card>
           </v-flex>
       </v-row>
 
@@ -244,6 +284,15 @@
       }
       
     },
+    match_result_1_hit_link() {
+      // `this` points to the component instance
+      if(process.client){
+        console.log(window.location)
+        return `${window.location.origin}/match_result_1?team_1_name=${this.team_1_name}&team_1_short_name=${this.team_1_short_name}&team_2_name=${this.team_2_name}&team_2_short_name=${this.team_2_short_name}&hoster=${this.hoster}&rune_path_1=${this.rune_path_1}&role_path_1=${this.role_path_1}&player_png_path_1=${this.player_png_path_1}&item_png_path_1=${this.item_png_path_1}&hero_png_path_1=${this.hero_png_path_1}&team_logo_path_1=${this.team_logo_path_1}&battle_spell_path_1=${this.battle_spell_path_1}&authkey=${this.auth_key}&battleid=${this.battle_id}`
+
+      }
+      
+    },
     draft_main_url() {
       // `this` points to the component instance
       return `battledata`
@@ -280,6 +329,14 @@
               mvp_item_png_path:'',
               mvp_team_logo_path:'',
               mvp_battle_spell_path:'',
+
+              player_png_path_1:'',
+              hero_png_path_1:'',
+              item_png_path_1:'',
+              team_logo_path_1:'',
+              battle_spell_path_1:'',
+              role_path_1:'',
+              rune_path_1:'',
 
                 activeName: 'first',
                 job_list:[],
