@@ -224,6 +224,47 @@
                           </v-card-actions>
 
             </v-card>
+            <v-card tile shaped style="padding:20px;margin-bottom:40px">
+                    <h3 style="margin-bottom:15px">Match Result 2</h3>
+                                  <v-text-field label="Hero Png" prepend-icon="mdi-account-circle" type="text" 
+                                    v-model="hero_png_path_2" 
+                                    placeholder="C://mypc" id="name" required>
+                                    </v-text-field>
+
+                                  <v-text-field  label="Player Png Path" type="text" prepend-icon="mdi-account-circle"
+                                    placeholder="C://mypc" v-model="player_png_path_2" id="email" required>
+                                    </v-text-field>
+
+                                  <v-text-field  label="Role Png path" type="text" prepend-icon="mdi-account-circle"
+                                    v-model="role_path_2" placeholder="C://mypc" id="phone" required>
+                                    </v-text-field>
+
+                                    
+                                    <v-text-field  label="Damage Deal png" type="text" prepend-icon="mdi-account-circle"
+                                    placeholder="C://mypc" v-model="damage_deal_png" id="email" required>
+                                    </v-text-field>
+                                   
+                                
+                                    <v-text-field  label="Damage Taken Png" type="text" prepend-icon="mdi-account-circle"
+                                    v-model="damage_taken_png" placeholder="C://mypc" id="phone" required>
+                                    </v-text-field>
+                                    <v-text-field  label="Turret Damage Png" type="text" prepend-icon="mdi-account-circle"
+                                    v-model="turret_damage_png" placeholder="C://mypc" id="phone" required>
+                                    </v-text-field>
+                                     <v-text-field  label="Turtle Lord Turret png" type="text" prepend-icon="mdi-account-circle"
+                                    v-model="lord_turtle_turret_png" placeholder="C://mypc" id="phone" required>
+                                    </v-text-field>
+                                     
+                                     
+                                  
+                                 <p>{{match_result_2_hit_link}}</p>
+                                 <input type="hidden" readonly id="match_result_2_hit_link"
+                                                  :value="match_result_2_hit_link" />
+                          <v-card-actions>
+                        <v-btn color="indigo" dark block @click="copyTestingCode('match_result_2_hit_link')">Copy Url</v-btn>
+                          </v-card-actions>
+
+            </v-card>
           </v-flex>
       </v-row>
 
@@ -293,6 +334,15 @@
       }
       
     },
+    match_result_2_hit_link() {
+      // `this` points to the component instance
+      if(process.client){
+        console.log(window.location)
+        return `${window.location.origin}/match_result_2?team_1_name=${this.team_1_name}&team_1_short_name=${this.team_1_short_name}&team_2_name=${this.team_2_name}&team_2_short_name=${this.team_2_short_name}&hoster=${this.hoster}&damage_deal_png=${this.damage_deal_png}&role_path_2=${this.role_path_2}&player_png_path_2=${this.player_png_path_2}&damage_taken_png=${this.damage_taken_png}&hero_png_path_2=${this.hero_png_path_2}&turret_damage_png=${this.turret_damage_png}&lord_turtle_turret_png=${this.lord_turtle_turret_png}&authkey=${this.auth_key}&battleid=${this.battle_id}`
+
+      }
+      
+    },
     draft_main_url() {
       // `this` points to the component instance
       return `battledata`
@@ -337,6 +387,14 @@
               battle_spell_path_1:'',
               role_path_1:'',
               rune_path_1:'',
+
+              player_png_path_2:'',
+              hero_png_path_2:'',
+              role_path_2:'',
+              damage_deal_png:'',
+              damage_taken_png:'',
+              turret_damage_png:'',
+              lord_turtle_turret_png:'',
 
                 activeName: 'first',
                 job_list:[],

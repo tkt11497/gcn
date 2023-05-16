@@ -18,6 +18,7 @@ export default {
         { path: '/mvp', handler: '~/server-middleware/mvp.js' },
         { path: '/player_list', handler: '~/server-middleware/player_list.js' },
         { path: '/match_result_1', handler: '~/server-middleware/match_result_1.js' },
+        { path: '/match_result_2', handler: '~/server-middleware/match_result_2.js' },
     
         // We can create custom instances too
         //{ path: '/static2', handler: serveStatic(__dirname + '/static2') }
