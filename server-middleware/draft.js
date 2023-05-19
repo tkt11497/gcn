@@ -22,7 +22,7 @@ export default async function (req, res, next) {
         103: "PAQUITO", 104: "GLOO", 105: "BEATRIX", 106: "PHOVEUS", 
         107: "NATAN", 108: "AULUS", 109: "AAMON", 110: "VALENTINA", 111: "EDITH", 
         112: "FLORYN", 113: "YIN", 114: "MELISSA", 115: "XAVIER", 116: "JULIAN",
-         117: "FREDRINN", 118: "JOY", 119: "ALOTT", 120: "ALOTT"}
+         117: "FREDRINN", 118: "JOY", 119: "ARLOTT", 120: "ARLOTT"}
     let responseData={};
     let paramString = req.url.split('?')[1];
     let a= JSON.parse('{"' + decodeURI(paramString)
@@ -36,7 +36,7 @@ export default async function (req, res, next) {
         let b=response.data.data
         responseData.team_1_name=a['team_1_name']||b.camp_list[0].team_name
         responseData.team_1_short_name=a['team_1_short_name']||b.camp_list[0].team_simple_name
-        responseData.team_1_logo=a['draft_logo_path']+(a['team_1_name']||b.camp_list[0].team_name)+'.png'
+        responseData.team_1_logo=a['draft_logo_path']+(a['team_1_short_name']||b.camp_list[0].team_simple_name)+'.png'
 
         responseData.team_1_player_1_name=await helper.name_finder(b.camp_list[0].player_list[0].roleid,hoster)||b.camp_list[0].player_list[0].name
         responseData.team_1_player_2_name=await helper.name_finder(b.camp_list[0].player_list[1].roleid,hoster)||b.camp_list[0].player_list[1].name
@@ -112,7 +112,7 @@ export default async function (req, res, next) {
 
         responseData.team_2_name=a['team_2_name']||b.camp_list[1].team_name
         responseData.team_2_short_name=a['team_2_short_name']||b.camp_list[1].team_simple_name
-        responseData.team_2_logo=a['draft_logo_path']+(a['team_2_name']||b.camp_list[1].team_name)+'.png'
+        responseData.team_2_logo=a['draft_logo_path']+(a['team_2_short_name']||b.camp_list[1].team_simple_name)+'.png'
 
         responseData.team_2_player_1_name=await helper.name_finder(b.camp_list[1].player_list[0].roleid,hoster)||b.camp_list[1].player_list[0].name
         responseData.team_2_player_2_name=await helper.name_finder(b.camp_list[1].player_list[1].roleid,hoster)||b.camp_list[1].player_list[1].name

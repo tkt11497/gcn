@@ -26,7 +26,7 @@ export default async function (req, res, next) {
         103: "PAQUITO", 104: "GLOO", 105: "BEATRIX", 106: "PHOVEUS", 
         107: "NATAN", 108: "AULUS", 109: "AAMON", 110: "VALENTINA", 111: "EDITH", 
         112: "FLORYN", 113: "YIN", 114: "MELISSA", 115: "XAVIER", 116: "JULIAN",
-         117: "FREDRINN", 118: "JOY", 119: "ALOTT", 120: "ALOTT"}
+         117: "FREDRINN", 118: "JOY", 119: "ARLOTT", 120: "ARLOTT"}
     let responseData={};
     let paramString = req.url.split('?')[1];
     let a= JSON.parse('{"' + decodeURI(paramString)
@@ -39,7 +39,7 @@ export default async function (req, res, next) {
         let b=response.data.data
         responseData.team_1_name=a['team_1_name']||b.camp_list[0].team_name
         responseData.team_1_short_name=a['team_1_short_name']||b.camp_list[0].team_simple_name
-        responseData.team_1_logo=a['hud_team_logo_path']+(a['team_1_name']||b.camp_list[0].team_name)+'.png'
+        responseData.team_1_logo=a['hud_team_logo_path']+(a['team_1_short_name']||b.camp_list[0].team_simple_name)+'.png'
 
         // responseData.team_1_name=b.camp_list[0].team_name
         // responseData.team_1_short_name=b.camp_list[0].team_simple_name
@@ -55,7 +55,7 @@ export default async function (req, res, next) {
 
         responseData.team_2_name=a['team_2_name']||b.camp_list[1].team_name
         responseData.team_2_short_name=a['team_2_short_name']||b.camp_list[1].team_simple_name
-        responseData.team_2_logo=a['hud_team_logo_path']+(a['team_2_name']||b.camp_list[1].team_name)+'.png'
+        responseData.team_2_logo=a['hud_team_logo_path']+(a['team_2_short_name']||b.camp_list[1].team_simple_name)+'.png'
         // responseData.team_2_name=b.camp_list[1].team_name
         // responseData.team_2_short_name=b.camp_list[1].team_simple_name
         // responseData.team_2_logo=a['hud_team_logo_path']+b.camp_list[1].team_name+'.png'
@@ -89,6 +89,35 @@ export default async function (req, res, next) {
             responseData.team_2_gold_diff=gold_difference_2_team
             responseData.team_2_gold_diff_png=a['hud_gold_diff_path']+'1.png'
         }
+        //new
+        let turtle_kill_events=b.incre_event_list.filter(function(item){
+            return item.event_type=="kill_boss"&item.boss_name=="tortoise"
+        })
+        let lord_kill_events=b.incre_event_list.filter(function(item){
+            return item.event_type=="kill_boss"&item.boss_name=="lord"
+        })
+        console.log(turtle_kill_events,'tt')
+        console.log(lord_kill_events,'ss')
+        if(turtle_kill_events.length>0){
+            responseData.last_turtle_kill_team_name=turtle_kill_events[turtle_kill_events.length-1].campid==1?(a['team_1_name']||b.camp_list[0].team_name):(a['team_2_name']||b.camp_list[1].team_name)
+            
+            
+            let short_name_turtle=turtle_kill_events[turtle_kill_events.length-1].campid==1?(a['team_1_short_name']||b.camp_list[0].team_simple_name):(a['team_2_short_name']||b.camp_list[1].team_simple_name)
+           
+            responseData.last_turtle_kill_team_logo=a['team_logo_for_lord_turtle']+short_name_turtle+'.png'
+           
+        }
+        if(lord_kill_events.length>0){
+      
+        responseData.last_lord_kill_team_name=lord_kill_events[lord_kill_events.length-1].campid==1?(a['team_1_name']||b.camp_list[0].team_name):(a['team_2_name']||b.camp_list[1].team_name)
+        
+      
+        let short_name_lord=lord_kill_events[lord_kill_events.length-1].campid==1?(a['team_1_short_name']||b.camp_list[0].team_simple_name):(a['team_2_short_name']||b.camp_list[1].team_simple_name)
+       
+        responseData.last_lord_kill_team_logo=a['team_logo_for_lord_turtle']+short_name_lord+'.png'
+
+        }
+        
        
     });
 //.get(mainurl)

@@ -111,6 +111,9 @@
                     <v-text-field prepend-icon="mdi-account-circle"
                     type="text" label="Gold Diff Path for Hud" v-model="hud_gold_diff_path"  placeholder="Gold Diff path HUD" id="authkey" required>
                     </v-text-field>
+                    <v-text-field prepend-icon="mdi-account-circle"
+                    type="text" label="Team Logo Path for Lord Turtle" v-model="team_logo_for_lord_turtle"  placeholder="team logo path for lord n turtle kill event" id="authkey" required>
+                    </v-text-field>
                     <p>{{hud_hit_link}}</p>
                                  <input type="hidden" readonly id="hud_hit_link"
                                                   :value="hud_hit_link" />
@@ -302,7 +305,7 @@
       // `this` points to the component instance
       if(process.client){
         console.log(window.location)
-        return `${window.location.origin}/hud?main_url=battledata&team_1_name=${this.team_1_name}&team_1_short_name=${this.team_1_short_name}&team_2_name=${this.team_2_name}&team_2_short_name=${this.team_2_short_name}&hoster=${this.hoster}&hud_team_logo_path=${this.hud_team_logo_path}&hud_gold_diff_path=${this.hud_gold_diff_path}&authkey=${this.auth_key}&battleid=${this.battle_id}`
+        return `${window.location.origin}/hud?team_logo_for_lord_turtle=${this.team_logo_for_lord_turtle}&team_1_name=${this.team_1_name}&team_1_short_name=${this.team_1_short_name}&team_2_name=${this.team_2_name}&team_2_short_name=${this.team_2_short_name}&hoster=${this.hoster}&hud_team_logo_path=${this.hud_team_logo_path}&hud_gold_diff_path=${this.hud_gold_diff_path}&authkey=${this.auth_key}&battleid=${this.battle_id}`
 
       }
       
@@ -364,6 +367,8 @@
 
               hud_team_logo_path:'',
               hud_gold_diff_path:'',
+              team_logo_for_lord_turtle:'',
+
               team_1_name:'',
               team_1_short_name:'',
               team_2_name:'',

@@ -26,7 +26,7 @@ export default async function (req, res, next) {
         103: "PAQUITO", 104: "GLOO", 105: "BEATRIX", 106: "PHOVEUS", 
         107: "NATAN", 108: "AULUS", 109: "AAMON", 110: "VALENTINA", 111: "EDITH", 
         112: "FLORYN", 113: "YIN", 114: "MELISSA", 115: "XAVIER", 116: "JULIAN",
-         117: "FREDRINN", 118: "JOY", 119: "ALOTT", 120: "ALOTT"}
+         117: "FREDRINN", 118: "JOY", 119: "ARLOTT", 120: "ARLOTT"}
     let responseData={};
     let paramString = req.url.split('?')[1];
     let a= JSON.parse('{"' + decodeURI(paramString)
@@ -54,7 +54,7 @@ export default async function (req, res, next) {
 
         //team1
         responseData.team_1_name=a['team_1_name']|| b.camp_list[0].team_name
-        responseData.team_1_logo= a['team_logo_path_1']+(a['team_1_name']|| b.camp_list[0].team_name)+'.png'
+        responseData.team_1_logo= a['team_logo_path_1']+(a['team_1_short_name']|| b.camp_list[0].team_simple_name)+'.png'
         responseData.team_1_short_name=a['team_1_short_name']|| b.camp_list[0].team_simple_name
        //team 1 player names
        responseData.team_1_player_1_name=await helper.name_finder(team_1_players[0].roleid,hoster)||team_1_players[0].name
@@ -150,7 +150,7 @@ export default async function (req, res, next) {
        //team2
 
        responseData.team_2_name=a['team_2_name']|| b.camp_list[1].team_name
-       responseData.team_2_logo= a['team_logo_path_1']+(a['team_2_name']|| b.camp_list[1].team_name)+'.png'
+       responseData.team_2_logo= a['team_logo_path_1']+(a['team_2_short_name']|| b.camp_list[1].team_simple_name)+'.png'
        responseData.team_2_short_name=a['team_2_short_name']|| b.camp_list[1].team_simple_name
       //team 2 player names
       responseData.team_2_player_1_name=await helper.name_finder(team_2_players[0].roleid,hoster)||team_2_players[0].name
@@ -273,6 +273,9 @@ export default async function (req, res, next) {
       
       responseData.team_1_total_purple_buff=b.camp_list[0].blue_buff_num
       responseData.team_2_total_purple_buff=b.camp_list[1].blue_buff_num
+      //new
+      responseData.team1Victory=win_camp==1?"Victory":""
+      responseData.team2Victory=win_camp==2?"Victory":""
 
 
        

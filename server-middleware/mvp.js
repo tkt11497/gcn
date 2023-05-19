@@ -26,7 +26,7 @@ export default async function (req, res, next) {
         103: "PAQUITO", 104: "GLOO", 105: "BEATRIX", 106: "PHOVEUS", 
         107: "NATAN", 108: "AULUS", 109: "AAMON", 110: "VALENTINA", 111: "EDITH", 
         112: "FLORYN", 113: "YIN", 114: "MELISSA", 115: "XAVIER", 116: "JULIAN",
-         117: "FREDRINN", 118: "JOY", 119: "ALOTT", 120: "ALOTT"}
+         117: "FREDRINN", 118: "JOY", 119: "ARLOTT", 120: "ARLOTT"}
     let responseData={};
     let paramString = req.url.split('?')[1];
     let a= JSON.parse('{"' + decodeURI(paramString)
@@ -51,14 +51,14 @@ export default async function (req, res, next) {
         console.log(win_camp_total_kda)
 
         responseData.winner_team_name=(win_camp==1?a['team_1_name']:a['team_2_name'])|| b.camp_list[win_camp-1].team_name
-        responseData.winner_team_logo= a['mvp_team_logo_path']+((win_camp==1?a['team_1_name']:a['team_2_name'])|| b.camp_list[win_camp-1].team_name)+'.png'
+        responseData.winner_team_logo= a['mvp_team_logo_path']+((win_camp==1?a['team_1_short_name']:a['team_2_short_name'])|| b.camp_list[win_camp-1].team_simple_name)+'.png'
         responseData.winner_team_short_name=(win_camp==1?a['team_1_short_name']:a['team_2_short_name'])|| b.camp_list[win_camp-1].team_simple_name
        //mvpplayer
        responseData.mvp_player_name=await helper.name_finder(mvp_player.roleid,hoster)||mvp_player.name
        responseData.mvp_player_photo= a['mvp_player_png_path']+mvp_player.roleid+'.png'
        responseData.mvp_player_kda=`${mvp_player.kill_num}/${mvp_player.dead_num}/${mvp_player.assist_num}`
        responseData.mvp_player_gpm=mvp_player.min_money
-       responseData.mvp_player_kill_percentage=(mvp_player.kda/win_camp_total_kda)*100
+       responseData.mvp_player_kill_percentage=Math.round((mvp_player.kda/win_camp_total_kda)*100)
        responseData.mvp_player_battlespell=a['mvp_battle_spell_path']+mvp_player.skillid+'.png'
        responseData.mvp_player_item_1=a['mvp_item_png_path']+(mvp_player.equip_list[0]||0)+'.png'
        responseData.mvp_player_item_2=a['mvp_item_png_path']+(mvp_player.equip_list[1]||0)+'.png'
