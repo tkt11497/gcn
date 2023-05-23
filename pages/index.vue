@@ -64,34 +64,34 @@
 
                                     <v-text-field label="Team Logo Png" prepend-icon="mdi-account-circle" type="text" 
                                     v-model="draft_logo_path" 
-                                    placeholder="C://mypc" id="name" required>
+                                    placeholder="C://mypc/" id="name" required>
                                     </v-text-field>
                                     
                          
                           
                                     <v-text-field  label="Path 1(Player  Photo Link)" type="text" prepend-icon="mdi-account-circle"
-                                    placeholder="E:\Pick Ban\Player" v-model="path_1" id="email" required>
+                                    placeholder="E:/Pick Ban/Player/" v-model="path_1" id="email" required>
                                     </v-text-field>
                                    
                                 
                                     <v-text-field  label="Path 2(No Light Link)" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="path_2" placeholder="No Light\10001.png" id="phone" required>
+                                    v-model="path_2" placeholder="/No Light/10001.png" id="phone" required>
                                     </v-text-field>
                                      <v-text-field  label="Path 3(Light Link)" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="path_3" placeholder="Light\10001.png" id="phone" required>
+                                    v-model="path_3" placeholder="/Light/10001.png" id="phone" required>
                                     </v-text-field>
                                     <v-text-field  label="Path 4(Hero Link)" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="path_4" placeholder="E:\Pick Ban\Hero" id="phone" required>
+                                    v-model="path_4" placeholder="E:/Pick Ban/Hero/" id="phone" required>
                                     </v-text-field>
                                     <v-text-field  label="Path 5(Hero Image Sequence)" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="path_5" placeholder="10001.png" id="phone" required>
+                                    v-model="path_5" placeholder="/10001.png" id="phone" required>
                                     </v-text-field>
                                     <v-text-field  label="Path 6(Before Banning)" type="text" prepend-icon="mdi-account-circle"
                                     v-model="path_6" 
-                                    placeholder="E:\Pick Ban\before\10001.png" id="phone" required>
+                                    placeholder="E:/Pick Ban/before/10001.png" id="phone" required>
                                     </v-text-field>
                                     <v-text-field  label="Path 7(after Banning)" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="path_7" placeholder="E:\Pick Ban" id="phone" required>
+                                    v-model="path_7" placeholder="E:/Pick Ban/" id="phone" required>
                                     </v-text-field>
                                   
                                   
@@ -127,7 +127,7 @@
 
                                     <v-text-field label="Hero Png" prepend-icon="mdi-account-circle" type="text" 
                                     v-model="hero_png_path" 
-                                    placeholder="C://mypc" id="name" required>
+                                    placeholder="C://mypc/" id="name" required>
                                     </v-text-field>
                                     <v-text-field label="Hero Png For Gold Diff" prepend-icon="mdi-account-circle" type="text" 
                                     v-model="hero_png_path_for_gold_diff" 
@@ -137,12 +137,12 @@
                          
                           
                                     <v-text-field  label="Item Png Path" type="text" prepend-icon="mdi-account-circle"
-                                    placeholder="C://mypc" v-model="item_png_path" id="email" required>
+                                    placeholder="C://mypc/" v-model="item_png_path" id="email" required>
                                     </v-text-field>
                                    
                                 
                                     <v-text-field  label="Gold Difference Png" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="gold_diff_path" placeholder="C://mypc" id="phone" required>
+                                    v-model="gold_diff_path" placeholder="C://mypc/" id="phone" required>
                                     </v-text-field>
                                      
                                   
@@ -157,26 +157,26 @@
             <v-card tile shaped style="padding:20px;margin-bottom:40px">
                     <h3 style="margin-bottom:15px">MVP</h3>
                                   <v-text-field  label="Player Png Path" type="text" prepend-icon="mdi-account-circle"
-                                    placeholder="C://mypc" v-model="mvp_player_png_path" id="email" required>
+                                    placeholder="C://mypc/" v-model="mvp_player_png_path" id="email" required>
                                     </v-text-field>
 
                                     <v-text-field label="Hero Png" prepend-icon="mdi-account-circle" type="text" 
                                     v-model="mvp_hero_png_path" 
-                                    placeholder="C://mypc" id="name" required>
+                                    placeholder="C://mypc/" id="name" required>
                                     </v-text-field>
                                     
                          
                           
                                     <v-text-field  label="Item Png Path" type="text" prepend-icon="mdi-account-circle"
-                                    placeholder="C://mypc" v-model="mvp_item_png_path" id="email" required>
+                                    placeholder="C://mypc/" v-model="mvp_item_png_path" id="email" required>
                                     </v-text-field>
                                    
                                 
                                     <v-text-field  label="Team Logo Png" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="mvp_team_logo_path" placeholder="C://mypc" id="phone" required>
+                                    v-model="mvp_team_logo_path" placeholder="C://mypc/" id="phone" required>
                                     </v-text-field>
                                     <v-text-field  label="Battle Spell Png" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="mvp_battle_spell_path" placeholder="C://mypc" id="phone" required>
+                                    v-model="mvp_battle_spell_path" placeholder="C://mypc/" id="phone" required>
                                     </v-text-field>
                                      
                                   
@@ -191,32 +191,32 @@
             <v-card tile shaped style="padding:20px;margin-bottom:40px">
                     <h3 style="margin-bottom:15px">Match Result 1</h3>
                                   <v-text-field  label="Player Png Path" type="text" prepend-icon="mdi-account-circle"
-                                    placeholder="C://mypc" v-model="player_png_path_1" id="email" required>
+                                    placeholder="C://mypc/" v-model="player_png_path_1" id="email" required>
                                     </v-text-field>
 
                                     <v-text-field label="Hero Png" prepend-icon="mdi-account-circle" type="text" 
                                     v-model="hero_png_path_1" 
-                                    placeholder="C://mypc" id="name" required>
+                                    placeholder="C://mypc/" id="name" required>
                                     </v-text-field>
                                     
                          
                           
                                     <v-text-field  label="Item Png Path" type="text" prepend-icon="mdi-account-circle"
-                                    placeholder="C://mypc" v-model="item_png_path_1" id="email" required>
+                                    placeholder="C://mypc/" v-model="item_png_path_1" id="email" required>
                                     </v-text-field>
                                    
                                 
                                     <v-text-field  label="Team Logo Png" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="team_logo_path_1" placeholder="C://mypc" id="phone" required>
+                                    v-model="team_logo_path_1" placeholder="C://mypc/" id="phone" required>
                                     </v-text-field>
                                     <v-text-field  label="Battle Spell Png" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="battle_spell_path_1" placeholder="C://mypc" id="phone" required>
+                                    v-model="battle_spell_path_1" placeholder="C://mypc/" id="phone" required>
                                     </v-text-field>
                                      <v-text-field  label="Rune Png path" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="rune_path_1" placeholder="C://mypc" id="phone" required>
+                                    v-model="rune_path_1" placeholder="C://mypc/" id="phone" required>
                                     </v-text-field>
                                      <v-text-field  label="Role Png path" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="role_path_1" placeholder="C://mypc" id="phone" required>
+                                    v-model="role_path_1" placeholder="C://mypc/" id="phone" required>
                                     </v-text-field>
                                      
                                   
@@ -232,31 +232,31 @@
                     <h3 style="margin-bottom:15px">Match Result 2</h3>
                                   <v-text-field label="Hero Png" prepend-icon="mdi-account-circle" type="text" 
                                     v-model="hero_png_path_2" 
-                                    placeholder="C://mypc" id="name" required>
+                                    placeholder="C://mypc/" id="name" required>
                                     </v-text-field>
 
                                   <v-text-field  label="Player Png Path" type="text" prepend-icon="mdi-account-circle"
-                                    placeholder="C://mypc" v-model="player_png_path_2" id="email" required>
+                                    placeholder="C://mypc/" v-model="player_png_path_2" id="email" required>
                                     </v-text-field>
 
                                   <v-text-field  label="Role Png path" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="role_path_2" placeholder="C://mypc" id="phone" required>
+                                    v-model="role_path_2" placeholder="C://mypc/" id="phone" required>
                                     </v-text-field>
 
                                     
                                     <v-text-field  label="Damage Deal png" type="text" prepend-icon="mdi-account-circle"
-                                    placeholder="C://mypc" v-model="damage_deal_png" id="email" required>
+                                    placeholder="C://mypc/" v-model="damage_deal_png" id="email" required>
                                     </v-text-field>
                                    
                                 
                                     <v-text-field  label="Damage Taken Png" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="damage_taken_png" placeholder="C://mypc" id="phone" required>
+                                    v-model="damage_taken_png" placeholder="C://mypc/" id="phone" required>
                                     </v-text-field>
                                     <v-text-field  label="Turret Damage Png" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="turret_damage_png" placeholder="C://mypc" id="phone" required>
+                                    v-model="turret_damage_png" placeholder="C://mypc/" id="phone" required>
                                     </v-text-field>
                                      <v-text-field  label="Turtle Lord Turret png" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="lord_turtle_turret_png" placeholder="C://mypc" id="phone" required>
+                                    v-model="lord_turtle_turret_png" placeholder="C://mypc/" id="phone" required>
                                     </v-text-field>
                                      
                                      

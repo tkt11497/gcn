@@ -85,67 +85,67 @@ export default async function (req, res, next) {
 //-------------team1 player1-----------------------    
         //banning||picking
         if(b.camp_list[0].player_list[0].banning==true||b.camp_list[0].player_list[0].picking==true){
-            responseData.team_1_player_1_png=`${a['path_1']}\\${b.camp_list[0].player_list[0].roleid}\\${a['path_3']}`
+            responseData.team_1_player_1_png=`${a['path_1']}${b.camp_list[0].player_list[0].roleid}${a['path_3']}`
         }
         //after picking
         else if(b.camp_list[0].player_list[0].picking==false&&b.camp_list[0].player_list[0].heroid){
-            responseData.team_1_player_1_png=`${a['path_4']}\\${b.camp_list[0].player_list[0].roleid}\\${a['path_5']}`
+            responseData.team_1_player_1_png=`${a['path_4']}${b.camp_list[0].player_list[0].roleid}${a['path_5']}`
         }
         //after banning and before banning
         else{
-            responseData.team_1_player_1_png=`${a['path_1']}\\${b.camp_list[0].player_list[0].roleid}\\${a['path_2']}`
+            responseData.team_1_player_1_png=`${a['path_1']}${b.camp_list[0].player_list[0].roleid}${a['path_2']}`
         }
 //-------------team1 player2-----------------------    
         if(b.camp_list[0].player_list[1].banning==true||b.camp_list[0].player_list[1].picking==true){
-            responseData.team_1_player_2_png=`${a['path_1']}\\${b.camp_list[0].player_list[1].roleid}\\${a['path_3']}`
+            responseData.team_1_player_2_png=`${a['path_1']}${b.camp_list[0].player_list[1].roleid}${a['path_3']}`
         }
         //after picking
         else if(b.camp_list[0].player_list[1].picking==false&&b.camp_list[0].player_list[1].heroid){
-            responseData.team_1_player_2_png=`${a['path_4']}\\${b.camp_list[0].player_list[1].roleid}\\${a['path_5']}`
+            responseData.team_1_player_2_png=`${a['path_4']}${b.camp_list[0].player_list[1].roleid}${a['path_5']}`
         }
         //after banning and before banning
         else{
-            responseData.team_1_player_2_png=`${a['path_1']}\\${b.camp_list[0].player_list[1].roleid}\\${a['path_2']}`
+            responseData.team_1_player_2_png=`${a['path_1']}${b.camp_list[0].player_list[1].roleid}${a['path_2']}`
         }
 //-------------team1 player3-----------------------    
         if(b.camp_list[0].player_list[2].banning==true||b.camp_list[0].player_list[2].picking==true){
-            responseData.team_1_player_3_png=`${a['path_1']}\\${b.camp_list[0].player_list[2].roleid}\\${a['path_3']}`
+            responseData.team_1_player_3_png=`${a['path_1']}${b.camp_list[0].player_list[2].roleid}${a['path_3']}`
         }
         //after picking
         else if(b.camp_list[0].player_list[2].picking==false&&b.camp_list[0].player_list[2].heroid){
-            responseData.team_1_player_3_png=`${a['path_4']}\\${b.camp_list[0].player_list[2].roleid}\\${a['path_5']}`
+            responseData.team_1_player_3_png=`${a['path_4']}${b.camp_list[0].player_list[2].roleid}${a['path_5']}`
         }
         //after banning and before banning
         else{
-            responseData.team_1_player_3_png=`${a['path_1']}\\${b.camp_list[0].player_list[2].roleid}\\${a['path_2']}`
+            responseData.team_1_player_3_png=`${a['path_1']}${b.camp_list[0].player_list[2].roleid}${a['path_2']}`
         }
 
 
 //-------------team1 player4-----------------------    
         if(b.camp_list[0].player_list[3].banning==true||b.camp_list[0].player_list[3].picking==true){
-            responseData.team_1_player_4_png=`${a['path_1']}\\${b.camp_list[0].player_list[3].roleid}\\${a['path_3']}`
+            responseData.team_1_player_4_png=`${a['path_1']}${b.camp_list[0].player_list[3].roleid}${a['path_3']}`
         }
         //after picking
         else if(b.camp_list[0].player_list[3].picking==false&&b.camp_list[0].player_list[3].heroid){
-            responseData.team_1_player_4_png=`${a['path_4']}\\${b.camp_list[0].player_list[3].roleid}\\${a['path_5']}`
+            responseData.team_1_player_4_png=`${a['path_4']}${b.camp_list[0].player_list[3].roleid}${a['path_5']}`
         }
         //after banning and before banning
         else{
-            responseData.team_1_player_4_png=`${a['path_1']}\\${b.camp_list[0].player_list[3].roleid}\\${a['path_2']}`
+            responseData.team_1_player_4_png=`${a['path_1']}${b.camp_list[0].player_list[3].roleid}${a['path_2']}`
         }
 
 
 //-------------team1 player5-----------------------    
         if(b.camp_list[0].player_list[4].banning==true||b.camp_list[0].player_list[4].picking==true){
-            responseData.team_1_player_5_png=`${a['path_1']}\\${b.camp_list[0].player_list[4].roleid}\\${a['path_3']}`
+            responseData.team_1_player_5_png=`${a['path_1']}${b.camp_list[0].player_list[4].roleid}${a['path_3']}`
         }
         //after picking
         else if(b.camp_list[0].player_list[4].picking==false&&b.camp_list[0].player_list[4].heroid){
-            responseData.team_1_player_5_png=`${a['path_4']}\\${b.camp_list[0].player_list[4].roleid}\\${a['path_5']}`
+            responseData.team_1_player_5_png=`${a['path_4']}${b.camp_list[0].player_list[4].roleid}${a['path_5']}`
         }
         //after banning and before banning
         else{
-            responseData.team_1_player_5_png=`${a['path_1']}\\${b.camp_list[0].player_list[4].roleid}\\${a['path_2']}`
+            responseData.team_1_player_5_png=`${a['path_1']}${b.camp_list[0].player_list[4].roleid}${a['path_2']}`
         }
 
 
@@ -153,82 +153,82 @@ export default async function (req, res, next) {
 //-------------team2 player1-----------------------    
         //banning||picking
         if(b.camp_list[1].player_list[0].banning==true||b.camp_list[1].player_list[0].picking==true){
-            responseData.team_2_player_1_png=`${a['path_1']}\\${b.camp_list[1].player_list[0].roleid}\\${a['path_3']}`
+            responseData.team_2_player_1_png=`${a['path_1']}${b.camp_list[1].player_list[0].roleid}${a['path_3']}`
         }
         //after picking
         else if(b.camp_list[1].player_list[0].picking==false&&b.camp_list[1].player_list[0].heroid){
-            responseData.team_2_player_1_png=`${a['path_4']}\\${b.camp_list[1].player_list[0].roleid}\\${a['path_5']}`
+            responseData.team_2_player_1_png=`${a['path_4']}${b.camp_list[1].player_list[0].roleid}${a['path_5']}`
         }
         //after banning and before banning
         else{
-            responseData.team_2_player_1_png=`${a['path_1']}\\${b.camp_list[1].player_list[0].roleid}\\${a['path_2']}`
+            responseData.team_2_player_1_png=`${a['path_1']}${b.camp_list[1].player_list[0].roleid}${a['path_2']}`
         }
 //-------------team2 player2-----------------------    
         if(b.camp_list[1].player_list[1].banning==true||b.camp_list[1].player_list[1].picking==true){
-            responseData.team_2_player_2_png=`${a['path_1']}\\${b.camp_list[1].player_list[1].roleid}\\${a['path_3']}`
+            responseData.team_2_player_2_png=`${a['path_1']}${b.camp_list[1].player_list[1].roleid}${a['path_3']}`
         }
         //after picking
         else if(b.camp_list[1].player_list[1].picking==false&&b.camp_list[1].player_list[1].heroid){
-            responseData.team_2_player_2_png=`${a['path_4']}\\${b.camp_list[1].player_list[1].roleid}\\${a['path_5']}`
+            responseData.team_2_player_2_png=`${a['path_4']}${b.camp_list[1].player_list[1].roleid}${a['path_5']}`
         }
         //after banning and before banning
         else{
-            responseData.team_2_player_2_png=`${a['path_1']}\\${b.camp_list[1].player_list[1].roleid}\\${a['path_2']}`
+            responseData.team_2_player_2_png=`${a['path_1']}${b.camp_list[1].player_list[1].roleid}${a['path_2']}`
         }
 //-------------team2 player3-----------------------    
         if(b.camp_list[1].player_list[2].banning==true||b.camp_list[1].player_list[2].picking==true){
-            responseData.team_2_player_3_png=`${a['path_1']}\\${b.camp_list[1].player_list[2].roleid}\\${a['path_3']}`
+            responseData.team_2_player_3_png=`${a['path_1']}${b.camp_list[1].player_list[2].roleid}${a['path_3']}`
         }
         //after picking
         else if(b.camp_list[1].player_list[2].picking==false&&b.camp_list[1].player_list[2].heroid){
-            responseData.team_2_player_3_png=`${a['path_4']}\\${b.camp_list[1].player_list[2].roleid}\\${a['path_5']}`
+            responseData.team_2_player_3_png=`${a['path_4']}${b.camp_list[1].player_list[2].roleid}${a['path_5']}`
         }
         //after banning and before banning
         else{
-            responseData.team_2_player_3_png=`${a['path_1']}\\${b.camp_list[1].player_list[2].roleid}\\${a['path_2']}`
+            responseData.team_2_player_3_png=`${a['path_1']}${b.camp_list[1].player_list[2].roleid}${a['path_2']}`
         }
 
 
 //-------------team2 player4-----------------------    
         if(b.camp_list[1].player_list[3].banning==true||b.camp_list[1].player_list[3].picking==true){
-            responseData.team_2_player_4_png=`${a['path_1']}\\${b.camp_list[1].player_list[3].roleid}\\${a['path_3']}`
+            responseData.team_2_player_4_png=`${a['path_1']}${b.camp_list[1].player_list[3].roleid}${a['path_3']}`
         }
         //after picking
         else if(b.camp_list[1].player_list[3].picking==false&&b.camp_list[1].player_list[3].heroid){
-            responseData.team_2_player_4_png=`${a['path_4']}\\${b.camp_list[1].player_list[3].roleid}\\${a['path_5']}`
+            responseData.team_2_player_4_png=`${a['path_4']}${b.camp_list[1].player_list[3].roleid}${a['path_5']}`
         }
         //after banning and before banning
         else{
-            responseData.team_2_player_4_png=`${a['path_1']}\\${b.camp_list[1].player_list[3].roleid}\\${a['path_2']}`
+            responseData.team_2_player_4_png=`${a['path_1']}${b.camp_list[1].player_list[3].roleid}${a['path_2']}`
         }
 
 
 //-------------team2 player5-----------------------    
         if(b.camp_list[1].player_list[4].banning==true||b.camp_list[1].player_list[4].picking==true){
-            responseData.team_2_player_5_png=`${a['path_1']}\\${b.camp_list[1].player_list[4].roleid}\\${a['path_3']}`
+            responseData.team_2_player_5_png=`${a['path_1']}${b.camp_list[1].player_list[4].roleid}${a['path_3']}`
         }
         //after picking
         else if(b.camp_list[1].player_list[4].picking==false&&b.camp_list[1].player_list[4].heroid){
-            responseData.team_2_player_5_png=`${a['path_4']}\\${b.camp_list[1].player_list[4].roleid}\\${a['path_5']}`
+            responseData.team_2_player_5_png=`${a['path_4']}${b.camp_list[1].player_list[4].roleid}${a['path_5']}`
         }
         //after banning and before banning
         else{
-            responseData.team_2_player_5_png=`${a['path_1']}\\${b.camp_list[1].player_list[4].roleid}\\${a['path_2']}`
+            responseData.team_2_player_5_png=`${a['path_1']}${b.camp_list[1].player_list[4].roleid}${a['path_2']}`
         }
 
 
 //-----------------------------------------------------------------------------------------------
-        responseData.team_1_ban_1=b.camp_list[0].player_list[0].ban_heroid?a['path_6']:`${a['path_7']}\\${b.camp_list[0].player_list[0].ban_heroid}.png`
-        responseData.team_1_ban_2=b.camp_list[0].player_list[1].ban_heroid?a['path_6']:`${a['path_7']}\\${b.camp_list[0].player_list[1].ban_heroid}.png`
-        responseData.team_1_ban_3=b.camp_list[0].player_list[2].ban_heroid?a['path_6']:`${a['path_7']}\\${b.camp_list[0].player_list[2].ban_heroid}.png`
-        responseData.team_1_ban_4=b.camp_list[0].player_list[3].ban_heroid?a['path_6']:`${a['path_7']}\\${b.camp_list[0].player_list[3].ban_heroid}.png`
-        responseData.team_1_ban_5=b.camp_list[0].player_list[4].ban_heroid?a['path_6']:`${a['path_7']}\\${b.camp_list[0].player_list[4].ban_heroid}.png`
+        responseData.team_1_ban_1=b.camp_list[0].player_list[0].ban_heroid?`${a['path_7']}${b.camp_list[0].player_list[0].ban_heroid}.png`:a['path_6']
+        responseData.team_1_ban_2=b.camp_list[0].player_list[1].ban_heroid?`${a['path_7']}${b.camp_list[0].player_list[1].ban_heroid}.png`:a['path_6']
+        responseData.team_1_ban_3=b.camp_list[0].player_list[2].ban_heroid?`${a['path_7']}${b.camp_list[0].player_list[2].ban_heroid}.png`:a['path_6']
+        responseData.team_1_ban_4=b.camp_list[0].player_list[3].ban_heroid?`${a['path_7']}${b.camp_list[0].player_list[3].ban_heroid}.png`:a['path_6']
+        responseData.team_1_ban_5=b.camp_list[0].player_list[4].ban_heroid?`${a['path_7']}${b.camp_list[0].player_list[4].ban_heroid}.png`:a['path_6']
         
-        responseData.team_2_ban_6=b.camp_list[1].player_list[0].ban_heroid?a['path_6']:`${a['path_7']}\\${b.camp_list[1].player_list[0].ban_heroid}.png`
-        responseData.team_2_ban_7=b.camp_list[1].player_list[1].ban_heroid?a['path_6']:`${a['path_7']}\\${b.camp_list[1].player_list[1].ban_heroid}.png`
-        responseData.team_2_ban_8=b.camp_list[1].player_list[2].ban_heroid?a['path_6']:`${a['path_7']}\\${b.camp_list[1].player_list[2].ban_heroid}.png`
-        responseData.team_2_ban_9=b.camp_list[1].player_list[3].ban_heroid?a['path_6']:`${a['path_7']}\\${b.camp_list[1].player_list[3].ban_heroid}.png`
-        responseData.team_2_ban_10=b.camp_list[1].player_list[4].ban_heroid?a['path_6']:`${a['path_7']}\\${b.camp_list[1].player_list[4].ban_heroid}.png`
+        responseData.team_2_ban_6=b.camp_list[1].player_list[0].ban_heroid?`${a['path_7']}${b.camp_list[1].player_list[0].ban_heroid}.png`:a['path_6']
+        responseData.team_2_ban_7=b.camp_list[1].player_list[1].ban_heroid?`${a['path_7']}${b.camp_list[1].player_list[1].ban_heroid}.png`:a['path_6']
+        responseData.team_2_ban_8=b.camp_list[1].player_list[2].ban_heroid?`${a['path_7']}${b.camp_list[1].player_list[2].ban_heroid}.png`:a['path_6']
+        responseData.team_2_ban_9=b.camp_list[1].player_list[3].ban_heroid?`${a['path_7']}${b.camp_list[1].player_list[3].ban_heroid}.png`:a['path_6']
+        responseData.team_2_ban_10=b.camp_list[1].player_list[4].ban_heroid?`${a['path_7']}${b.camp_list[1].player_list[4].ban_heroid}.png`:a['path_6']
       
       
 
