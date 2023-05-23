@@ -69,28 +69,29 @@
                                     
                          
                           
-                                    <v-text-field  label="Player Png" type="text" prepend-icon="mdi-account-circle"
-                                    placeholder="C://mypc" v-model="draft_player_path" id="email" required>
+                                    <v-text-field  label="Path 1(Player  Photo Link)" type="text" prepend-icon="mdi-account-circle"
+                                    placeholder="E:\Pick Ban\Player" v-model="path_1" id="email" required>
                                     </v-text-field>
                                    
                                 
-                                    <v-text-field  label="Pick Hero Png" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="draft_hero_path" placeholder="C://mypc" id="phone" required>
+                                    <v-text-field  label="Path 2(No Light Link)" type="text" prepend-icon="mdi-account-circle"
+                                    v-model="path_2" placeholder="No Light\10001.png" id="phone" required>
                                     </v-text-field>
-                                     <v-text-field  label="Ban Hero Png" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="draft_hero_path_ban" placeholder="C://mypc" id="phone" required>
+                                     <v-text-field  label="Path 3(Light Link)" type="text" prepend-icon="mdi-account-circle"
+                                    v-model="path_3" placeholder="Light\10001.png" id="phone" required>
                                     </v-text-field>
-                                    <v-text-field  label="Picking true Url" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="pick_true_url" placeholder="C://mypc//fullpath" id="phone" required>
+                                    <v-text-field  label="Path 4(Hero Link)" type="text" prepend-icon="mdi-account-circle"
+                                    v-model="path_4" placeholder="E:\Pick Ban\Hero" id="phone" required>
                                     </v-text-field>
-                                    <v-text-field  label="Picking false Url" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="pick_false_url" placeholder="C://mypc//fullpath" id="phone" required>
+                                    <v-text-field  label="Path 5(Hero Image Sequence)" type="text" prepend-icon="mdi-account-circle"
+                                    v-model="path_5" placeholder="10001.png" id="phone" required>
                                     </v-text-field>
-                                    <v-text-field  label="Ban true Url" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="ban_true_url" placeholder="C://mypc//fullpath" id="phone" required>
+                                    <v-text-field  label="Path 6(Before Banning)" type="text" prepend-icon="mdi-account-circle"
+                                    v-model="path_6" 
+                                    placeholder="E:\Pick Ban\before\10001.png" id="phone" required>
                                     </v-text-field>
-                                    <v-text-field  label="Ban false Url" type="text" prepend-icon="mdi-account-circle"
-                                    v-model="ban_false_url" placeholder="C://mypc//fullpath" id="phone" required>
+                                    <v-text-field  label="Path 7(after Banning)" type="text" prepend-icon="mdi-account-circle"
+                                    v-model="path_7" placeholder="E:\Pick Ban" id="phone" required>
                                     </v-text-field>
                                   
                                   
@@ -296,7 +297,7 @@
       // `this` points to the component instance &team_1_name=${this.team_1_name}&team_1_short_name=${this.team_1_short_name}&team_2_name=${this.team_2_name}&team_2_short_name=${this.team_2_short_name}
       if(process.client){
         console.log(window.location)
-        return `${window.location.origin}/draft?main_url=battledata&team_1_name=${this.team_1_name}&team_1_short_name=${this.team_1_short_name}&team_2_name=${this.team_2_name}&team_2_short_name=${this.team_2_short_name}&hoster=${this.hoster}&draft_logo_path=${this.draft_logo_path}&draft_player_path=${this.draft_player_path}&draft_hero_path=${this.draft_hero_path}&authkey=${this.auth_key}&battleid=${this.battle_id}&draft_hero_path_ban=${this.draft_hero_path_ban}&pick_true_url=${this.pick_true_url}&pick_false_url=${this.pick_false_url}&ban_true_url=${this.ban_true_url}&ban_false_url=${this.ban_false_url}`
+        return `${window.location.origin}/draft?main_url=battledata&team_1_name=${this.team_1_name}&team_1_short_name=${this.team_1_short_name}&team_2_name=${this.team_2_name}&team_2_short_name=${this.team_2_short_name}&hoster=${this.hoster}&draft_logo_path=${this.draft_logo_path}&path_1=${this.path_1}&path_2=${this.path_2}&authkey=${this.auth_key}&battleid=${this.battle_id}&path_3=${this.path_3}&path_4=${this.path_4}&path_5=${this.path_5}&path_6=${this.path_6}&path_7=${this.path_7}`
 
       }
       
@@ -357,13 +358,13 @@
               auth_key:'ee3af4c1a0963e7f052754e66bcb7b6f',
               battle_id:"616494629484529841",
               draft_logo_path:'',
-              draft_player_path:'',
-              draft_hero_path:'',
-              draft_hero_path_ban:'',
-              pick_true_url:'',
-              pick_false_url:'',
-              ban_true_url:'',
-              ban_false_url:'',
+              path_1:'',
+              path_2:'',
+              path_3:'',
+              path_4:'',
+              path_5:'',
+              path_6:'',
+              path_7:'',
 
               hud_team_logo_path:'',
               hud_gold_diff_path:'',

@@ -37,178 +37,204 @@ export default async function (req, res, next) {
         responseData.team_1_name=a['team_1_name']||b.camp_list[0].team_name
         responseData.team_1_short_name=a['team_1_short_name']||b.camp_list[0].team_simple_name
         responseData.team_1_logo=a['draft_logo_path']+(a['team_1_short_name']||b.camp_list[0].team_simple_name)+'.png'
+        //team 2 name n logo
+        responseData.team_2_name=a['team_2_name']||b.camp_list[1].team_name
+        responseData.team_2_short_name=a['team_2_short_name']||b.camp_list[1].team_simple_name
+        responseData.team_2_logo=a['draft_logo_path']+(a['team_2_short_name']||b.camp_list[1].team_simple_name)+'.png'
 
         responseData.team_1_player_1_name=await helper.name_finder(b.camp_list[0].player_list[0].roleid,hoster)||b.camp_list[0].player_list[0].name
         responseData.team_1_player_2_name=await helper.name_finder(b.camp_list[0].player_list[1].roleid,hoster)||b.camp_list[0].player_list[1].name
         responseData.team_1_player_3_name=await helper.name_finder(b.camp_list[0].player_list[2].roleid,hoster)||b.camp_list[0].player_list[2].name
         responseData.team_1_player_4_name=await helper.name_finder(b.camp_list[0].player_list[3].roleid,hoster)||b.camp_list[0].player_list[3].name
         responseData.team_1_player_5_name=await helper.name_finder(b.camp_list[0].player_list[4].roleid,hoster)||b.camp_list[0].player_list[4].name
-
-        responseData.team_1_player_1_png=a['draft_player_path']+b.camp_list[0].player_list[0].roleid+'.png'
-        responseData.team_1_player_2_png=a['draft_player_path']+b.camp_list[0].player_list[1].roleid+'.png'
-        responseData.team_1_player_3_png=a['draft_player_path']+b.camp_list[0].player_list[2].roleid+'.png'
-        responseData.team_1_player_4_png=a['draft_player_path']+b.camp_list[0].player_list[3].roleid+'.png'
-        responseData.team_1_player_5_png=a['draft_player_path']+b.camp_list[0].player_list[4].roleid+'.png'
-
-        responseData.team_1_player_1_pick_hero_name=hero_list[b.camp_list[0].player_list[0].heroid]||''
-        responseData.team_1_player_2_pick_hero_name=hero_list[b.camp_list[0].player_list[1].heroid]||''
-        responseData.team_1_player_3_pick_hero_name=hero_list[b.camp_list[0].player_list[2].heroid]||''
-        responseData.team_1_player_4_pick_hero_name=hero_list[b.camp_list[0].player_list[3].heroid]||''
-        responseData.team_1_player_5_pick_hero_name=hero_list[b.camp_list[0].player_list[4].heroid]||''
-
-        //b.camp_list[0].player_list[0].picking==true?a['pick_trues_url']:a['pick_false_url']
-        //b.camp_list[1].player_list[0].picking==true?pickingurl:pciking==false&&heroid!=null?heropng:pickfasleurl
-        responseData.team_1_player_1_pick_hero_png=b.camp_list[0].player_list[0].picking==true?
-        a['pick_true_url']:b.camp_list[0].player_list[0].picking==false&&b.camp_list[0].player_list[0].heroid?
-        a['draft_hero_path']+b.camp_list[0].player_list[0].heroid+'.png':a['pick_false_url']
-
-        //----
-        responseData.team_1_player_2_pick_hero_png=b.camp_list[0].player_list[1].picking==true?
-        a['pick_true_url']:b.camp_list[0].player_list[1].picking==false&&b.camp_list[0].player_list[1].heroid?
-        a['draft_hero_path']+b.camp_list[0].player_list[1].heroid+'.png':a['pick_false_url']
-        //---
-        responseData.team_1_player_3_pick_hero_png=b.camp_list[0].player_list[2].picking==true?
-        a['pick_true_url']:b.camp_list[0].player_list[2].picking==false&&b.camp_list[0].player_list[2].heroid?
-        a['draft_hero_path']+b.camp_list[0].player_list[2].heroid+'.png':a['pick_false_url']
-        //--
-        responseData.team_1_player_4_pick_hero_png=b.camp_list[0].player_list[3].picking==true?
-        a['pick_true_url']:b.camp_list[0].player_list[3].picking==false&&b.camp_list[0].player_list[3].heroid?
-        a['draft_hero_path']+b.camp_list[0].player_list[3].heroid+'.png':a['pick_false_url']
-        //---
-        responseData.team_1_player_5_pick_hero_png=b.camp_list[0].player_list[4].picking==true?
-        a['pick_true_url']:b.camp_list[0].player_list[4].picking==false&&b.camp_list[0].player_list[4].heroid?
-        a['draft_hero_path']+b.camp_list[0].player_list[4].heroid+'.png':a['pick_false_url']
-
-        responseData.team_1_player_1_ban_hero_name=hero_list[b.camp_list[0].player_list[0].ban_heroid]||''
-        responseData.team_1_player_2_ban_hero_name=hero_list[b.camp_list[0].player_list[1].ban_heroid]||''
-        responseData.team_1_player_3_ban_hero_name=hero_list[b.camp_list[0].player_list[2].ban_heroid]||''
-        responseData.team_1_player_4_ban_hero_name=hero_list[b.camp_list[0].player_list[3].ban_heroid]||''
-        responseData.team_1_player_5_ban_hero_name=hero_list[b.camp_list[0].player_list[4].ban_heroid]||''
-        //ban
-
-        responseData.team_1_player_1_ban_hero_png=b.camp_list[0].player_list[0].banning==true?
-        a['ban_true_url']:b.camp_list[0].player_list[0].banning==false&&b.camp_list[0].player_list[0].heroid?
-        a['draft_hero_path_ban']+b.camp_list[0].player_list[0].ban_heroid+'.png':a['ban_false_url']
-        //----
-        responseData.team_1_player_2_ban_hero_png=b.camp_list[0].player_list[1].banning==true?
-        a['ban_true_url']:b.camp_list[0].player_list[1].banning==false&&b.camp_list[0].player_list[1].heroid?
-        a['draft_hero_path_ban']+b.camp_list[0].player_list[1].ban_heroid+'.png':a['ban_false_url']
-        //----
-        responseData.team_1_player_3_ban_hero_png=b.camp_list[0].player_list[2].banning==true?
-        a['ban_true_url']:b.camp_list[0].player_list[2].banning==false&&b.camp_list[0].player_list[2].heroid?
-        a['draft_hero_path_ban']+b.camp_list[0].player_list[2].ban_heroid+'.png':a['ban_false_url']
-        //----
-        responseData.team_1_player_4_ban_hero_png=b.camp_list[0].player_list[3].banning==true?
-        a['ban_true_url']:b.camp_list[0].player_list[3].banning==false&&b.camp_list[0].player_list[3].heroid?
-        a['draft_hero_path_ban']+b.camp_list[0].player_list[3].ban_heroid+'.png':a['ban_false_url']
-        //----
-        responseData.team_1_player_5_ban_hero_png=b.camp_list[0].player_list[4].banning==true?
-        a['ban_true_url']:b.camp_list[0].player_list[4].banning==false&&b.camp_list[0].player_list[4].heroid?
-        a['draft_hero_path_ban']+b.camp_list[0].player_list[4].ban_heroid+'.png':a['ban_false_url']
-
-
-
-
-
-        responseData.team_2_name=a['team_2_name']||b.camp_list[1].team_name
-        responseData.team_2_short_name=a['team_2_short_name']||b.camp_list[1].team_simple_name
-        responseData.team_2_logo=a['draft_logo_path']+(a['team_2_short_name']||b.camp_list[1].team_simple_name)+'.png'
-
+        //team 2 players name   
         responseData.team_2_player_1_name=await helper.name_finder(b.camp_list[1].player_list[0].roleid,hoster)||b.camp_list[1].player_list[0].name
         responseData.team_2_player_2_name=await helper.name_finder(b.camp_list[1].player_list[1].roleid,hoster)||b.camp_list[1].player_list[1].name
         responseData.team_2_player_3_name=await helper.name_finder(b.camp_list[1].player_list[2].roleid,hoster)||b.camp_list[1].player_list[2].name
         responseData.team_2_player_4_name=await helper.name_finder(b.camp_list[1].player_list[3].roleid,hoster)||b.camp_list[1].player_list[3].name
         responseData.team_2_player_5_name=await helper.name_finder(b.camp_list[1].player_list[4].roleid,hoster)||b.camp_list[1].player_list[4].name
-
-        responseData.team_2_player_1_png=a['draft_player_path']+b.camp_list[1].player_list[0].roleid+'.png'
-        responseData.team_2_player_2_png=a['draft_player_path']+b.camp_list[1].player_list[1].roleid+'.png'
-        responseData.team_2_player_3_png=a['draft_player_path']+b.camp_list[1].player_list[2].roleid+'.png'
-        responseData.team_2_player_4_png=a['draft_player_path']+b.camp_list[1].player_list[3].roleid+'.png'
-        responseData.team_2_player_5_png=a['draft_player_path']+b.camp_list[1].player_list[4].roleid+'.png'
-            //b.camp_list[1].player_list[0].picking==true?pickingurl:pciking==false&&heroid!=null?heropng:pickfasleurl
+        //team 1 pick hero name  
+        responseData.team_1_player_1_pick_hero_name=hero_list[b.camp_list[0].player_list[0].heroid]||''
+        responseData.team_1_player_2_pick_hero_name=hero_list[b.camp_list[0].player_list[1].heroid]||''
+        responseData.team_1_player_3_pick_hero_name=hero_list[b.camp_list[0].player_list[2].heroid]||''
+        responseData.team_1_player_4_pick_hero_name=hero_list[b.camp_list[0].player_list[3].heroid]||''
+        responseData.team_1_player_5_pick_hero_name=hero_list[b.camp_list[0].player_list[4].heroid]||''
+        //team 2 pick hero name  
         responseData.team_2_player_1_pick_hero_name=hero_list[b.camp_list[1].player_list[0].heroid]||''
         responseData.team_2_player_2_pick_hero_name=hero_list[b.camp_list[1].player_list[1].heroid]||''
         responseData.team_2_player_3_pick_hero_name=hero_list[b.camp_list[1].player_list[2].heroid]||''
         responseData.team_2_player_4_pick_hero_name=hero_list[b.camp_list[1].player_list[3].heroid]||''
         responseData.team_2_player_5_pick_hero_name=hero_list[b.camp_list[1].player_list[4].heroid]||''
 
-        responseData.team_2_player_1_pick_hero_png=b.camp_list[1].player_list[0].picking==true?
-        a['pick_true_url']:b.camp_list[1].player_list[0].picking==false&&b.camp_list[1].player_list[0].heroid?
-        a['draft_hero_path']+b.camp_list[1].player_list[0].heroid+'.png':a['pick_false_url']
-
-        //----
-        responseData.team_2_player_2_pick_hero_png=b.camp_list[1].player_list[1].picking==true?
-        a['pick_true_url']:b.camp_list[1].player_list[1].picking==false&&b.camp_list[1].player_list[1].heroid?
-        a['draft_hero_path']+b.camp_list[1].player_list[1].heroid+'.png':a['pick_false_url']
-        //---
-        responseData.team_2_player_3_pick_hero_png=b.camp_list[1].player_list[2].picking==true?
-        a['pick_true_url']:b.camp_list[1].player_list[2].picking==false&&b.camp_list[1].player_list[2].heroid?
-        a['draft_hero_path']+b.camp_list[1].player_list[2].heroid+'.png':a['pick_false_url']
-        //--
-        responseData.team_2_player_4_pick_hero_png=b.camp_list[1].player_list[3].picking==true?
-        a['pick_true_url']:b.camp_list[1].player_list[3].picking==false&&b.camp_list[1].player_list[3].heroid?
-        a['draft_hero_path']+b.camp_list[1].player_list[3].heroid+'.png':a['pick_false_url']
-        //---
-        responseData.team_2_player_5_pick_hero_png=b.camp_list[1].player_list[4].picking==true?
-        a['pick_true_url']:b.camp_list[1].player_list[4].picking==false&&b.camp_list[1].player_list[4].heroid?
-        a['draft_hero_path']+b.camp_list[1].player_list[4].heroid+'.png':a['pick_false_url']
-
-
+        //team 1 ban hero name
+        responseData.team_1_player_1_ban_hero_name=hero_list[b.camp_list[0].player_list[0].ban_heroid]||''
+        responseData.team_1_player_2_ban_hero_name=hero_list[b.camp_list[0].player_list[1].ban_heroid]||''
+        responseData.team_1_player_3_ban_hero_name=hero_list[b.camp_list[0].player_list[2].ban_heroid]||''
+        responseData.team_1_player_4_ban_hero_name=hero_list[b.camp_list[0].player_list[3].ban_heroid]||''
+        responseData.team_1_player_5_ban_hero_name=hero_list[b.camp_list[0].player_list[4].ban_heroid]||''
+        //team 2 ban hero name
         responseData.team_2_player_1_ban_hero_name=hero_list[b.camp_list[1].player_list[0].ban_heroid]||''
         responseData.team_2_player_2_ban_hero_name=hero_list[b.camp_list[1].player_list[1].ban_heroid]||''
         responseData.team_2_player_3_ban_hero_name=hero_list[b.camp_list[1].player_list[2].ban_heroid]||''
         responseData.team_2_player_4_ban_hero_name=hero_list[b.camp_list[1].player_list[3].ban_heroid]||''
         responseData.team_2_player_5_ban_hero_name=hero_list[b.camp_list[1].player_list[4].ban_heroid]||''
+//-------------------------------------------------------------------------------------------------------------------
 
-       //ban
 
-        responseData.team_2_player_1_ban_hero_png=b.camp_list[1].player_list[0].banning==true?
-        a['ban_true_url']:b.camp_list[1].player_list[0].banning==false&&b.camp_list[1].player_list[0].heroid?
-        a['draft_hero_path_ban']+b.camp_list[1].player_list[0].ban_heroid+'.png':a['ban_false_url']
-        //----
-        responseData.team_2_player_2_ban_hero_png=b.camp_list[1].player_list[1].banning==true?
-        a['ban_true_url']:b.camp_list[1].player_list[1].banning==false&&b.camp_list[1].player_list[1].heroid?
-        a['draft_hero_path_ban']+b.camp_list[1].player_list[1].ban_heroid+'.png':a['ban_false_url']
-        //----
-        responseData.team_2_player_3_ban_hero_png=b.camp_list[1].player_list[2].banning==true?
-        a['ban_true_url']:b.camp_list[1].player_list[2].banning==false&&b.camp_list[1].player_list[2].heroid?
-        a['draft_hero_path_ban']+b.camp_list[1].player_list[2].ban_heroid+'.png':a['ban_false_url']
-        //----
-        responseData.team_2_player_4_ban_hero_png=b.camp_list[1].player_list[3].banning==true?
-        a['ban_true_url']:b.camp_list[1].player_list[3].banning==false&&b.camp_list[1].player_list[3].heroid?
-        a['draft_hero_path_ban']+b.camp_list[1].player_list[3].ban_heroid+'.png':a['ban_false_url']
-        //----
-        responseData.team_2_player_5_ban_hero_png=b.camp_list[1].player_list[4].banning==true?
-        a['ban_true_url']:b.camp_list[1].player_list[4].banning==false&&b.camp_list[1].player_list[4].heroid?
-        a['draft_hero_path_ban']+b.camp_list[1].player_list[4].ban_heroid+'.png':a['ban_false_url']
 
+//-------------team1 player1-----------------------    
+        //banning||picking
+        if(b.camp_list[0].player_list[0].banning==true||b.camp_list[0].player_list[0].picking==true){
+            responseData.team_1_player_1_png=`${a['path_1']}\\${b.camp_list[0].player_list[0].roleid}\\${a['path_3']}`
+        }
+        //after picking
+        else if(b.camp_list[0].player_list[0].picking==false&&b.camp_list[0].player_list[0].heroid){
+            responseData.team_1_player_1_png=`${a['path_4']}\\${b.camp_list[0].player_list[0].roleid}\\${a['path_5']}`
+        }
+        //after banning and before banning
+        else{
+            responseData.team_1_player_1_png=`${a['path_1']}\\${b.camp_list[0].player_list[0].roleid}\\${a['path_2']}`
+        }
+//-------------team1 player2-----------------------    
+        if(b.camp_list[0].player_list[1].banning==true||b.camp_list[0].player_list[1].picking==true){
+            responseData.team_1_player_2_png=`${a['path_1']}\\${b.camp_list[0].player_list[1].roleid}\\${a['path_3']}`
+        }
+        //after picking
+        else if(b.camp_list[0].player_list[1].picking==false&&b.camp_list[0].player_list[1].heroid){
+            responseData.team_1_player_2_png=`${a['path_4']}\\${b.camp_list[0].player_list[1].roleid}\\${a['path_5']}`
+        }
+        //after banning and before banning
+        else{
+            responseData.team_1_player_2_png=`${a['path_1']}\\${b.camp_list[0].player_list[1].roleid}\\${a['path_2']}`
+        }
+//-------------team1 player3-----------------------    
+        if(b.camp_list[0].player_list[2].banning==true||b.camp_list[0].player_list[2].picking==true){
+            responseData.team_1_player_3_png=`${a['path_1']}\\${b.camp_list[0].player_list[2].roleid}\\${a['path_3']}`
+        }
+        //after picking
+        else if(b.camp_list[0].player_list[2].picking==false&&b.camp_list[0].player_list[2].heroid){
+            responseData.team_1_player_3_png=`${a['path_4']}\\${b.camp_list[0].player_list[2].roleid}\\${a['path_5']}`
+        }
+        //after banning and before banning
+        else{
+            responseData.team_1_player_3_png=`${a['path_1']}\\${b.camp_list[0].player_list[2].roleid}\\${a['path_2']}`
+        }
+
+
+//-------------team1 player4-----------------------    
+        if(b.camp_list[0].player_list[3].banning==true||b.camp_list[0].player_list[3].picking==true){
+            responseData.team_1_player_4_png=`${a['path_1']}\\${b.camp_list[0].player_list[3].roleid}\\${a['path_3']}`
+        }
+        //after picking
+        else if(b.camp_list[0].player_list[3].picking==false&&b.camp_list[0].player_list[3].heroid){
+            responseData.team_1_player_4_png=`${a['path_4']}\\${b.camp_list[0].player_list[3].roleid}\\${a['path_5']}`
+        }
+        //after banning and before banning
+        else{
+            responseData.team_1_player_4_png=`${a['path_1']}\\${b.camp_list[0].player_list[3].roleid}\\${a['path_2']}`
+        }
+
+
+//-------------team1 player5-----------------------    
+        if(b.camp_list[0].player_list[4].banning==true||b.camp_list[0].player_list[4].picking==true){
+            responseData.team_1_player_5_png=`${a['path_1']}\\${b.camp_list[0].player_list[4].roleid}\\${a['path_3']}`
+        }
+        //after picking
+        else if(b.camp_list[0].player_list[4].picking==false&&b.camp_list[0].player_list[4].heroid){
+            responseData.team_1_player_5_png=`${a['path_4']}\\${b.camp_list[0].player_list[4].roleid}\\${a['path_5']}`
+        }
+        //after banning and before banning
+        else{
+            responseData.team_1_player_5_png=`${a['path_1']}\\${b.camp_list[0].player_list[4].roleid}\\${a['path_2']}`
+        }
+
+
+//------------------------------------------------------------------------------------------------------------
+//-------------team2 player1-----------------------    
+        //banning||picking
+        if(b.camp_list[1].player_list[0].banning==true||b.camp_list[1].player_list[0].picking==true){
+            responseData.team_2_player_1_png=`${a['path_1']}\\${b.camp_list[1].player_list[0].roleid}\\${a['path_3']}`
+        }
+        //after picking
+        else if(b.camp_list[1].player_list[0].picking==false&&b.camp_list[1].player_list[0].heroid){
+            responseData.team_2_player_1_png=`${a['path_4']}\\${b.camp_list[1].player_list[0].roleid}\\${a['path_5']}`
+        }
+        //after banning and before banning
+        else{
+            responseData.team_2_player_1_png=`${a['path_1']}\\${b.camp_list[1].player_list[0].roleid}\\${a['path_2']}`
+        }
+//-------------team2 player2-----------------------    
+        if(b.camp_list[1].player_list[1].banning==true||b.camp_list[1].player_list[1].picking==true){
+            responseData.team_2_player_2_png=`${a['path_1']}\\${b.camp_list[1].player_list[1].roleid}\\${a['path_3']}`
+        }
+        //after picking
+        else if(b.camp_list[1].player_list[1].picking==false&&b.camp_list[1].player_list[1].heroid){
+            responseData.team_2_player_2_png=`${a['path_4']}\\${b.camp_list[1].player_list[1].roleid}\\${a['path_5']}`
+        }
+        //after banning and before banning
+        else{
+            responseData.team_2_player_2_png=`${a['path_1']}\\${b.camp_list[1].player_list[1].roleid}\\${a['path_2']}`
+        }
+//-------------team2 player3-----------------------    
+        if(b.camp_list[1].player_list[2].banning==true||b.camp_list[1].player_list[2].picking==true){
+            responseData.team_2_player_3_png=`${a['path_1']}\\${b.camp_list[1].player_list[2].roleid}\\${a['path_3']}`
+        }
+        //after picking
+        else if(b.camp_list[1].player_list[2].picking==false&&b.camp_list[1].player_list[2].heroid){
+            responseData.team_2_player_3_png=`${a['path_4']}\\${b.camp_list[1].player_list[2].roleid}\\${a['path_5']}`
+        }
+        //after banning and before banning
+        else{
+            responseData.team_2_player_3_png=`${a['path_1']}\\${b.camp_list[1].player_list[2].roleid}\\${a['path_2']}`
+        }
+
+
+//-------------team2 player4-----------------------    
+        if(b.camp_list[1].player_list[3].banning==true||b.camp_list[1].player_list[3].picking==true){
+            responseData.team_2_player_4_png=`${a['path_1']}\\${b.camp_list[1].player_list[3].roleid}\\${a['path_3']}`
+        }
+        //after picking
+        else if(b.camp_list[1].player_list[3].picking==false&&b.camp_list[1].player_list[3].heroid){
+            responseData.team_2_player_4_png=`${a['path_4']}\\${b.camp_list[1].player_list[3].roleid}\\${a['path_5']}`
+        }
+        //after banning and before banning
+        else{
+            responseData.team_2_player_4_png=`${a['path_1']}\\${b.camp_list[1].player_list[3].roleid}\\${a['path_2']}`
+        }
+
+
+//-------------team2 player5-----------------------    
+        if(b.camp_list[1].player_list[4].banning==true||b.camp_list[1].player_list[4].picking==true){
+            responseData.team_2_player_5_png=`${a['path_1']}\\${b.camp_list[1].player_list[4].roleid}\\${a['path_3']}`
+        }
+        //after picking
+        else if(b.camp_list[1].player_list[4].picking==false&&b.camp_list[1].player_list[4].heroid){
+            responseData.team_2_player_5_png=`${a['path_4']}\\${b.camp_list[1].player_list[4].roleid}\\${a['path_5']}`
+        }
+        //after banning and before banning
+        else{
+            responseData.team_2_player_5_png=`${a['path_1']}\\${b.camp_list[1].player_list[4].roleid}\\${a['path_2']}`
+        }
+
+
+//-----------------------------------------------------------------------------------------------
+        responseData.team_1_ban_1=b.camp_list[0].player_list[0].ban_heroid?a['path_6']:`${a['path_7']}\\${b.camp_list[0].player_list[0].ban_heroid}.png`
+        responseData.team_1_ban_2=b.camp_list[0].player_list[1].ban_heroid?a['path_6']:`${a['path_7']}\\${b.camp_list[0].player_list[1].ban_heroid}.png`
+        responseData.team_1_ban_3=b.camp_list[0].player_list[2].ban_heroid?a['path_6']:`${a['path_7']}\\${b.camp_list[0].player_list[2].ban_heroid}.png`
+        responseData.team_1_ban_4=b.camp_list[0].player_list[3].ban_heroid?a['path_6']:`${a['path_7']}\\${b.camp_list[0].player_list[3].ban_heroid}.png`
+        responseData.team_1_ban_5=b.camp_list[0].player_list[4].ban_heroid?a['path_6']:`${a['path_7']}\\${b.camp_list[0].player_list[4].ban_heroid}.png`
+        
+        responseData.team_2_ban_6=b.camp_list[1].player_list[0].ban_heroid?a['path_6']:`${a['path_7']}\\${b.camp_list[1].player_list[0].ban_heroid}.png`
+        responseData.team_2_ban_7=b.camp_list[1].player_list[1].ban_heroid?a['path_6']:`${a['path_7']}\\${b.camp_list[1].player_list[1].ban_heroid}.png`
+        responseData.team_2_ban_8=b.camp_list[1].player_list[2].ban_heroid?a['path_6']:`${a['path_7']}\\${b.camp_list[1].player_list[2].ban_heroid}.png`
+        responseData.team_2_ban_9=b.camp_list[1].player_list[3].ban_heroid?a['path_6']:`${a['path_7']}\\${b.camp_list[1].player_list[3].ban_heroid}.png`
+        responseData.team_2_ban_10=b.camp_list[1].player_list[4].ban_heroid?a['path_6']:`${a['path_7']}\\${b.camp_list[1].player_list[4].ban_heroid}.png`
+      
+      
 
         ///new
 
-        responseData.team_1_player_1_picking_url=b.camp_list[0].player_list[0].picking==true?a['pick_true_url']:a['pick_false_url']
-        responseData.team_1_player_2_picking_url=b.camp_list[0].player_list[1].picking==true?a['pick_true_url']:a['pick_false_url']
-        responseData.team_1_player_3_picking_url=b.camp_list[0].player_list[2].picking==true?a['pick_true_url']:a['pick_false_url']
-        responseData.team_1_player_4_picking_url=b.camp_list[0].player_list[3].picking==true?a['pick_true_url']:a['pick_false_url']
-        responseData.team_1_player_5_picking_url=b.camp_list[0].player_list[4].picking==true?a['pick_true_url']:a['pick_false_url']
-
-        responseData.team_1_player_1_banning_url=b.camp_list[0].player_list[0].banning==true?a['ban_true_url']:a['ban_false_url']
-        responseData.team_1_player_2_banning_url=b.camp_list[0].player_list[1].banning==true?a['ban_true_url']:a['ban_false_url']
-        responseData.team_1_player_3_banning_url=b.camp_list[0].player_list[2].banning==true?a['ban_true_url']:a['ban_false_url']
-        responseData.team_1_player_4_banning_url=b.camp_list[0].player_list[3].banning==true?a['ban_true_url']:a['ban_false_url']
-        responseData.team_1_player_5_banning_url=b.camp_list[0].player_list[4].banning==true?a['ban_true_url']:a['ban_false_url']
-
-        //b.camp_list[1].player_list[0].picking==true?pickingurl:pciking==false&&heroid!=null?heropng:pickfasleurl
-        responseData.team_2_player_1_picking_url=b.camp_list[1].player_list[0].picking==true?a['pick_true_url']:a['pick_false_url']
-        responseData.team_2_player_2_picking_url=b.camp_list[1].player_list[1].picking==true?a['pick_true_url']:a['pick_false_url']
-        responseData.team_2_player_3_picking_url=b.camp_list[1].player_list[2].picking==true?a['pick_true_url']:a['pick_false_url']
-        responseData.team_2_player_4_picking_url=b.camp_list[1].player_list[3].picking==true?a['pick_true_url']:a['pick_false_url']
-        responseData.team_2_player_5_picking_url=b.camp_list[1].player_list[4].picking==true?a['pick_true_url']:a['pick_false_url']
-
-        responseData.team_2_player_1_banning_url=b.camp_list[1].player_list[0].banning==true?a['ban_true_url']:a['ban_false_url']
-        responseData.team_2_player_2_banning_url=b.camp_list[1].player_list[1].banning==true?a['ban_true_url']:a['ban_false_url']
-        responseData.team_2_player_3_banning_url=b.camp_list[1].player_list[2].banning==true?a['ban_true_url']:a['ban_false_url']
-        responseData.team_2_player_4_banning_url=b.camp_list[1].player_list[3].banning==true?a['ban_true_url']:a['ban_false_url']
-        responseData.team_2_player_5_banning_url=b.camp_list[1].player_list[4].banning==true?a['ban_true_url']:a['ban_false_url']
+       
     });
 //.get(mainurl)
 //response[isarray> if array loop >array[0]]
