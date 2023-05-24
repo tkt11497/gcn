@@ -89,7 +89,7 @@ export default async function (req, res, next) {
         }
         //after picking
         else if(b.camp_list[0].player_list[0].picking==false&&b.camp_list[0].player_list[0].heroid){
-            responseData.team_1_player_1_png=`${a['path_4']}${b.camp_list[0].player_list[0].roleid}${a['path_5']}`
+            responseData.team_1_player_1_png=`${a['path_4']}${b.camp_list[0].player_list[0].heroid}${a['path_5']}`
         }
         //after banning and before banning
         else{
@@ -101,7 +101,7 @@ export default async function (req, res, next) {
         }
         //after picking
         else if(b.camp_list[0].player_list[1].picking==false&&b.camp_list[0].player_list[1].heroid){
-            responseData.team_1_player_2_png=`${a['path_4']}${b.camp_list[0].player_list[1].roleid}${a['path_5']}`
+            responseData.team_1_player_2_png=`${a['path_4']}${b.camp_list[0].player_list[1].heroid}${a['path_5']}`
         }
         //after banning and before banning
         else{
@@ -113,7 +113,7 @@ export default async function (req, res, next) {
         }
         //after picking
         else if(b.camp_list[0].player_list[2].picking==false&&b.camp_list[0].player_list[2].heroid){
-            responseData.team_1_player_3_png=`${a['path_4']}${b.camp_list[0].player_list[2].roleid}${a['path_5']}`
+            responseData.team_1_player_3_png=`${a['path_4']}${b.camp_list[0].player_list[2].heroid}${a['path_5']}`
         }
         //after banning and before banning
         else{
@@ -127,7 +127,7 @@ export default async function (req, res, next) {
         }
         //after picking
         else if(b.camp_list[0].player_list[3].picking==false&&b.camp_list[0].player_list[3].heroid){
-            responseData.team_1_player_4_png=`${a['path_4']}${b.camp_list[0].player_list[3].roleid}${a['path_5']}`
+            responseData.team_1_player_4_png=`${a['path_4']}${b.camp_list[0].player_list[3].heroid}${a['path_5']}`
         }
         //after banning and before banning
         else{
@@ -141,7 +141,7 @@ export default async function (req, res, next) {
         }
         //after picking
         else if(b.camp_list[0].player_list[4].picking==false&&b.camp_list[0].player_list[4].heroid){
-            responseData.team_1_player_5_png=`${a['path_4']}${b.camp_list[0].player_list[4].roleid}${a['path_5']}`
+            responseData.team_1_player_5_png=`${a['path_4']}${b.camp_list[0].player_list[4].heroid}${a['path_5']}`
         }
         //after banning and before banning
         else{
@@ -157,7 +157,7 @@ export default async function (req, res, next) {
         }
         //after picking
         else if(b.camp_list[1].player_list[0].picking==false&&b.camp_list[1].player_list[0].heroid){
-            responseData.team_2_player_1_png=`${a['path_4']}${b.camp_list[1].player_list[0].roleid}${a['path_5']}`
+            responseData.team_2_player_1_png=`${a['path_4']}${b.camp_list[1].player_list[0].heroid}${a['path_5']}`
         }
         //after banning and before banning
         else{
@@ -169,7 +169,7 @@ export default async function (req, res, next) {
         }
         //after picking
         else if(b.camp_list[1].player_list[1].picking==false&&b.camp_list[1].player_list[1].heroid){
-            responseData.team_2_player_2_png=`${a['path_4']}${b.camp_list[1].player_list[1].roleid}${a['path_5']}`
+            responseData.team_2_player_2_png=`${a['path_4']}${b.camp_list[1].player_list[1].heroid}${a['path_5']}`
         }
         //after banning and before banning
         else{
@@ -181,7 +181,7 @@ export default async function (req, res, next) {
         }
         //after picking
         else if(b.camp_list[1].player_list[2].picking==false&&b.camp_list[1].player_list[2].heroid){
-            responseData.team_2_player_3_png=`${a['path_4']}${b.camp_list[1].player_list[2].roleid}${a['path_5']}`
+            responseData.team_2_player_3_png=`${a['path_4']}${b.camp_list[1].player_list[2].heroid}${a['path_5']}`
         }
         //after banning and before banning
         else{
@@ -195,7 +195,7 @@ export default async function (req, res, next) {
         }
         //after picking
         else if(b.camp_list[1].player_list[3].picking==false&&b.camp_list[1].player_list[3].heroid){
-            responseData.team_2_player_4_png=`${a['path_4']}${b.camp_list[1].player_list[3].roleid}${a['path_5']}`
+            responseData.team_2_player_4_png=`${a['path_4']}${b.camp_list[1].player_list[3].heroid}${a['path_5']}`
         }
         //after banning and before banning
         else{
@@ -209,7 +209,7 @@ export default async function (req, res, next) {
         }
         //after picking
         else if(b.camp_list[1].player_list[4].picking==false&&b.camp_list[1].player_list[4].heroid){
-            responseData.team_2_player_5_png=`${a['path_4']}${b.camp_list[1].player_list[4].roleid}${a['path_5']}`
+            responseData.team_2_player_5_png=`${a['path_4']}${b.camp_list[1].player_list[4].heroid}${a['path_5']}`
         }
         //after banning and before banning
         else{

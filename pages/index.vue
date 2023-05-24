@@ -33,6 +33,15 @@
             md10 
             offset-md="6"
           >
+           <v-card tile shaped style="padding:20px;margin-bottom:20px">
+            <h3 style="margin-bottom:15px"><span style="color:red"> Please use "/"</span> instead of "\" in filling Path Data</h3>
+              <v-row>
+                          <v-btn color="indigo" dark block @click="saveLocal()">Save Data</v-btn>
+              </v-row>
+              <v-row style="margin-top:20px;margin-bottom:20px">
+                          <v-btn color="indigo"  dark block @click="clearLocal()">Unsave Data</v-btn>
+              </v-row>
+           </v-card>
             <v-card tile shaped style="padding:20px;margin-bottom:20px">
                     <v-text-field prepend-icon="mdi-account-circle"
                     type="text" label="Auth Key" v-model="auth_key"  placeholder="Auth Key" id="authkey" required>
@@ -402,17 +411,160 @@
               turret_damage_png:'',
               lord_turtle_turret_png:'',
 
-                activeName: 'first',
-                job_list:[],
-                show_list:false,
+
 
             }
         },
         created(){
-        
+        if(process.client&&localStorage.getItem('auth_key')){
+        this.auth_key=  localStorage.getItem('auth_key')
+        this.battle_id= localStorage.getItem( 'battle_id')
+        this.draft_logo_path= localStorage.getItem( 'draft_logo_path')
+        this.path_1= localStorage.getItem(  'path_1')
+        this.path_2= localStorage.getItem( 'path_2')
+        this.path_3= localStorage.getItem(  'path_3')
+        this.path_4= localStorage.getItem(  'path_4')
+        this.path_5= localStorage.getItem(   'path_5')
+        this.path_6= localStorage.getItem( 'path_6')
+        this.path_7= localStorage.getItem('path_7')
+
+        this.hud_team_logo_path= localStorage.getItem('hud_team_logo_path')
+        this.hud_gold_diff_path= localStorage.getItem( 'hud_gold_diff_path')
+        this.team_logo_for_lord_turtle= localStorage.getItem(  'team_logo_for_lord_turtle')
+
+        this.team_1_name= localStorage.getItem(  'team_1_name')
+        this.team_1_short_name= localStorage.getItem(  'team_1_short_name')
+        this.team_2_name= localStorage.getItem(  'team_2_name')
+        this.team_2_short_name= localStorage.getItem(   'team_2_short_name')
+
+        this.gold_diff_path= localStorage.getItem( 'gold_diff_path')
+        this.item_png_path= localStorage.getItem(  'item_png_path')
+        this.hero_png_path= localStorage.getItem( 'hero_png_path')
+        this.hero_png_path_for_gold_diff= localStorage.getItem( 'hero_png_path_for_gold_diff')
+
+        this.mvp_player_png_path= localStorage.getItem(  'mvp_player_png_path')
+        this.mvp_hero_png_path= localStorage.getItem( 'mvp_hero_png_path')
+        this.mvp_item_png_path= localStorage.getItem( 'mvp_item_png_path')
+        this.mvp_team_logo_path= localStorage.getItem('mvp_team_logo_path')
+        this.mvp_battle_spell_path= localStorage.getItem(   'mvp_battle_spell_path')
+
+        this.player_png_path_1= localStorage.getItem(  'player_png_path_1')
+        this.hero_png_path_1= localStorage.getItem( 'hero_png_path_1')
+        this.item_png_path_1= localStorage.getItem( 'item_png_path_1')
+        this.team_logo_path_1= localStorage.getItem( 'team_logo_path_1')
+        this.battle_spell_path_1= localStorage.getItem(   'battle_spell_path_1')
+        this.role_path_1= localStorage.getItem('role_path_1')
+        this.rune_path_1= localStorage.getItem(   'rune_path_1')
+
+        this.player_png_path_2= localStorage.getItem(  'player_png_path_2')
+        this.hero_png_path_2= localStorage.getItem( 'hero_png_path_2')
+        this.role_path_2= localStorage.getItem(  'role_path_2')
+        this.damage_deal_png= localStorage.getItem( 'damage_deal_png')
+        this.damage_taken_png= localStorage.getItem(  'damage_taken_png')
+        this.turret_damage_png= localStorage.getItem(   'turret_damage_png')
+        this.lord_turtle_turret_png= localStorage.getItem( 'lord_turtle_turret_png')
+        }
         }
         ,
         methods:{
+          saveLocal(){
+         localStorage.setItem('auth_key',this.auth_key)
+         localStorage.setItem( 'battle_id',    this.battle_id)
+         localStorage.setItem( 'draft_logo_path',    this.draft_logo_path)
+         localStorage.setItem(  'path_1',   this.path_1)
+         localStorage.setItem( 'path_2',    this.path_2)
+         localStorage.setItem(  'path_3' ,  this.path_3)
+         localStorage.setItem(  'path_4',   this.path_4)
+         localStorage.setItem(   'path_5',  this.path_5)
+         localStorage.setItem( 'path_6' ,   this.path_6)
+         localStorage.setItem('path_7',     this.path_7)
+
+         localStorage.setItem('hud_team_logo_path' ,    this.hud_team_logo_path)
+         localStorage.setItem( 'hud_gold_diff_path' ,   this.hud_gold_diff_path)
+         localStorage.setItem(  'team_logo_for_lord_turtle' ,  this.team_logo_for_lord_turtle)
+
+         localStorage.setItem(  'team_1_name'  , this.team_1_name)
+         localStorage.setItem(  'team_1_short_name',   this.team_1_short_name)
+         localStorage.setItem(  'team_2_name' ,  this.team_2_name)
+         localStorage.setItem(   'team_2_short_name',  this.team_2_short_name)
+
+         localStorage.setItem( 'gold_diff_path',    this.gold_diff_path)
+         localStorage.setItem(  'item_png_path',   this.item_png_path)
+         localStorage.setItem( 'hero_png_path',    this.hero_png_path)
+         localStorage.setItem( 'hero_png_path_for_gold_diff',    this.hero_png_path_for_gold_diff)
+
+         localStorage.setItem(  'mvp_player_png_path',   this.mvp_player_png_path)
+         localStorage.setItem( 'mvp_hero_png_path',    this.mvp_hero_png_path)
+         localStorage.setItem( 'mvp_item_png_path',    this.mvp_item_png_path)
+         localStorage.setItem('mvp_team_logo_path',     this.mvp_team_logo_path)
+         localStorage.setItem(   'mvp_battle_spell_path',  this.mvp_battle_spell_path)
+
+         localStorage.setItem(  'player_png_path_1',   this.player_png_path_1)
+         localStorage.setItem( 'hero_png_path_1',    this.hero_png_path_1)
+         localStorage.setItem( 'item_png_path_1',    this.item_png_path_1)
+         localStorage.setItem( 'team_logo_path_1',    this.team_logo_path_1)
+         localStorage.setItem(   'battle_spell_path_1',  this.battle_spell_path_1)
+         localStorage.setItem('role_path_1',     this.role_path_1)
+         localStorage.setItem(   'rune_path_1',  this.rune_path_1)
+
+         localStorage.setItem(  'player_png_path_2',   this.player_png_path_2)
+         localStorage.setItem( 'hero_png_path_2',    this.hero_png_path_2)
+         localStorage.setItem(  'role_path_2',   this.role_path_2)
+         localStorage.setItem( 'damage_deal_png',    this.damage_deal_png)
+         localStorage.setItem(  'damage_taken_png',   this.damage_taken_png)
+         localStorage.setItem(   'turret_damage_png',  this.turret_damage_png)
+         localStorage.setItem( 'lord_turtle_turret_png',    this.lord_turtle_turret_png)
+
+          },
+        clearLocal(){
+         localStorage.removeItem('auth_key')
+         localStorage.removeItem( 'battle_id')
+         localStorage.removeItem( 'draft_logo_path')
+         localStorage.removeItem(  'path_1')
+         localStorage.removeItem( 'path_2')
+         localStorage.removeItem(  'path_3')
+         localStorage.removeItem(  'path_4')
+         localStorage.removeItem(   'path_5')
+         localStorage.removeItem( 'path_6')
+         localStorage.removeItem('path_7')
+
+         localStorage.removeItem('hud_team_logo_path')
+         localStorage.removeItem( 'hud_gold_diff_path')
+         localStorage.removeItem(  'team_logo_for_lord_turtle')
+
+         localStorage.removeItem(  'team_1_name')
+         localStorage.removeItem(  'team_1_short_name')
+         localStorage.removeItem(  'team_2_name')
+         localStorage.removeItem(   'team_2_short_name')
+
+         localStorage.removeItem( 'gold_diff_path')
+         localStorage.removeItem(  'item_png_path')
+         localStorage.removeItem( 'hero_png_path')
+         localStorage.removeItem( 'hero_png_path_for_gold_diff')
+
+         localStorage.removeItem(  'mvp_player_png_path')
+         localStorage.removeItem( 'mvp_hero_png_path')
+         localStorage.removeItem( 'mvp_item_png_path')
+         localStorage.removeItem('mvp_team_logo_path')
+         localStorage.removeItem(   'mvp_battle_spell_path')
+
+         localStorage.removeItem(  'player_png_path_1')
+         localStorage.removeItem( 'hero_png_path_1')
+         localStorage.removeItem( 'item_png_path_1')
+         localStorage.removeItem( 'team_logo_path_1')
+         localStorage.removeItem(   'battle_spell_path_1')
+         localStorage.removeItem('role_path_1')
+         localStorage.removeItem(   'rune_path_1')
+
+         localStorage.removeItem(  'player_png_path_2')
+         localStorage.removeItem( 'hero_png_path_2')
+         localStorage.removeItem(  'role_path_2')
+         localStorage.removeItem( 'damage_deal_png')
+         localStorage.removeItem(  'damage_taken_png')
+         localStorage.removeItem(   'turret_damage_png')
+         localStorage.removeItem( 'lord_turtle_turret_png')
+
+          },
         copyTestingCode(data) {
           let testingCodeToCopy = document.querySelector(`#${data}`);
           console.log(testingCodeToCopy,'asdsa')
