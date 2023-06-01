@@ -58,7 +58,7 @@ export default async function (req, res, next) {
        responseData.mvp_player_photo= a['mvp_player_png_path']+mvp_player.roleid+'.png'
        responseData.mvp_player_kda=`${mvp_player.kill_num}/${mvp_player.dead_num}/${mvp_player.assist_num}`
        responseData.mvp_player_gpm=mvp_player.min_money
-       responseData.mvp_player_kill_percentage=Math.round((mvp_player.kda/win_camp_total_kda)*100)
+       responseData.mvp_player_kill_percentage=Math.round((mvp_player.kda/win_camp_total_kda)*100)+'%'
        responseData.mvp_player_battlespell=a['mvp_battle_spell_path']+mvp_player.skillid+'.png'
        responseData.mvp_player_item_1=a['mvp_item_png_path']+(mvp_player.equip_list[0]||0)+'.png'
        responseData.mvp_player_item_2=a['mvp_item_png_path']+(mvp_player.equip_list[1]||0)+'.png'
