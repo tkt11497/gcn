@@ -22,7 +22,7 @@ export default async function (req, res, next) {
         103: "PAQUITO", 104: "GLOO", 105: "BEATRIX", 106: "PHOVEUS", 
         107: "NATAN", 108: "AULUS", 109: "AAMON", 110: "VALENTINA", 111: "EDITH", 
         112: "FLORYN", 113: "YIN", 114: "MELISSA", 115: "XAVIER", 116: "JULIAN",
-         117: "FREDRINN", 118: "JOY", 119: "ARLOTT", 120: "ARLOTT"}
+         117: "FREDRINN", 118: "JOY", 119: "Novalia", 120: "ARLOTT", 121 : "Ixia"}
     let responseData={};
     let paramString = req.url.split('?')[1];
     let a= JSON.parse('{"' + decodeURI(paramString)
