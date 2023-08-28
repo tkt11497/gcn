@@ -150,6 +150,20 @@ export default async function (req, res, next) {
         responseData.team_2_player_5_item_5=b.camp_list[1].player_list[4].equip_list==null?a['item_png_path']+'0.png':a['item_png_path']+(b.camp_list[1].player_list[4].equip_list[4]||0)+'.png'
         responseData.team_2_player_5_item_6=b.camp_list[1].player_list[4].equip_list==null?a['item_png_path']+'0.png':a['item_png_path']+(b.camp_list[1].player_list[4].equip_list[5]||0)+'.png'
 
+        //gametime
+        function secondsToHms(d) {
+            d = Number(d);
+            var h = Math.floor(d / 3600);
+            var m = Math.floor(d % 3600 / 60);
+            var s = Math.floor(d % 3600 % 60);
+        
+            var hDisplay = h > 0 ? h + ':' : "";
+            var mDisplay = m > 0 ? m + ':': "";
+            var sDisplay = s > 0 ? s  : "";
+            return hDisplay + mDisplay + sDisplay; 
+        }
+          //game data
+        responseData.game_time=secondsToHms(b.game_time)
       //gold diff
       //(Team2 Player1 Gold / (team1 player1 gold + team2 player1 gold) ) *  100
       responseData.exp_gold_different_png=a['gold_diff_path']+

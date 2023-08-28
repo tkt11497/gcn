@@ -99,11 +99,28 @@ export default async function (req, res, next) {
        responseData.team_1_player_4_battlespell=a['battle_spell_path_1']+team_1_players[3].skillid+'.png'
        responseData.team_1_player_5_battlespell=a['battle_spell_path_1']+team_1_players[4].skillid+'.png'
        //team 1 player runes Object.keys(team__players[0].rune_map).length-1
-       responseData.team_1_player_1_rune=team_1_players[0].rune_map==null?'No Rune':a['rune_path_1']+Object.keys(team_1_players[0].rune_map)[Object.keys(team_1_players[0].rune_map).length-1]+'.png'
-       responseData.team_1_player_2_rune=team_1_players[1].rune_map==null?'No Rune':a['rune_path_1']+Object.keys(team_1_players[1].rune_map)[Object.keys(team_1_players[1].rune_map).length-1]+'.png'
-       responseData.team_1_player_3_rune=team_1_players[2].rune_map==null?'No Rune':a['rune_path_1']+Object.keys(team_1_players[2].rune_map)[Object.keys(team_1_players[2].rune_map).length-1]+'.png'
-       responseData.team_1_player_4_rune=team_1_players[3].rune_map==null?'No Rune':a['rune_path_1']+Object.keys(team_1_players[3].rune_map)[Object.keys(team_1_players[3].rune_map).length-1]+'.png'
-       responseData.team_1_player_5_rune=team_1_players[4].rune_map==null?'No Rune':a['rune_path_1']+Object.keys(team_1_players[4].rune_map)[Object.keys(team_1_players[4].rune_map).length-1]+'.png'
+       responseData.team_1_player_1_firstRune =team_1_players[0].rune_map==null?'No Rune':a['rune_path_1']+team_1_players[0].rune_map['1']+'.png'
+       responseData.team_1_player_1_secondRune=team_1_players[0].rune_map==null?'No Rune':a['rune_path_1']+team_1_players[0].rune_map['2']+'.png'
+       responseData.team_1_player_1_thirdRune=team_1_players[0].rune_map==null?'No Rune':a['rune_path_1']+team_1_players[0].rune_map['3']+'.png'
+
+       responseData.team_1_player_2_firstRune=team_1_players[1].rune_map==null?'No Rune':a['rune_path_1']+team_1_players[1].rune_map['1']+'.png'
+       responseData.team_1_player_2_secondRune=team_1_players[1].rune_map==null?'No Rune':a['rune_path_1']+team_1_players[1].rune_map['2']+'.png'
+       responseData.team_1_player_2_thirdRune=team_1_players[1].rune_map==null?'No Rune':a['rune_path_1']+team_1_players[1].rune_map['3']+'.png'
+
+       responseData.team_1_player_3_firstRune=team_1_players[2].rune_map==null?'No Rune':a['rune_path_1']+team_1_players[2].rune_map['1']+'.png'
+       responseData.team_1_player_3_secondRune=team_1_players[2].rune_map==null?'No Rune':a['rune_path_1']+team_1_players[2].rune_map['2']+'.png'
+       responseData.team_1_player_3_thirdRune=team_1_players[2].rune_map==null?'No Rune':a['rune_path_1']+team_1_players[2].rune_map['3']+'.png'
+
+       responseData.team_1_player_4_firstRune=team_1_players[3].rune_map==null?'No Rune':a['rune_path_1']+team_1_players[3].rune_map['1']+'.png'
+       responseData.team_1_player_4_secondRune=team_1_players[3].rune_map==null?'No Rune':a['rune_path_1']+team_1_players[3].rune_map['2']+'.png'
+       responseData.team_1_player_4_thirdRune=team_1_players[3].rune_map==null?'No Rune':a['rune_path_1']+team_1_players[3].rune_map['3']+'.png'
+
+       responseData.team_1_player_5_firstRune=team_1_players[4].rune_map==null?'No Rune':a['rune_path_1']+team_1_players[4].rune_map['1']+'.png'
+       responseData.team_1_player_5_secondRune=team_1_players[4].rune_map==null?'No Rune':a['rune_path_1']+team_1_players[4].rune_map['2']+'.png'
+       responseData.team_1_player_5_thirdRune=team_1_players[4].rune_map==null?'No Rune':a['rune_path_1']+team_1_players[4].rune_map['3']+'.png'
+
+
+      
        //team 1 roles
        responseData.team_1_player_1_role=a['role_path_1']+helper.roles_id(team_1_players[0].c_role)+'.png'
        responseData.team_1_player_2_role=a['role_path_1']+helper.roles_id(team_1_players[1].c_role)+'.png'
@@ -195,11 +212,26 @@ export default async function (req, res, next) {
       responseData.team_2_player_4_battlespell=a['battle_spell_path_1']+team_2_players[3].skillid+'.png'
       responseData.team_2_player_5_battlespell=a['battle_spell_path_1']+team_2_players[4].skillid+'.png'
       //team 2 player runes Object.keys(team__players[0].rune_map).length-1
-      responseData.team_2_player_1_rune=team_2_players[0].rune_map==null?'No Rune':a['rune_path_1']+Object.keys(team_2_players[0].rune_map)[Object.keys(team_2_players[0].rune_map).length-1]+'.png'
-      responseData.team_2_player_2_rune=team_2_players[1].rune_map==null?'No Rune':a['rune_path_1']+Object.keys(team_2_players[1].rune_map)[Object.keys(team_2_players[1].rune_map).length-1]+'.png'
-      responseData.team_2_player_3_rune=team_2_players[2].rune_map==null?'No Rune':a['rune_path_1']+Object.keys(team_2_players[2].rune_map)[Object.keys(team_2_players[2].rune_map).length-1]+'.png'
-      responseData.team_2_player_4_rune=team_2_players[3].rune_map==null?'No Rune':a['rune_path_1']+Object.keys(team_2_players[3].rune_map)[Object.keys(team_2_players[3].rune_map).length-1]+'.png'
-      responseData.team_2_player_5_rune=team_2_players[4].rune_map==null?'No Rune':a['rune_path_1']+Object.keys(team_2_players[4].rune_map)[Object.keys(team_2_players[4].rune_map).length-1]+'.png'
+      responseData.team_2_player_1_firstRune =team_2_players[0].rune_map==null?'No Rune':a['rune_path_1']+team_2_players[0].rune_map['1']+'.png'
+      responseData.team_2_player_1_secondRune=team_2_players[0].rune_map==null?'No Rune':a['rune_path_1']+team_2_players[0].rune_map['2']+'.png'
+      responseData.team_2_player_1_thirdRune=team_2_players[0].rune_map==null?'No Rune':a['rune_path_1']+team_2_players[0].rune_map['3']+'.png'
+
+      responseData.team_2_player_2_firstRune=team_2_players[1].rune_map==null?'No Rune':a['rune_path_1']+team_2_players[1].rune_map['1']+'.png'
+      responseData.team_2_player_2_secondRune=team_2_players[1].rune_map==null?'No Rune':a['rune_path_1']+team_2_players[1].rune_map['2']+'.png'
+      responseData.team_2_player_2_thirdRune=team_2_players[1].rune_map==null?'No Rune':a['rune_path_1']+team_2_players[1].rune_map['3']+'.png'
+
+      responseData.team_2_player_3_firstRune=team_2_players[2].rune_map==null?'No Rune':a['rune_path_1']+team_2_players[2].rune_map['1']+'.png'
+      responseData.team_2_player_3_secondRune=team_2_players[2].rune_map==null?'No Rune':a['rune_path_1']+team_2_players[2].rune_map['2']+'.png'
+      responseData.team_2_player_3_thirdRune=team_2_players[2].rune_map==null?'No Rune':a['rune_path_1']+team_2_players[2].rune_map['3']+'.png'
+
+      responseData.team_2_player_4_firstRune=team_2_players[3].rune_map==null?'No Rune':a['rune_path_1']+team_2_players[3].rune_map['1']+'.png'
+      responseData.team_2_player_4_secondRune=team_2_players[3].rune_map==null?'No Rune':a['rune_path_1']+team_2_players[3].rune_map['2']+'.png'
+      responseData.team_2_player_4_thirdRune=team_2_players[3].rune_map==null?'No Rune':a['rune_path_1']+team_2_players[3].rune_map['3']+'.png'
+
+      responseData.team_2_player_5_firstRune=team_2_players[4].rune_map==null?'No Rune':a['rune_path_1']+team_2_players[4].rune_map['1']+'.png'
+      responseData.team_2_player_5_secondRune=team_2_players[4].rune_map==null?'No Rune':a['rune_path_1']+team_2_players[4].rune_map['2']+'.png'
+      responseData.team_2_player_5_thirdRune=team_2_players[4].rune_map==null?'No Rune':a['rune_path_1']+team_2_players[4].rune_map['3']+'.png'
+
       //team 2 roles
       responseData.team_2_player_1_role=a['role_path_1']+helper.roles_id(team_2_players[0].c_role)+'.png'
       responseData.team_2_player_2_role=a['role_path_1']+helper.roles_id(team_2_players[1].c_role)+'.png'
