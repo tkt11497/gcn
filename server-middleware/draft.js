@@ -245,7 +245,7 @@ export default async function (req, res, next) {
             return hDisplay + mDisplay + sDisplay; 
         }
           //game data
-          responseData.timer=secondsToHms(b.state_left_time)
+          responseData.timer='00:'+b.state_left_time
 
        
     });
