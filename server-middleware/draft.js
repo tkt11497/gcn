@@ -22,7 +22,7 @@ export default async function (req, res, next) {
         103: "PAQUITO", 104: "GLOO", 105: "BEATRIX", 106: "PHOVEUS", 
         107: "NATAN", 108: "AULUS", 109: "AAMON", 110: "VALENTINA", 111: "EDITH", 
         112: "FLORYN", 113: "YIN", 114: "MELISSA", 115: "XAVIER", 116: "JULIAN",
-         117: "FREDRINN", 118: "JOY", 119: "Novalia", 120: "ARLOTT", 121 : "Ixia"}
+         117: "FREDRINN", 118: "JOY", 119: "Novaria", 120: "ARLOTT", 121 : "Ixia"}
     let responseData={};
     let paramString = req.url.split('?')[1];
     let a= JSON.parse('{"' + decodeURI(paramString)
@@ -233,6 +233,19 @@ export default async function (req, res, next) {
       
 
         ///new
+        function secondsToHms(d) {
+            d = Number(d);
+            var h = Math.floor(d / 3600);
+            var m = Math.floor(d % 3600 / 60);
+            var s = Math.floor(d % 3600 % 60);
+        
+            var hDisplay = h > 0 ? h + ':' : "";
+            var mDisplay = m > 0 ? m + ':': "";
+            var sDisplay = s > 0 ? s  : "";
+            return hDisplay + mDisplay + sDisplay; 
+        }
+          //game data
+          responseData.timer=secondsToHms(b.state_left_time)
 
        
     });
