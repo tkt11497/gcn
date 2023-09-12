@@ -233,19 +233,9 @@ export default async function (req, res, next) {
       
 
         ///new
-        function secondsToHms(d) {
-            d = Number(d);
-            var h = Math.floor(d / 3600);
-            var m = Math.floor(d % 3600 / 60);
-            var s = Math.floor(d % 3600 % 60);
-        
-            var hDisplay = h > 0 ? h + ':' : "";
-            var mDisplay = m > 0 ? m + ':': "";
-            var sDisplay = s > 0 ? s  : "";
-            return hDisplay + mDisplay + sDisplay; 
-        }
+
           //game data
-          responseData.timer='00:'+b.state_left_time
+          responseData.timer=b.state_left_time>10?'00:'+b.state_left_time:'00:0'+b.state_left_time
 
        
     });

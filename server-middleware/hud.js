@@ -60,6 +60,20 @@ export default async function (req, res, next) {
         // responseData.team_2_short_name=b.camp_list[1].team_simple_name
         // responseData.team_2_logo=a['hud_team_logo_path']+b.camp_list[1].team_name+'.png'
 
+        function secondsToHms(d) {
+            d = Number(d);
+            var h = Math.floor(d / 3600);
+            var m = Math.floor(d % 3600 / 60);
+            var s = Math.floor(d % 3600 % 60);
+        
+            var hDisplay = h > 0 ? h + ':' : "";
+            var mDisplay = m > 0 ?m<10?'0' +m + ':': m + ':': "";
+            var sDisplay = s > 0 ?s<10?'0'+s :s  : "00";
+            return hDisplay + mDisplay + sDisplay; 
+        }
+          //game data
+        responseData.game_time=secondsToHms(b.game_time)
+
         responseData.team_2_turtle_kill=b.camp_list[1].kill_tortoise
         responseData.team_2_lord_kill=b.camp_list[1].kill_lord
         responseData.team_2_tower_kill=b.camp_list[1].kill_tower
