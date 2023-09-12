@@ -67,7 +67,7 @@ export default async function (req, res, next) {
             var s = Math.floor(d % 3600 % 60);
         
             var hDisplay = h > 0 ? h + ':' : "";
-            var mDisplay = m > 0 ?m<10?'0' +m + ':': m + ':': "";
+            var mDisplay = m > 0 ? m + ':': "";
             var sDisplay = s > 0 ?s<10?'0'+s :s  : "00";
             return hDisplay + mDisplay + sDisplay; 
         }
