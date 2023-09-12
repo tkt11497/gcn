@@ -90,10 +90,10 @@ export default async function (req, res, next) {
             responseData.team_2_gold_diff_png=a['hud_gold_diff_path']+'1.png'
         }
         //new
-        let turtle_kill_events=b.incre_event_list.filter(function(item){
+        let turtle_kill_events=b.incre_event_list==null?[]:b.incre_event_list.filter(function(item){
             return item.event_type=="kill_boss"&item.boss_name=="tortoise"
         })
-        let lord_kill_events=b.incre_event_list.filter(function(item){
+        let lord_kill_events=b.incre_event_list==null?[]:b.incre_event_list.filter(function(item){
             return item.event_type=="kill_boss"&item.boss_name=="lord"
         })
         console.log(turtle_kill_events,'tt')
