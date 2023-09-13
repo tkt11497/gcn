@@ -235,7 +235,7 @@ export default async function (req, res, next) {
         ///new
 
           //game data
-          responseData.timer=b.state_left_time>10?'00:'+b.state_left_time:'00:0'+b.state_left_time
+          responseData.timer=b.state_left_time>9?'00:'+b.state_left_time:'00:0'+b.state_left_time
 
        
     });
