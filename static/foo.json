@@ -1,49 +1,62 @@
-{
+{ 
   "player_list": {
-    "582064": {
-      "role": "gold",
-      "name": "Naomi"
-    },
-    "26605124": {
-      "role": "jg",
-      "name": "Niko"
-    },
-    "41976927": {
-      "role": "exp",
-      "name": "bosker"
-    },
-    "44760189": {
-      "role": "exp",
-      "name": "Justin"
-    },
-    "45769687": {
-      "role": "jg",
-      "name": "RubyDD"
-    },
-    "79304218": {
-      "role": "roam",
-      "name": "Super Zip1"
-    },
-    "141047206": {
-      "role": "mid",
-      "name": "Blink"
-    },
-    "178699002": {
-      "role": "mid",
-      "name": "Kenn"
-    },
-    "205954747": {
-      "role": "exp",
-      "name": "stich"
-    },
-    "261601853": {
-      "role": "roam",
-      "name": "Shadow"
-    },
-    "433489985": {
-      "role": "gold",
-      "name": "YoYoe"
-    }
-  },
-  "counter": 6
-}
+     "8907796": { "role": "roam", "name": "Sheis" }, 
+     "20595474": { "role": "gold", "name": "Stitch" }, 
+     "22417954": { "role": "jg", "name": "KidX" }, 
+     "26160185": { "role": "exp", "name": "Shadow" }, 
+     "26605124": { "role": "jg", "name": "Niko" }, 
+     "28726151": { "role": "exp", "name": "Rabbit" }, 
+     "29280266": { "role": "jg", "name": "Policy" }, 
+     "30163838": { "role": "jg", "name": "Xiao Yan" }, 
+     "30693551": { "role": "mid", "name": "Lina" }, 
+     "36154916": { "role": "roam", "name": "Simple" }, 
+     "39896852": { "role": "jg", "name": "Fay Yan" }, 
+     "41976927": { "role": "exp", "name": "Royal Milk" }, 
+     "44760189": { "role": "mid", "name": "JustiN" }, 
+     "45769687": { "role": "exp", "name": "rubydd" }, 
+     "68803090": { "role": "mid", "name": "Ackleyy" }, 
+     "72555257": { "role": "mid", "name": "Alpha" }, 
+     "73819215": { "role": "mid", "name": "Mok" }, 
+     "84413215": { "role": "gold", "name": "Glory" }, 
+     "85600979": { "role": "roam", "name": "Jimbei" }, 
+     "87162459": { "role": "gold", "name": "Shine cG" }, 
+     "89862204": { "role": "gold", "name": "ALITAAA" }, 
+     "90175416": { "role": "roam", "name": "Evo" }, 
+     "94049667": { "role": "exp", "name": "Ying" }, 
+     "101302161": { "role": "gold", "name": "Juno" },
+      "116115326": { "role": "roam", "name": "BLACK" }, 
+      "116439318": { "role": "mid", "name": "KyalNee" }, 
+      "141047206": { "role": "roam", "name": "Blink" }, 
+      "165882875": { "role": "jg", "name": "Ange" }, 
+      "177953228": { "role": "jg", "name": "Verb" }, 
+      "178699002": { "role": "jg", "name": "Kenn" }, 
+      "181058954": { "role": "mid", "name": "Bloodkikaka" },
+       "182439624": { "role": "mid", "name": "Bird" }, 
+       "190419403": { "role": "roam", "name": "Ramon Blake" }, 
+       "202248758": { "role": "roam", "name": "BOB" }, 
+       "207849060": { "role": "roam", "name": "XiDDe" },
+        "209758451": { "role": "gold", "name": "Kafuu" }, 
+        "217679888": { "role": "roam", "name": "J3X" }, 
+        "231789508": { "role": "roam", "name": "Tychon" },
+         "234261062": { "role": "exp", "name": "Xam Boy" },
+          "239160646": { "role": "mid", "name": "PX-7" },
+           "248747557": { "role": "mid", "name": "Khairi" }, 
+           "249923893": { "role": "jg", "name": "PS" },
+            "250875916": { "role": "mid", "name": "BunBunnIQ+999" },
+             "381583968": { "role": "roam", "name": "Than Pouk" }, 
+             "387170260": { "role": "exp", "name": "BENNO" },
+              "433489985": { "role": "mid", "name": "YoYoe" }, 
+              "461687384": { "role": "jg", "name": "Khant Thurein" }, 
+              "463167122": { "role": "jg", "name": "Daxx" }, 
+              "474828634": { "role": "roam", "name": "Jina" }, 
+              "503725673": { "role": "exp", "name": "Kaly" },
+               "516063688": { "role": "mid", "name": "OHMYJ3INNE" }, 
+               "682303252": { "role": "gold", "name": "Beni" },
+                "689787731": { "role": "gold", "name": "Eru x Htut Htut" },
+                 "712554628": { "role": "gold", "name": "Gumi" }, 
+                 "745161671": { "role": "roam", "name": "Ayy" }, 
+                 "764620723": { "role": "exp", "name": "Carbon" },
+                  "1035400405": { "role": "exp", "name": "Prime CoiN" }, 
+                  "1169593694": { "role": "exp", "name": "Snake Oneeee" },
+                   "1428382288": { "role": "gold", "name": "BaBy LEÃO" } 
+      }, "counter": 6 }
